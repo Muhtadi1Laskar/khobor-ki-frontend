@@ -5,7 +5,8 @@
 }
 
 body {
-    font-family: Calibri, sans-serif;
+    /* font-family: Calibri, sans-serif; */
+    font-family: 'Kalpurush', 'Siyam Rupali', 'SolaimanLipi', Calibri, sans-serif;
     background-color: #fafafa;
     color: #1a1a1a;
     line-height: 1.6;
