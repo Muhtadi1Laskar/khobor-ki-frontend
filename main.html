@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Khobor Ki !</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="CSS/style.css">
+    </head>
+
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a href="#" class="logo">Khobor Ki !</a>
+                <div class="nav-tabs">
+                    <a href="#" class="nav-tab active" data-category="all">All</a>
+                    <a href="#" class="nav-tab" data-category="national">National</a>
+                    <a href="#" class="nav-tab" data-category="international">International</a>
+                    <a href="#" class="nav-tab" data-category="technology">Tech</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Container -->
+        <div class="container">
+            <div id="newsContainer">
+                <div class="loading">Loading news</div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination" style="display: none;">
+                <button id="prevBtn" onclick="changePage(-1)">Previous</button>
+                <span class="page-info" id="pageInfo">Page 1</span>
+                <button id="nextBtn" onclick="changePage(1)">Next</button>
+            </div>
+        </div>
+
+        <script src="JS/main.js"></script>
+    </body>
+
+</html>
