@@ -46,7 +46,7 @@ const translations = {
 };
 
 // Current language
-let currentLang = 'bn';
+let currentLang = 'en';
 
 // Available news sources
 const NEWS_SOURCES = [
