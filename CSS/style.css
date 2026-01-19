@@ -99,17 +99,19 @@ body {
 .filter-panel {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
     background-color: #ffffff;
     border-bottom: 1px solid #e5e5e5;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
+    display: none;
 }
 
 .filter-panel.open {
-    max-height: 500px;
+    display: block;
+}
+
+.filter-panel-inner {
     padding: 20px 24px;
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 .filter-section {
@@ -441,12 +443,9 @@ body {
         padding: 6px 12px;
     }
 
-    .filter-panel {
-        padding: 0 16px;
-    }
-
-    .filter-panel.open {
+    .filter-panel-inner {
         padding: 16px;
+        max-height: 70vh;
     }
 
     .source-grid {
@@ -495,12 +494,9 @@ body {
         font-size: 12px;
     }
 
-    .filter-panel {
-        padding: 0 12px;
-    }
-
-    .filter-panel.open {
+    .filter-panel-inner {
         padding: 12px;
+        max-height: 65vh;
     }
 
     .container {
