@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Khobor Ki? | News Aggregator</title>
+        <title>News Aggregator</title>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.cdnfonts.com/css/calibri" rel="stylesheet">
         <link rel="stylesheet" href="CSS/style.css">
     </head>
 
@@ -13,16 +13,20 @@
         <!-- Navigation Bar -->
         <nav class="navbar">
             <div class="navbar-content">
-                <a href="#" class="logo">Khobor Ki?</a>
+                <a href="#" class="logo">Khobor Ki !</a>
                 <div class="nav-tabs">
-                    <a href="#" class="nav-tab active" data-category="all">All</a>
-                    <a href="#" class="nav-tab" data-category="national">National</a>
-                    <a href="#" class="nav-tab" data-category="international">International</a>
-                    <a href="#" class="nav-tab" data-category="sports">Sports</a>
-                    <a href="#" class="nav-tab" data-category="technology">Tech</a>
+                    <a href="#" class="nav-tab active" data-category="all" data-lang-key="all">All</a>
+                    <a href="#" class="nav-tab" data-category="national" data-lang-key="national">National</a>
+                    <a href="#" class="nav-tab" data-category="international"
+                        data-lang-key="international">International</a>
+                    <a href="#" class="nav-tab" data-category="sports" data-lang-key="sports">Sports</a>
+                    <a href="#" class="nav-tab" data-category="technology" data-lang-key="tech">Tech</a>
                 </div>
                 <button class="filter-button" onclick="toggleFilters()">
-                    <span>⚙️</span> Filters
+                    <span>⚙️</span> <span data-lang-key="filters">Filters</span>
+                </button>
+                <button class="lang-toggle" onclick="toggleLanguage()">
+                    <span id="langIcon">🇧🇩</span>
                 </button>
             </div>
         </nav>
@@ -31,14 +35,15 @@
         <div class="filter-panel" id="filterPanel">
             <div class="filter-panel-inner">
                 <div class="filter-section">
-                    <label class="filter-label">Filter by Source</label>
+                    <label class="filter-label" data-lang-key="filterBySource">Filter by Source</label>
                     <div class="source-grid" id="sourceGrid">
                         <!-- Sources will be dynamically loaded -->
                     </div>
                 </div>
                 <div class="filter-actions">
-                    <button class="apply-filters" onclick="applyFilters()">Apply Filters</button>
-                    <button class="clear-filters" onclick="clearFilters()">Clear All</button>
+                    <button class="apply-filters" onclick="applyFilters()" data-lang-key="applyFilters">Apply
+                        Filters</button>
+                    <button class="clear-filters" onclick="clearFilters()" data-lang-key="clearAll">Clear All</button>
                 </div>
                 <div class="active-filters" id="activeFilters"></div>
             </div>
@@ -47,16 +52,18 @@
         <!-- Main Container -->
         <div class="container">
             <div id="newsContainer">
-                <div class="loading">Loading news</div>
+                <div class="loading" data-lang-key="loadingNews">Loading news</div>
             </div>
 
             <!-- Pagination -->
             <div class="pagination" id="pagination" style="display: none;">
-                <button id="prevBtn" onclick="changePage(-1)">Previous</button>
-                <span class="page-info" id="pageInfo">Page 1</span>
-                <button id="nextBtn" onclick="changePage(1)">Next</button>
+                <button id="prevBtn" onclick="changePage(-1)" data-lang-key="previous">Previous</button>
+                <span class="page-info" id="pageInfo"><span data-lang-key="page">Page</span> 1</span>
+                <button id="nextBtn" onclick="changePage(1)" data-lang-key="next">Next</button>
             </div>
         </div>
+
         <script src="JS/main.js"></script>
     </body>
+
 </html>

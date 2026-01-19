@@ -3,6 +3,51 @@ const API_BASE_URL = 'https://khobor-ki-backend.onrender.com/api/feed';
 // const API_BASE_URL = 'http://localhost:8080/api/feed';
 const ITEMS_PER_PAGE = 10;
 
+// Language translations
+const translations = {
+    en: {
+        all: 'All',
+        national: 'National',
+        international: 'International',
+        sports: 'Sports',
+        tech: 'Tech',
+        filters: 'Filters',
+        filterBySource: 'Filter by Source',
+        applyFilters: 'Apply Filters',
+        clearAll: 'Clear All',
+        loadingNews: 'Loading news',
+        previous: 'Previous',
+        next: 'Next',
+        page: 'Page',
+        noNewsAvailable: 'No news available',
+        tryAdjusting: 'Try adjusting your filters or check back later',
+        unableToLoad: 'Unable to load news',
+        makeSureBackend: 'Please make sure the backend server is running on localhost:8080'
+    },
+    bn: {
+        all: 'সব',
+        national: 'জাতীয়',
+        international: 'আন্তর্জাতিক',
+        sports: 'খেলাধুলা',
+        tech: 'প্রযুক্তি',
+        filters: 'ফিল্টার',
+        filterBySource: 'সূত্র অনুসারে ফিল্টার করুন',
+        applyFilters: 'ফিল্টার প্রয়োগ করুন',
+        clearAll: 'সব মুছুন',
+        loadingNews: 'খবর লোড হচ্ছে',
+        previous: 'আগের',
+        next: 'পরবর্তী',
+        page: 'পৃষ্ঠা',
+        noNewsAvailable: 'কোনো খবর নেই',
+        tryAdjusting: 'আপনার ফিল্টার সামঞ্জস্য করুন বা পরে আবার চেষ্টা করুন',
+        unableToLoad: 'খবর লোড করা যায়নি',
+        makeSureBackend: 'অনুগ্রহ করে নিশ্চিত করুন যে ব্যাকএন্ড সার্ভার localhost:8080 এ চলছে'
+    }
+};
+
+// Current language
+let currentLang = 'bn';
+
 // Available news sources
 const NEWS_SOURCES = [
     'Prothom Alo',
@@ -32,13 +77,51 @@ document.addEventListener('DOMContentLoaded', () => {
     loadNews();
 });
 
+// Toggle language
+function toggleLanguage() {
+    currentLang = currentLang === 'en' ? 'bn' : 'en';
+    updateLanguage();
+}
+
+// Update all text based on current language
+function updateLanguage() {
+    const icon = document.getElementById('langIcon');
+    icon.textContent = currentLang === 'en' ? '🇧🇩' : '🇬🇧';
+
+    // Update all elements with data-lang-key
+    document.querySelectorAll('[data-lang-key]').forEach(element => {
+        const key = element.getAttribute('data-lang-key');
+        if (translations[currentLang][key]) {
+            element.textContent = translations[currentLang][key];
+        }
+    });
+
+    // Update page info separately to preserve page number
+    updatePageInfo();
+}
+
+// Update page info text
+function updatePageInfo() {
+    const pageInfo = document.getElementById('pageInfo');
+    if (pageInfo) {
+        pageInfo.innerHTML = `<span data-lang-key="page">${translations[currentLang].page}</span> ${currentPage}`;
+    }
+}
+
+// Initialize the app
+document.addEventListener('DOMContentLoaded', () => {
+    setupNavigation();
+    loadSourceFilters();
+    loadNews();
+});
+
 // Load source filter checkboxes
 function loadSourceFilters() {
     const grid = document.getElementById('sourceGrid');
     grid.innerHTML = NEWS_SOURCES.map(source => `
                 <div class="source-checkbox">
-                    <input type="checkbox" id="source-${source.replace(/\s+/g, '-')}" value="${source}">
-                    <label for="source-${source.replace(/\s+/g, '-')}">${source}</label>
+                    <input type="checkbox" id="source-${source.replace(/\s+/g, '-').replace(/[()]/g, '')}" value="${source}">
+                    <label for="source-${source.replace(/\s+/g, '-').replace(/[()]/g, '')}">${source}</label>
                 </div>
             `).join('');
 }
@@ -84,7 +167,7 @@ function updateActiveFilters() {
     container.innerHTML = selectedSources.map(source => `
                 <div class="filter-tag">
                     ${source}
-                    <button onclick="removeFilter('${source}')" title="Remove filter">×</button>
+                    <button onclick="removeFilter('${source.replace(/'/g, "\\'")}')" title="Remove filter">×</button>
                 </div>
             `).join('');
 }
@@ -149,7 +232,7 @@ async function loadNews() {
     const pagination = document.getElementById('pagination');
 
     // Show loading state
-    container.innerHTML = '<div class="loading">Loading news</div>';
+    container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
     pagination.style.display = 'none';
 
     try {
@@ -170,8 +253,8 @@ async function loadNews() {
         console.error('Error loading news:', error);
         container.innerHTML = `
                     <div class="error">
-                        <h3>Unable to load news</h3>
-                        <p>Please make sure the backend server is running on localhost:8080</p>
+                        <h3>${translations[currentLang].unableToLoad}</h3>
+                        <p>${translations[currentLang].makeSureBackend}</p>
                         <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">Error: ${error.message}</p>
                     </div>
                 `;
@@ -187,8 +270,8 @@ function renderNews(data) {
         (data.items && data.items.length === 0)) {
         container.innerHTML = `
                     <div class="empty-state">
-                        <h3>No news available</h3>
-                        <p>Try adjusting your filters or check back later</p>
+                        <h3>${translations[currentLang].noNewsAvailable}</h3>
+                        <p>${translations[currentLang].tryAdjusting}</p>
                     </div>
                 `;
         return;
@@ -225,7 +308,6 @@ function updatePagination(data) {
     const pagination = document.getElementById('pagination');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    const pageInfo = document.getElementById('pageInfo');
 
     // Handle both array and object with pagination info
     const items = Array.isArray(data) ? data : (data.items || []);
@@ -234,7 +316,7 @@ function updatePagination(data) {
     // Show pagination only if there are items
     if (items.length > 0) {
         pagination.style.display = 'flex';
-        pageInfo.textContent = `Page ${currentPage}`;
+        updatePageInfo();
 
         // Disable previous button on first page
         prevBtn.disabled = currentPage === 1;
@@ -260,7 +342,6 @@ function escapeHtml(text) {
     div.textContent = text;
     return div.innerHTML;
 }
-
 
 function renderTime(article) {
     const date = article.dataSource === "published" ?
