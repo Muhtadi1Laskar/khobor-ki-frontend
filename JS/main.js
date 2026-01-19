@@ -141,12 +141,11 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-
 function renderTime(article) {
-    if (article.dateSource === "published") {
-        return formatRelativeDate(article.publishedDate);
-    }
-    return `Added on ${formatAbsoluteDate(article.sortDate)}`;
+    const date = article.dataSource === "published" ?
+        article.publishedDate :
+        article.sortDate;
+    return `Added on ${formatAbsoluteDate(date)}`;
 }
 
 function formatRelativeDate(epochSeconds) {
