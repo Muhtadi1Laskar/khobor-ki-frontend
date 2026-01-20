@@ -1,7 +1,7 @@
 // Configuration
 const API_BASE_URL = 'https://khobor-ki-backend.onrender.com/api/feed';
 // const API_BASE_URL = 'http://localhost:8080/api/feed';
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 20;
 
 // Language translations
 const translations = {
@@ -22,7 +22,7 @@ const translations = {
         noNewsAvailable: 'No news available',
         tryAdjusting: 'Try adjusting your filters or check back later',
         unableToLoad: 'Unable to load news',
-        makeSureBackend: 'Please make sure the backend server is running on localhost:8080'
+        makeSureBackend: 'Please make sure the backend server is running on https://khobor-ki-backend.onrender.com/'
     },
     bn: {
         all: 'সব',
@@ -41,20 +41,53 @@ const translations = {
         noNewsAvailable: 'কোনো খবর নেই',
         tryAdjusting: 'আপনার ফিল্টার সামঞ্জস্য করুন বা পরে আবার চেষ্টা করুন',
         unableToLoad: 'খবর লোড করা যায়নি',
-        makeSureBackend: 'অনুগ্রহ করে নিশ্চিত করুন যে ব্যাকএন্ড সার্ভার localhost:8080 এ চলছে'
+        makeSureBackend: 'অনুগ্রহ করে নিশ্চিত করুন যে ব্যাকএন্ড সার্ভার https://khobor-ki-backend.onrender.com/ এ চলছে'
     }
 };
 
 // Current language
-let currentLang = 'en';
+let currentLang = 'bn';
 
-// Available news sources
-const NEWS_SOURCES = [
+const NEWS_SOURCES = {
+    en: [
+        'Prothom Alo',
+        'Kaler Kantho',
+        'Daily Noya Diganta',
+        'Jugantor',
+        'Amar Desh',
+        'Daily Sangram',
+        'Bonik Bartha (Bangla)',
+        'Bonik Bartha (English)',
+        'The Business Standard (Bangla)',
+        'The Business Standard (English)',
+        'The Daily Star',
+        'The Financial Times',
+        'The Daily Observer'
+    ],
+    bn: [
+        'প্রথম আলো',
+        'কালের কণ্ঠ',
+        'নয়া দিগন্ত',
+        'জুগান্তর',
+        'আমার দেশ',
+        'দৈনিক সংগ্রাম',
+        'বণিক বার্তা (বাংলা)',
+        'বণিক বার্তা (ইংরেজি)',
+        'দ্য বিজনেস স্ট্যান্ডার্ড (বাংলা)',
+        'দ্য বিজনেস স্ট্যান্ডার্ড (ইংরেজি)',
+        'দ্য ডেইলি স্টার',
+        'দ্য ফিন্যান্সিয়াল টাইমস',
+        'দ্য ডেইলি অবজার্ভার'
+    ]
+};
+
+// Source name mapping (English names are used for API calls)
+const SOURCE_API_NAMES = [
     'Prothom Alo',
     'Kaler Kantho',
     'Daily Noya Diganta',
     'Jugantor',
-    "Amar Desh",
+    'Amar Desh',
     'Daily Sangram',
     'Bonik Bartha (Bangla)',
     'Bonik Bartha (English)',
@@ -62,7 +95,7 @@ const NEWS_SOURCES = [
     'The Business Standard (English)',
     'The Daily Star',
     'The Financial Times',
-    'The Daily Observer',
+    'The Daily Observer'
 ];
 
 // State management
@@ -73,6 +106,7 @@ let newsData = [];
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
+    updateLanguage();
     setupNavigation();
     loadSourceFilters();
     loadNews();
@@ -82,6 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
 function toggleLanguage() {
     currentLang = currentLang === 'en' ? 'bn' : 'en';
     updateLanguage();
+    updateSourceLabels();
+    updateActiveFilters();
 }
 
 // Update all text based on current language
@@ -109,22 +145,28 @@ function updatePageInfo() {
     }
 }
 
-// Initialize the app
-document.addEventListener('DOMContentLoaded', () => {
-    setupNavigation();
-    loadSourceFilters();
-    loadNews();
-});
-
 // Load source filter checkboxes
 function loadSourceFilters() {
     const grid = document.getElementById('sourceGrid');
-    grid.innerHTML = NEWS_SOURCES.map(source => `
+    const sources = NEWS_SOURCES[currentLang];
+
+    grid.innerHTML = sources.map((source, index) => `
                 <div class="source-checkbox">
-                    <input type="checkbox" id="source-${source.replace(/\s+/g, '-').replace(/[()]/g, '')}" value="${source}">
-                    <label for="source-${source.replace(/\s+/g, '-').replace(/[()]/g, '')}">${source}</label>
+                    <input type="checkbox" id="source-${index}" value="${SOURCE_API_NAMES[index]}" data-source-index="${index}">
+                    <label for="source-${index}">${source}</label>
                 </div>
             `).join('');
+}
+
+// Update source filter labels when language changes
+function updateSourceLabels() {
+    const sources = NEWS_SOURCES[currentLang];
+    document.querySelectorAll('.source-checkbox').forEach((checkbox, index) => {
+        const label = checkbox.querySelector('label');
+        if (label && sources[index]) {
+            label.textContent = sources[index];
+        }
+    });
 }
 
 // Toggle filter panel
@@ -165,12 +207,19 @@ function updateActiveFilters() {
         return;
     }
 
-    container.innerHTML = selectedSources.map(source => `
-                <div class="filter-tag">
-                    ${source}
-                    <button onclick="removeFilter('${source.replace(/'/g, "\\'")}')" title="Remove filter">×</button>
-                </div>
-            `).join('');
+    container.innerHTML = selectedSources.map(source => {
+        // Find the index of the source in API names
+        const sourceIndex = SOURCE_API_NAMES.indexOf(source);
+        // Get the display name in current language
+        const displayName = sourceIndex !== -1 ? NEWS_SOURCES[currentLang][sourceIndex] : source;
+
+        return `
+                    <div class="filter-tag">
+                        ${displayName}
+                        <button onclick="removeFilter('${source.replace(/'/g, "\\'")}')" title="Remove filter">×</button>
+                    </div>
+                `;
+    }).join('');
 }
 
 // Remove individual filter
