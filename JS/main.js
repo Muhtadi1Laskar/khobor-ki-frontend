@@ -54,6 +54,7 @@ const NEWS_SOURCES = [
     'Kaler Kantho',
     'Daily Noya Diganta',
     'Jugantor',
+    "Amar Desh",
     'Daily Sangram',
     'Bonik Bartha (Bangla)',
     'Bonik Bartha (English)',
