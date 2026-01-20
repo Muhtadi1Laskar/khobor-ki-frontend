@@ -106,6 +106,12 @@ let newsData = [];
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
+    const savedLanguage = localStorage.getItem("language");
+
+    if(savedLanguage !== null && savedLanguage.length > 0) {
+        currentLang = savedLanguage;
+    }
+    
     updateLanguage();
     setupNavigation();
     loadSourceFilters();
@@ -124,6 +130,8 @@ function toggleLanguage() {
 function updateLanguage() {
     const icon = document.getElementById('langIcon');
     icon.textContent = currentLang === 'en' ? '🇧🇩' : '🇬🇧';
+    
+    localStorage.setItem('language', currentLang);
 
     // Update all elements with data-lang-key
     document.querySelectorAll('[data-lang-key]').forEach(element => {
