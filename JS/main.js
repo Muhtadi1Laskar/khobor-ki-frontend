@@ -1,6 +1,6 @@
 // Configuration
-const API_BASE_URL = 'https://khobor-ki-backend.onrender.com/api/feed';
-// const API_BASE_URL = 'http://localhost:8080/api/feed';
+// const API_BASE_URL = 'https://khobor-ki-backend.onrender.com/api/feed';
+const API_BASE_URL = 'http://localhost:8080/api/feed';
 const ITEMS_PER_PAGE = 10;
 
 // Language translations
@@ -108,15 +108,39 @@ let newsData = [];
 document.addEventListener('DOMContentLoaded', () => {
     const savedLanguage = localStorage.getItem("language");
 
-    if(savedLanguage !== null && savedLanguage.length > 0) {
+    if (savedLanguage !== null && savedLanguage.length > 0) {
         currentLang = savedLanguage;
     }
-    
+
+    const storedFilters = localStorage.getItem("selected-filters");
+    if(storedFilters !== null) {
+        try {
+            const parsedFilters = JSON.parse(storedFilters);
+            if(Array.isArray(parsedFilters)) {
+                selectedSources = parsedFilters;
+            }
+        } catch (error) {
+            console.error("Error parsing stored filters: ", error);
+            localStorage.removeItem("selected-filters");
+        }
+    }
+
     updateLanguage();
     setupNavigation();
     loadSourceFilters();
+    updateActiveFilters();
+    checkSavedFilters(selectedSources);
     loadNews();
 });
+
+function checkSavedFilters(savedFilters) {
+    const checkboxes = document.querySelectorAll('.source-checkbox input[type="checkbox"]');
+    checkboxes.forEach(box => {
+        if(savedFilters.includes(box.value)) {
+            box.checked = true;
+        }
+    });
+}
 
 // Toggle language
 function toggleLanguage() {
@@ -130,7 +154,7 @@ function toggleLanguage() {
 function updateLanguage() {
     const icon = document.getElementById('langIcon');
     icon.textContent = currentLang === 'en' ? '🇧🇩' : '🇬🇧';
-    
+
     localStorage.setItem('language', currentLang);
 
     // Update all elements with data-lang-key
@@ -189,6 +213,8 @@ function toggleFilters() {
 function applyFilters() {
     const checkboxes = document.querySelectorAll('.source-checkbox input[type="checkbox"]:checked');
     selectedSources = Array.from(checkboxes).map(cb => cb.value);
+
+    localStorage.setItem("selected-filters", JSON.stringify(selectedSources));
 
     currentPage = 1;
     loadNews();
