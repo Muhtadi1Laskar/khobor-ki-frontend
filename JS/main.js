@@ -51,6 +51,7 @@ let currentLang = 'bn';
 const NEWS_SOURCES = {
     en: [
         'Prothom Alo',
+        'Prothom Alo (English)',
         'Kaler Kantho',
         'Daily Noya Diganta',
         'Jugantor',
@@ -66,6 +67,7 @@ const NEWS_SOURCES = {
     ],
     bn: [
         'প্রথম আলো',
+        'প্রথম আলো (ইংরেজি)',
         'কালের কণ্ঠ',
         'নয়া দিগন্ত',
         'জুগান্তর',
@@ -84,6 +86,7 @@ const NEWS_SOURCES = {
 // Source name mapping (English names are used for API calls)
 const SOURCE_API_NAMES = [
     'Prothom Alo',
+    'Prothom Alo (English)',
     'Kaler Kantho',
     'Daily Noya Diganta',
     'Jugantor',
