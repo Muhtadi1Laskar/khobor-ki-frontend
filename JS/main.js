@@ -63,7 +63,8 @@ const NEWS_SOURCES = {
         'The Business Standard (English)',
         'The Daily Star',
         'The Financial Times',
-        'The Daily Observer'
+        'The Daily Observer',
+        'Ars Technica'
     ],
     bn: [
         'প্রথম আলো',
@@ -79,7 +80,8 @@ const NEWS_SOURCES = {
         'দ্য বিজনেস স্ট্যান্ডার্ড (ইংরেজি)',
         'দ্য ডেইলি স্টার',
         'দ্য ফিন্যান্সিয়াল টাইমস',
-        'দ্য ডেইলি অবজার্ভার'
+        'দ্য ডেইলি অবজার্ভার',
+        'Ars Technica'
     ]
 };
 
@@ -98,7 +100,8 @@ const SOURCE_API_NAMES = [
     'The Business Standard (English)',
     'The Daily Star',
     'The Financial Times',
-    'The Daily Observer'
+    'The Daily Observer',
+    'Ars Technica'
 ];
 
 // State management
