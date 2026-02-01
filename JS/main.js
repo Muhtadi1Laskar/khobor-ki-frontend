@@ -1,7 +1,7 @@
 // Configuration
 const API_BASE_URL = 'https://khobor-ki-backend.onrender.com/api/feed';
 // const API_BASE_URL = 'http://localhost:8080/api/feed';
-const ITEMS_PER_PAGE = 15;
+const ITEMS_PER_PAGE = 30;
 
 // Language translations
 const translations = {
