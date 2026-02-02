@@ -66,6 +66,7 @@ const NEWS_SOURCES = {
         'The Financial Times',
         'The Daily Observer',
         'Ars Technica',
+        'investinglive.com',
     ],
     bn: [
         'প্রথম আলো',
@@ -83,7 +84,8 @@ const NEWS_SOURCES = {
         'দ্য ডেইলি স্টার',
         'দ্য ফিন্যান্সিয়াল টাইমস',
         'দ্য ডেইলি অবজার্ভার',
-        'আরস টেকনিকা'
+        'আরস টেকনিকা',
+        'ইনভেস্টিং লাইভ ডট কম'
     ]
 };
 
@@ -104,7 +106,8 @@ const SOURCE_API_NAMES = [
     'The Daily Star',
     'The Financial Times',
     'The Daily Observer',
-    'Ars Technica'
+    'Ars Technica',
+    'investinglive.com'
 ];
 
 // State management
