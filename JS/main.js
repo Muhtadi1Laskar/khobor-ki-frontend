@@ -57,6 +57,7 @@ const NEWS_SOURCES = {
         'Jugantor',
         'Amar Desh',
         'Daily Sangram',
+        'Bangladesh Pratidin',
         'Bonik Bartha (Bangla)',
         'Bonik Bartha (English)',
         'The Business Standard (Bangla)',
@@ -64,7 +65,7 @@ const NEWS_SOURCES = {
         'The Daily Star',
         'The Financial Times',
         'The Daily Observer',
-        'Ars Technica'
+        'Ars Technica',
     ],
     bn: [
         'প্রথম আলো',
@@ -74,6 +75,7 @@ const NEWS_SOURCES = {
         'জুগান্তর',
         'আমার দেশ',
         'দৈনিক সংগ্রাম',
+        'বাংলাদেশ প্রতিদিন',
         'বণিক বার্তা (বাংলা)',
         'বণিক বার্তা (ইংরেজি)',
         'দ্য বিজনেস স্ট্যান্ডার্ড (বাংলা)',
@@ -94,6 +96,7 @@ const SOURCE_API_NAMES = [
     'Jugantor',
     'Amar Desh',
     'Daily Sangram',
+    'Bangladesh Pratidin',
     'Bonik Bartha (Bangla)',
     'Bonik Bartha (English)',
     'The Business Standard (Bangla)',
