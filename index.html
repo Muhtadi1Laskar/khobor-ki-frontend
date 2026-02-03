@@ -36,6 +36,15 @@
             <div class="filter-panel-inner">
                 <div class="filter-section">
                     <label class="filter-label" data-lang-key="filterBySource">Filter by Source</label>
+
+                    <!-- Language toggle for sources -->
+                    <div class="source-lang-toggle">
+                        <button class="source-lang-btn active" onclick="switchSourceLanguage('bangla')"
+                            data-lang-key="banglaSources">Bangla Sources</button>
+                        <button class="source-lang-btn" onclick="switchSourceLanguage('english')"
+                            data-lang-key="englishSources">English Sources</button>
+                    </div>
+
                     <div class="source-grid" id="sourceGrid">
                         <!-- Sources will be dynamically loaded -->
                     </div>
