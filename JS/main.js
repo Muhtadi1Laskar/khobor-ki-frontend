@@ -110,7 +110,8 @@ const NEWS_SOURCES = {
             'investinglive.com',
             'Tech Crunch',
             'Wired',
-            'The Hacker News'
+            'The Hacker News',
+            'The Verge'
         ],
         en: [
             'Prothom Alo (English)',
@@ -123,7 +124,8 @@ const NEWS_SOURCES = {
             'investinglive.com',
             'Tech Crunch',
             'Wired',
-            'The Hacker News'
+            'The Hacker News',
+            'The Verge'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -136,7 +138,8 @@ const NEWS_SOURCES = {
             'ইনভেস্টিং লাইভ ডট কম',
             'টেকক্রাঞ্চ',
             'ওয়্যার্ড',
-            'দ্য হ্যাকার নিউজ'
+            'দ্য হ্যাকার নিউজ',
+            'দ্য ভার্জ'
         ]
     }
 };
