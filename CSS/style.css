@@ -814,6 +814,9 @@ body.dark-theme .page-info {
 
     .theme-toggle {
         order: 4;
+        padding: 6px 10px;  /* Match lang-toggle */
+        font-size: 16px;    /* Match lang-toggle */
+        min-width: 40px; 
     }
 
     .nav-tabs {
@@ -841,6 +844,12 @@ body.dark-theme .page-info {
         padding: 5px 8px;
         font-size: 15px;
         min-width: 36px;
+    }
+    
+    .theme-toggle {
+        padding: 5px 8px;   /* Match lang-toggle */
+        font-size: 15px;    /* Match lang-toggle */
+        min-width: 36px;    /* Match lang-toggle */
     }
 
     .nav-tab {

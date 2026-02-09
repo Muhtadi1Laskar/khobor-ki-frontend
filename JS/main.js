@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const savedTheme = localStorage.getItem("theme");
-    if(savedTheme !== null && savedTheme.length > 0) {
+    if (savedTheme !== null && savedTheme.length > 0) {
         currentTheme = savedTheme;
         applyTheme(currentTheme)
     }
