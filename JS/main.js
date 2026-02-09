@@ -64,7 +64,6 @@ const NEWS_SOURCES = {
             'The Daily Ittefaq',
             'Daily Sangram',
             'Bangladesh Pratidin',
-            'The Daily Inquilab',
             'Bonik Bartha (Bangla)',
             'The Business Standard (Bangla)',
             'Dhaka Tribune'
@@ -78,7 +77,6 @@ const NEWS_SOURCES = {
             'The Daily Ittefaq',
             'Daily Sangram',
             'Bangladesh Pratidin',
-            'The Daily Inquilab',
             'Bonik Bartha (Bangla)',
             'The Business Standard (Bangla)',
             'Dhaka Tribune'
@@ -92,7 +90,6 @@ const NEWS_SOURCES = {
             'দৈনিক ইত্তেফাক',
             'দৈনিক সংগ্রাম',
             'বাংলাদেশ প্রতিদিন',
-            'দৈনিক ইনকিলাব',
             'বণিক বার্তা (বাংলা)',
             'দ্য বিজনেস স্ট্যান্ডার্ড (বাংলা)',
             'ঢাকা ট্রিবিউন'
