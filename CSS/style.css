@@ -823,6 +823,30 @@ body.dark-theme .page-info {
         order: 5;
         width: 100%;
     }
+
+    .nav-tabs {
+        order: 5;
+        width: 100%;
+        gap: 8px;
+        flex: 1 1 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        white-space: nowrap;
+        padding-bottom: 4px;
+    }
+    
+    .nav-tabs::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+    
+    .nav-tab {
+        flex-shrink: 0; /* Prevent tabs from shrinking */
+        font-size: 13px;
+        padding: 6px 12px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -880,5 +904,10 @@ body.dark-theme .page-info {
 
     .filter-actions button {
         width: 100%;
+    }
+
+    .nav-tab {
+        padding: 6px 10px;
+        font-size: 13px;
     }
 }

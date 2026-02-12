@@ -30,7 +30,9 @@ const translations = {
         viewArticles: 'View all articles',
         hideArticles: 'Hide articles',
         sources: 'Sources',
-        addedOn: 'Added on'
+        addedOn: 'Added on',
+        trending: 'Trending',
+        clusters: 'Clusters'
     },
     bn: {
         all: 'সব',
@@ -57,7 +59,9 @@ const translations = {
         viewArticles: 'সব নিবন্ধ দেখুন',
         hideArticles: 'নিবন্ধ লুকান',
         sources: 'উৎস',
-        addedOn: 'যোগ করা হয়েছে'
+        addedOn: 'যোগ করা হয়েছে',
+        trending: 'জনপ্রিয়',
+        clusters: 'ক্লাস্টার'
     }
 };
 
