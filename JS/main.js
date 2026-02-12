@@ -1,5 +1,6 @@
 // Configuration
 const API_BASE_URL = 'https://khobor-ki-backend.onrender.com/api/feed';
+// const API_BASE_URL = 'http://localhost:8080/api/feed';
 const ITEMS_PER_PAGE = 30;
 
 // Language translations
@@ -23,7 +24,13 @@ const translations = {
         noNewsAvailable: 'No news available',
         tryAdjusting: 'Try adjusting your filters or check back later',
         unableToLoad: 'Unable to load news',
-        makeSureBackend: 'Please make sure the backend server is running'
+        makeSureBackend: 'Please make sure the backend server is running',
+        clusters: 'Clusters',
+        articles: 'articles',
+        viewArticles: 'View all articles',
+        hideArticles: 'Hide articles',
+        sources: 'Sources',
+        addedOn: 'Added on'
     },
     bn: {
         all: 'সব',
@@ -44,7 +51,13 @@ const translations = {
         noNewsAvailable: 'কোনো খবর নেই',
         tryAdjusting: 'আপনার ফিল্টার সামঞ্জস্য করুন বা পরে আবার চেষ্টা করুন',
         unableToLoad: 'খবর লোড করা যায়নি',
-        makeSureBackend: 'অনুগ্রহ করে নিশ্চিত করুন যে ব্যাকএন্ড সার্ভার চলছে'
+        makeSureBackend: 'অনুগ্রহ করে নিশ্চিত করুন যে ব্যাকএন্ড সার্ভার চলছে',
+        clusters: 'ক্লাস্টার',
+        articles: 'নিবন্ধ',
+        viewArticles: 'সব নিবন্ধ দেখুন',
+        hideArticles: 'নিবন্ধ লুকান',
+        sources: 'উৎস',
+        addedOn: 'যোগ করা হয়েছে'
     }
 };
 
@@ -588,6 +601,14 @@ function escapeHtml(text) {
 
 function formatDate(article) {
     const date = article.dataSource === "published" ? article.publishedDate : article.sortDate;
+    return `Added on ${new Date(date * 1000).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+    })}`;
+}
+
+function formatDates(date) {
     return `Added on ${new Date(date * 1000).toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric',
