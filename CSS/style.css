@@ -2,6 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+html {
+    -webkit-tap-highlight-color: transparent;
+    color-scheme: light dark;
 }
 
 body {
@@ -9,6 +16,9 @@ body {
     background-color: #fafafa;
     color: #1a1a1a;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 /* Navigation Bar */
