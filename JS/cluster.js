@@ -63,7 +63,7 @@ async function loadClusters() {
     }
 }
 
-// Render clusters
+// Render clusters with timeline design
 function renderClusters(clusters) {
     const container = document.getElementById('newsContainer');
 
@@ -77,66 +77,68 @@ function renderClusters(clusters) {
         return;
     }
 
+    function getCategoryIcon(category) {
+        const icons = {
+            national: '🏛️',
+            international: '🌍',
+            sports: '⚽',
+            technology: '💻',
+            default: '📰'
+        };
+        return icons[category] || icons.default;
+    }
+
     const clustersHTML = `
         <div class="cluster-list">
             ${clusters.map(cluster => `
                 <div class="cluster-card">
-                    <div class="cluster-header">
-                        <h2 class="cluster-main-title">
-                            <a href="${cluster.articles[0].url}" target="_blank" rel="noopener noreferrer">
+                    <div class="cluster-timeline-header">
+                        <div class="cluster-icon ${cluster.category}">
+                            ${getCategoryIcon(cluster.category)}
+                        </div>
+                        <div class="cluster-header-content">
+                            <a href="${cluster.articles[0].url}" target="_blank" rel="noopener noreferrer" class="cluster-title-link">
                                 ${escapeHtml(cluster.representativeTitle)}
                             </a>
-                        </h2>
-                        <div class="cluster-meta">
-                            <span class="cluster-badge">
-                                ${cluster.articleCount} ${translations[currentLang].articles}
-                            </span>
-                            <span class="cluster-badge category">
-                                ${cluster.category}
-                            </span>
-                            <span class="cluster-badge language">
-                                ${cluster.language}
-                            </span>
-                            <span class="meta-separator">•</span>
-                            <span>${formatDates(cluster.createdAt)}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="cluster-sources">
-                        <div class="sources-title">${translations[currentLang].sources}:</div>
-                        <div class="source-tags">
-                            ${Object.entries(cluster.sources).map(([source, count]) => `
-                                <span class="source-tag">
-                                    ${escapeHtml(source)} <span class="source-count">(${count})</span>
-                                </span>
-                            `).join('')}
-                        </div>
-                    </div>
-                    
-                    <div class="cluster-articles">
-                        <button class="articles-toggle" onclick="toggleClusterArticles('${cluster._id}')">
-                            <span class="articles-toggle-text" data-cluster-id="${cluster._id}">
-                                ${translations[currentLang].viewArticles}
-                            </span>
-                            <span class="articles-toggle-icon">▼</span>
-                        </button>
-                        <div class="cluster-articles-list" id="articles-${cluster._id}">
-                            ${cluster.articles.map(article => `
-                                <div class="cluster-article-item">
-                                    <div class="cluster-article-title">
-                                        <a href="${article.url}" target="_blank" rel="noopener noreferrer">
-                                            ${escapeHtml(article.title)}
-                                        </a>
-                                    </div>
-                                    <div class="cluster-article-meta">
-                                        <span class="cluster-article-source">${escapeHtml(article.source)}</span>
-                                        <span class="meta-separator">•</span>
-                                        <span>${formatDates(article.sortDate)}</span>
-                                    </div>
+                            <div class="cluster-stats">
+                                <div class="cluster-stat">
+                                    <span>📰</span> <span>${cluster.articleCount} ${translations[currentLang].articles}</span>
                                 </div>
-                            `).join('')}
+                                <div class="cluster-stat">
+                                    <span>📅</span> <span>${formatDates(cluster.createdAt)}</span>
+                                </div>
+                                <div class="cluster-stat">
+                                    <span>${cluster.category}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    
+                    <div class="cluster-sources-row">
+                        ${Object.entries(cluster.sources).map(([source, count]) => `
+                            <div class="source-chip">
+                                ${escapeHtml(source)}<span class="count">(${count})</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="cluster-preview" id="preview-${cluster._id}">
+                        ${cluster.articles.map(article => `
+                            <div class="preview-article">
+                                <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="preview-title">
+                                    ${escapeHtml(article.title)}
+                                </a>
+                                <div class="preview-meta">
+                                    <span style="color: #60a5fa; font-weight: 500;">${escapeHtml(article.source)}</span> • ${formatDates(article.sortDate)}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <button class="show-more-btn" onclick="toggleClusterArticles('${cluster._id}')" id="btn-${cluster._id}">
+                        <span class="show-more-text">${translations[currentLang].viewAllArticles}</span>
+                        <span class="show-more-icon">▼</span>
+                    </button>
                 </div>
             `).join('')}
         </div>
@@ -147,16 +149,16 @@ function renderClusters(clusters) {
 
 // Toggle cluster articles visibility
 function toggleClusterArticles(clusterId) {
-    const articlesList = document.getElementById(`articles-${clusterId}`);
-    const toggleBtn = event.currentTarget;
-    const toggleText = toggleBtn.querySelector('.articles-toggle-text');
+    const preview = document.getElementById(`preview-${clusterId}`);
+    const button = document.getElementById(`btn-${clusterId}`);
+    const buttonText = button.querySelector('.show-more-text');
 
-    articlesList.classList.toggle('show');
-    toggleBtn.classList.toggle('expanded');
+    preview.classList.toggle('show');
+    button.classList.toggle('expanded');
 
-    if (articlesList.classList.contains('show')) {
-        toggleText.textContent = translations[currentLang].hideArticles;
+    if (preview.classList.contains('show')) {
+        buttonText.textContent = translations[currentLang].hideArticles;
     } else {
-        toggleText.textContent = translations[currentLang].viewArticles;
+        buttonText.textContent = translations[currentLang].viewAllArticles;
     }
 }

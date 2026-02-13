@@ -1,317 +1,361 @@
-/* Cluster View Styles */
+/* ==================== CLUSTER VIEW STYLES ==================== */
+
+/* Timeline Layout */
 .cluster-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .cluster-card {
     background-color: #ffffff;
-    border-radius: 12px;
+    border-radius: 8px; /* Changed from 16px to 8px */
+    margin-bottom: 32px; /* Changed from 24px to 32px */
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .cluster-card:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.cluster-header {
-    padding: 20px 24px;
+/* Cluster Header */
+.cluster-timeline-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px;
     border-bottom: 1px solid #f3f4f6;
 }
 
-.cluster-main-title {
-    font-size: 18px;
-    line-height: 1.5;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 12px;
-}
-
-.cluster-main-title a {
-    color: #1a1a1a;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.cluster-main-title a:hover {
-    color: #3b82f6;
-}
-
-.cluster-meta {
+.cluster-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background-color: #f3f4f6;
     display: flex;
     align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    font-size: 13px;
+    justify-content: center;
     color: #6b7280;
+    font-size: 24px;
+    flex-shrink: 0;
+    border: 2px solid #e5e7eb;
+    transition: all 0.2s ease;
 }
 
-.cluster-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 4px 8px;
+.cluster-icon.national {
     background-color: #dbeafe;
     color: #1e40af;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 500;
+    border-color: #93c5fd;
 }
 
-.cluster-badge.category {
+.cluster-icon.international {
     background-color: #fef3c7;
     color: #92400e;
+    border-color: #fde68a;
 }
 
-.cluster-badge.language {
+.cluster-icon.sports {
     background-color: #d1fae5;
     color: #065f46;
+    border-color: #6ee7b7;
 }
 
-.cluster-sources {
-    padding: 16px 24px;
-    background-color: #f9fafb;
+.cluster-icon.technology {
+    background-color: #e0e7ff;
+    color: #3730a3;
+    border-color: #a5b4fc;
 }
 
-.sources-title {
-    font-size: 13px;
+.cluster-header-content {
+    flex: 1;
+}
+
+.cluster-title-link {
+    font-size: 20px;
     font-weight: 600;
-    color: #374151;
+    line-height: 1.4;
+    color: #1a1a1a;
+    text-decoration: none;
+    display: block;
     margin-bottom: 8px;
-}
-
-.source-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.source-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 4px 10px;
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    font-size: 12px;
-    color: #6b7280;
-}
-
-.source-count {
-    font-weight: 600;
-    color: #3b82f6;
-}
-
-.cluster-articles {
-    padding: 16px 24px;
-}
-
-.articles-toggle {
-    background: none;
-    border: none;
-    color: #3b82f6;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 0;
     transition: color 0.2s ease;
 }
 
-.articles-toggle:hover {
-    color: #2563eb;
+.cluster-title-link:hover {
+    color: #3b82f6;
 }
 
-.articles-toggle-icon {
-    transition: transform 0.2s ease;
+.cluster-stats {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: #6b7280;
+    flex-wrap: wrap;
 }
 
-.articles-toggle.expanded .articles-toggle-icon {
-    transform: rotate(180deg);
+.cluster-stat {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
-.cluster-articles-list {
+/* Sources Row */
+.cluster-sources-row {
+    padding: 16px 24px;
+    background-color: #f9fafb;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.source-chip {
+    padding: 6px 12px;
+    background-color: white;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #374151;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.source-chip .count {
+    color: #3b82f6;
+    margin-left: 4px;
+}
+
+/* Preview Articles */
+.cluster-preview {
+    padding: 16px 24px;
     display: none;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #e5e7eb;
 }
 
-.cluster-articles-list.show {
+.cluster-preview.show {
     display: block;
 }
 
-.cluster-article-item {
+.preview-article {
     padding: 12px 0;
     border-bottom: 1px solid #f3f4f6;
 }
 
-.cluster-article-item:last-child {
+.preview-article:last-child {
     border-bottom: none;
 }
 
-.cluster-article-title {
+.preview-title {
     font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 6px;
-}
-
-.cluster-article-title a {
     color: #374151;
     text-decoration: none;
+    display: block;
+    margin-bottom: 4px;
     transition: color 0.2s ease;
 }
 
-.cluster-article-title a:hover {
+.preview-title:hover {
     color: #3b82f6;
 }
 
-.cluster-article-meta {
+.preview-meta {
     font-size: 12px;
     color: #9ca3af;
+}
+
+/* Show More Button */
+.show-more-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: transparent;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    color: #3b82f6;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
 }
 
-.cluster-article-source {
-    color: #3b82f6;
-    font-weight: 500;
+.show-more-btn:hover {
+    background-color: #f9fafb;
 }
 
-/* Dark Mode - Clusters */
+.show-more-icon {
+    transition: transform 0.2s ease;
+}
+
+.show-more-btn.expanded .show-more-icon {
+    transform: rotate(180deg);
+}
+
+/* ==================== DARK MODE - CLUSTERS ==================== */
+
 body.dark-theme .cluster-card {
     background-color: #1e293b;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 body.dark-theme .cluster-card:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-body.dark-theme .cluster-header {
+body.dark-theme .cluster-timeline-header {
     border-bottom-color: #334155;
 }
 
-body.dark-theme .cluster-main-title,
-body.dark-theme .cluster-main-title a {
+body.dark-theme .cluster-icon {
+    background-color: #334155;
+    color: #94a3b8;
+    border-color: #475569;
+}
+
+body.dark-theme .cluster-icon.national {
+    background-color: #1e3a8a;
+    color: #93c5fd;
+    border-color: #1e40af;
+}
+
+body.dark-theme .cluster-icon.international {
+    background-color: #78350f;
+    color: #fde68a;
+    border-color: #92400e;
+}
+
+body.dark-theme .cluster-icon.sports {
+    background-color: #065f46;
+    color: #6ee7b7;
+    border-color: #047857;
+}
+
+body.dark-theme .cluster-icon.technology {
+    background-color: #3730a3;
+    color: #a5b4fc;
+    border-color: #4338ca;
+}
+
+body.dark-theme .cluster-title-link {
     color: #f1f5f9;
 }
 
-body.dark-theme .cluster-main-title a:hover {
+body.dark-theme .cluster-title-link:hover {
     color: #60a5fa;
 }
 
-body.dark-theme .cluster-meta {
+body.dark-theme .cluster-stats {
     color: #94a3b8;
 }
 
-body.dark-theme .cluster-badge {
-    background-color: #1e3a8a;
-    color: #93c5fd;
-}
-
-body.dark-theme .cluster-badge.category {
-    background-color: #78350f;
-    color: #fde68a;
-}
-
-body.dark-theme .cluster-badge.language {
-    background-color: #065f46;
-    color: #6ee7b7;
-}
-
-body.dark-theme .cluster-sources {
+body.dark-theme .cluster-sources-row {
     background-color: #0f172a;
 }
 
-body.dark-theme .sources-title {
-    color: #cbd5e1;
-}
-
-body.dark-theme .source-tag {
+body.dark-theme .source-chip {
     background-color: #1e293b;
-    border-color: #475569;
-    color: #94a3b8;
+    color: #cbd5e1;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-body.dark-theme .source-count {
+body.dark-theme .source-chip .count {
     color: #60a5fa;
 }
 
-body.dark-theme .cluster-articles {
-    border-top-color: #334155;
-}
-
-body.dark-theme .articles-toggle {
-    color: #60a5fa;
-}
-
-body.dark-theme .articles-toggle:hover {
-    color: #93c5fd;
-}
-
-body.dark-theme .cluster-articles-list {
-    border-top-color: #334155;
-}
-
-body.dark-theme .cluster-article-item {
+body.dark-theme .preview-article {
     border-bottom-color: #334155;
 }
 
-body.dark-theme .cluster-article-title a {
+body.dark-theme .preview-title {
     color: #cbd5e1;
 }
 
-body.dark-theme .cluster-article-title a:hover {
+body.dark-theme .preview-title:hover {
     color: #60a5fa;
 }
 
-body.dark-theme .cluster-article-meta {
+body.dark-theme .preview-meta {
     color: #64748b;
 }
 
-body.dark-theme .cluster-article-source {
+body.dark-theme .show-more-btn {
+    border-top-color: #334155;
     color: #60a5fa;
 }
 
-/* Responsive */
+body.dark-theme .show-more-btn:hover {
+    background-color: #334155;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
 @media (max-width: 768px) {
-    .cluster-header {
-        padding: 16px 20px;
+    .cluster-list {
+        max-width: 100%;
     }
 
-    .cluster-main-title {
-        font-size: 16px;
+    .cluster-timeline-header {
+        padding: 20px;
+        gap: 12px;
     }
 
-    .cluster-meta {
+    .cluster-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .cluster-title-link {
+        font-size: 18px;
+    }
+
+    .cluster-stats {
         font-size: 12px;
+        gap: 12px;
     }
 
-    .cluster-sources,
-    .cluster-articles {
+    .cluster-sources-row {
+        padding: 12px 20px;
+    }
+
+    .cluster-preview {
         padding: 12px 20px;
     }
 }
 
 @media (max-width: 480px) {
-    .cluster-header {
-        padding: 14px 16px;
+    .cluster-timeline-header {
+        padding: 16px;
     }
 
-    .cluster-main-title {
-        font-size: 15px;
+    .cluster-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+        border-radius: 8px;
     }
 
-    .cluster-sources,
-    .cluster-articles {
-        padding: 10px 16px;
+    .cluster-title-link {
+        font-size: 16px;
+    }
+
+    .cluster-sources-row {
+        padding: 12px 16px;
+    }
+
+    .cluster-preview {
+        padding: 12px 16px;
+    }
+
+    .source-chip {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+
+    .preview-title {
+        font-size: 13px;
+    }
+
+    .preview-meta {
+        font-size: 11px;
     }
 }

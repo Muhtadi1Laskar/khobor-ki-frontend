@@ -32,7 +32,12 @@ const translations = {
         sources: 'Sources',
         addedOn: 'Added on',
         trending: 'Trending',
-        clusters: 'Clusters'
+        clusters: 'Clusters',
+
+        articles: 'articles',
+        viewAllArticles: 'View all articles',
+        hideArticles: 'Hide articles',
+        sources: 'Sources'
     },
     bn: {
         all: 'সব',
@@ -61,7 +66,13 @@ const translations = {
         sources: 'উৎস',
         addedOn: 'যোগ করা হয়েছে',
         trending: 'জনপ্রিয়',
-        clusters: 'ক্লাস্টার'
+        clusters: 'ক্লাস্টার',
+
+        trending: 'জনপ্রিয়',
+        articles: 'নিবন্ধ',
+        viewAllArticles: 'সব নিবন্ধ দেখুন',
+        hideArticles: 'নিবন্ধ লুকান',
+        sources: 'উৎস'
     }
 };
 
