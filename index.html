@@ -8,6 +8,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="CSS/style.css">
         <link rel="stylesheet" href="CSS/cluster.style.css">
+        <!-- Force sRGB color space on Android -->
+        <meta name="color-scheme" content="light dark">
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
     </head>
 
     <!-- Google tag (gtag.js) -->
@@ -32,7 +36,7 @@
                     <a href="#" class="nav-tab" data-category="international"
                         data-lang-key="international">International</a>
                     <a href="#" class="nav-tab" data-category="sports" data-lang-key="sports">Sports</a>
-                    <a href="#" class="nav-tab" data-category="technology" data-lang-key="tech">Tech</a>      
+                    <a href="#" class="nav-tab" data-category="technology" data-lang-key="tech">Tech</a>
                 </div>
                 <button class="filter-button" onclick="toggleFilters()">
                     <span>⚙️</span> <span data-lang-key="filters">Filters</span>
