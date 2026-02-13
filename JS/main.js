@@ -83,7 +83,11 @@ const NEWS_SOURCES = {
             'Bangladesh Pratidin',
             'Bonik Bartha (Bangla)',
             'The Business Standard (Bangla)',
-            'Dhaka Tribune'
+            'Dhaka Tribune',
+            'Jagonews24',
+            'bd24live',
+            'Amar Bangla BD',
+            'Risingbd.com'
         ],
         en: [
             'Prothom Alo',
@@ -96,7 +100,11 @@ const NEWS_SOURCES = {
             'Bangladesh Pratidin',
             'Bonik Bartha (Bangla)',
             'The Business Standard (Bangla)',
-            'Dhaka Tribune'
+            'Dhaka Tribune',
+            'Jagonews24',
+            'bd24live',
+            'Amar Bangla BD',
+            'Risingbd.com'
         ],
         bn: [
             'প্রথম আলো',
@@ -109,7 +117,11 @@ const NEWS_SOURCES = {
             'বাংলাদেশ প্রতিদিন',
             'বণিক বার্তা (বাংলা)',
             'দ্য বিজনেস স্ট্যান্ডার্ড (বাংলা)',
-            'ঢাকা ট্রিবিউন'
+            'ঢাকা ট্রিবিউন',
+            'জাগোনিউজ24',
+            'বিডি24লাইভ',
+            'আমার বাংলা বিডি',
+            'রাইজিংবিডি ডটকম'
         ]
     },
     english: {
@@ -125,7 +137,7 @@ const NEWS_SOURCES = {
             'Tech Crunch',
             'Wired',
             'The Hacker News',
-            'The Verge'
+            'The Verge',
         ],
         en: [
             'Prothom Alo (English)',
