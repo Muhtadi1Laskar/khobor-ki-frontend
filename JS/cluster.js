@@ -1,4 +1,6 @@
 // Modify setupNavigation() to handle clusters
+
+
 function setupNavigation() {
     const navTabs = document.querySelectorAll('.nav-tab');
     navTabs.forEach(tab => {
@@ -9,10 +11,24 @@ function setupNavigation() {
             currentCategory = tab.dataset.category;
             currentPage = 1;
 
+            const filterButton = document.querySelector(".filter-button");
+            const filterPanel = document.getElementById('filterPanel');
+
             // Check if clusters view
             if (currentCategory === 'clusters') {
+                filterPanel.classList.remove("open");
+                filterButton.classList.remove("active");
+
+                filterButton.disabled = true;
+                filterButton.style.opacity = "0.5";
+                filterButton.style.cursor = "not-allowed";
+
                 loadClusters();
             } else {
+                filterButton.disabled = false;
+                filterButton.style.opacity = '1';
+                filterButton.style.cursor = "pointer";
+
                 loadNews();
             }
         });

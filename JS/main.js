@@ -327,6 +327,10 @@ let tempSelectedSources = []; // Tracks selections during filter panel session
 
 // Modified: When opening filter panel, initialize temp state
 function toggleFilters() {
+    if (currentCategory === "clusters") {
+        return;
+    }
+
     const panel = document.getElementById('filterPanel');
     const button = document.querySelector('.filter-button');
 
