@@ -602,36 +602,41 @@ function renderNews(data) {
 
     if (!data || (Array.isArray(data) && data.length === 0) || (data.items && data.items.length === 0)) {
         container.innerHTML = `
-                <div class="empty-state">
-                    <h3>${translations[currentLang].noNewsAvailable}</h3>
-                    <p>${translations[currentLang].tryAdjusting}</p>
-                </div>
-            `;
+            <div class="empty-state">
+                <h3>${translations[currentLang].noNewsAvailable}</h3>
+                <p>${translations[currentLang].tryAdjusting}</p>
+            </div>
+        `;
         return;
     }
 
     const items = Array.isArray(data) ? data : (data.items || []);
 
+    // Create the card-based grid layout
     const newsHTML = `
-            <div class="news-list">
-                ${items.map((item) => `
-                    <div class="news-item">
-                        <div class="news-content">
-                            <div class="news-title">
-                                <a href="${item.url}" target="_blank" rel="noopener noreferrer">
-                                    ${escapeHtml(item.title)}
-                                </a>
-                            </div>
-                            <div class="news-meta">
-                                <span class="news-source">${escapeHtml(item.source)}</span>
-                                <span class="meta-separator">•</span>
-                                <span>${formatDate(item)}</span>
-                            </div>
+        <div class="news-list">
+            ${items.map((item) => `
+                <div class="news-item">
+                    <div class="news-content">
+                        <div class="news-title">
+                            <a href="${item.url}" target="_blank" rel="noopener noreferrer">
+                                ${escapeHtml(item.title)}
+                            </a>
+                        </div>
+                        <div class="news-meta">
+                            <img src="https://www.google.com/s2/favicons?domain=${new URL(item.url).hostname}&sz=32" 
+                                 alt="" 
+                                 class="source-favicon"
+                                 onerror="this.style.display='none'">
+                            <span class="news-source">${escapeHtml(item.source)}</span>
+                            <span class="meta-separator">•</span>
+                            <span>${formatDate(item)}</span>
                         </div>
                     </div>
-                `).join('')}
-            </div>
-        `;
+                </div>
+            `).join('')}
+        </div>
+    `;
 
     container.innerHTML = newsHTML;
 }

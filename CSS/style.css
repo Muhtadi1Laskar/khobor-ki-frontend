@@ -923,3 +923,120 @@ body.dark-theme .page-info {
         font-size: 13px;
     }
 }
+
+
+/* News Grid Layout */
+.news-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.news-item {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.news-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #d1d5db;
+}
+
+.news-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.news-title {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 600;
+    flex: 1;
+}
+
+.news-title a {
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.news-title a:hover {
+    color: #3b82f6;
+}
+
+.news-meta {
+    font-size: 13px;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.news-source {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+/* Dark mode updates */
+body.dark-theme .news-list {
+    background-color: transparent;
+}
+
+body.dark-theme .news-item {
+    background-color: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .news-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-color: #475569;
+}
+
+body.dark-theme .news-meta {
+    border-top-color: #334155;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .news-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .news-item {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-list {
+        gap: 12px;
+    }
+    
+    .news-item {
+        padding: 14px;
+    }
+}
+
+.source-favicon {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+}
