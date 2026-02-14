@@ -37,7 +37,8 @@ const translations = {
         articles: 'articles',
         viewAllArticles: 'View all articles',
         hideArticles: 'Hide articles',
-        sources: 'Sources'
+        sources: 'sources',
+        coveredBy: 'Covered by'
     },
     bn: {
         all: 'সব',
@@ -72,7 +73,8 @@ const translations = {
         articles: 'নিবন্ধ',
         viewAllArticles: 'সব নিবন্ধ দেখুন',
         hideArticles: 'নিবন্ধ লুকান',
-        sources: 'উৎস'
+        sources: 'উৎস',
+        coveredBy: 'টি সংবাদ সূত্র এটি কভার করেছে'
     }
 };
 

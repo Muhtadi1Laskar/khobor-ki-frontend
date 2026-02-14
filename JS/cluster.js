@@ -88,6 +88,15 @@ function renderClusters(clusters) {
         return icons[category] || icons.default;
     }
 
+    function setCoveredMessage(currentLanguage, articleCount, translations) {
+        console.log(currentLanguage, articleCount, translations);
+        const data = {
+            "en": `<span>📰</span> ${translations["coveredBy"]} <span>${articleCount} sources</span>`,
+            "bn": `<span>📰</span> <span>${articleCount} ${translations["coveredBy"]} </span>`
+        }
+        return data[currentLanguage]
+    }
+
     const clustersHTML = `
         <div class="cluster-list">
             ${clusters.map(cluster => `
@@ -102,7 +111,8 @@ function renderClusters(clusters) {
                             </a>
                             <div class="cluster-stats">
                                 <div class="cluster-stat">
-                                    <span>📰</span> <span>${cluster.articleCount} ${translations[currentLang].articles}</span>
+                                    
+                                    ${setCoveredMessage(currentLang, cluster.articleCount, translations[currentLang])}
                                 </div>
                                 <div class="cluster-stat">
                                     <span>📅</span> <span>${formatDates(cluster.createdAt)}</span>
