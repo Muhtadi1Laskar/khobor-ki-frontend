@@ -89,7 +89,6 @@ function renderClusters(clusters) {
     }
 
     function setCoveredMessage(currentLanguage, articleCount, translations) {
-        console.log(currentLanguage, articleCount, translations);
         const data = {
             "en": `<span>📰</span> ${translations["coveredBy"]} <span>${articleCount} sources</span>`,
             "bn": `<span>📰</span> <span>${articleCount} ${translations["coveredBy"]} </span>`
@@ -125,11 +124,16 @@ function renderClusters(clusters) {
                     </div>
                     
                     <div class="cluster-sources-row">
-                        ${Object.entries(cluster.sources).map(([source, count]) => `
+                        ${Object.entries(cluster.sources).slice(0, 3).map(([source, count]) => `
                             <div class="source-chip">
                                 ${escapeHtml(source)}<span class="count">(${count})</span>
                             </div>
                         `).join('')}
+                        ${Object.entries(cluster.sources).length > 3 ? `
+                            <div class="source-chip more-sources">
+                                +${Object.entries(cluster.sources).length - 3} more
+                            </div>
+                        ` : ''}
                     </div>
                     
                     <div class="cluster-preview" id="preview-${cluster._id}">

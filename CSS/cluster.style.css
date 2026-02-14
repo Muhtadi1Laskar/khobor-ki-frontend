@@ -161,6 +161,18 @@
     color: #9ca3af;
 }
 
+.source-chip.more-sources {
+    background-color: #f3f4f6;
+    color: #6b7280;
+    font-weight: 600;
+    border: 1px dashed #d1d5db;
+}
+
+.source-chip.more-sources:hover {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
 /* Show More Button */
 .show-more-btn {
     width: 100%;
@@ -284,6 +296,17 @@ body.dark-theme .show-more-btn {
 
 body.dark-theme .show-more-btn:hover {
     background-color: #334155;
+}
+
+body.dark-theme .source-chip.more-sources {
+    background-color: #334155;
+    color: #94a3b8;
+    border-color: #475569;
+}
+
+body.dark-theme .source-chip.more-sources:hover {
+    background-color: #475569;
+    color: #cbd5e1;
 }
 
 /* ==================== RESPONSIVE ==================== */
