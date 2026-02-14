@@ -40,7 +40,15 @@ const translations = {
         sources: 'sources',
         coveredBy: 'Covered by',
         moreSources: 'more',
-        sources: 'sources'
+        sources: 'sources',
+
+        today: 'Today in 2 Minutes',
+        topStories: 'Top Stories',
+        updatedMinAgo: 'Updated minutes ago',
+        articles: 'articles',
+        sources: 'sources',
+        topCoverage: 'Top Coverage',
+        viewAllArticles: 'View all articles'
     },
     bn: {
         all: 'সব',
@@ -78,7 +86,15 @@ const translations = {
         sources: 'উৎস',
         coveredBy: 'টি সূত্র',
         moreSources: 'আরও',
-        sources: 'সূত্র'
+        sources: 'সূত্র',
+
+        today: 'আজকের ২ মিনিট',
+        topStories: 'শীর্ষ খবর',
+        updatedMinAgo: 'মিনিট আগে আপডেট',
+        articles: 'নিবন্ধ',
+        sources: 'সূত্র',
+        topCoverage: 'শীর্ষ কভারেজ',
+        viewAllArticles: 'সব নিবন্ধ দেখুন'
     }
 };
 
