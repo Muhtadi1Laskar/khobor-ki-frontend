@@ -77,31 +77,12 @@ function renderClusters(clusters) {
         return;
     }
 
-    function getCategoryIcon(category) {
-        const icons = {
-            national: '🏛️',
-            international: '🌍',
-            sports: '⚽',
-            technology: '💻',
-            default: '📰'
-        };
-        return icons[category] || icons.default;
-    }
-
-    function setCoveredMessage(currentLanguage, articleCount, translations) {
-        const data = {
-            "en": `<span>📰</span> ${translations["coveredBy"]} <span>${articleCount} sources</span>`,
-            "bn": `<span>📰</span> <span>${articleCount} ${translations["coveredBy"]} </span>`
-        }
-        return data[currentLanguage]
-    }
-
     const clustersHTML = `
         <div class="cluster-list">
             ${clusters.map(cluster => `
                 <div class="cluster-card">
                     <div class="cluster-timeline-header">
-                        <div class="cluster-icon ${cluster.category}">
+                        <div class="cluster-icon ${cluster.category.toLowerCase()}">
                             ${getCategoryIcon(cluster.category)}
                         </div>
                         <div class="cluster-header-content">
@@ -110,14 +91,15 @@ function renderClusters(clusters) {
                             </a>
                             <div class="cluster-stats">
                                 <div class="cluster-stat">
-                                    
-                                    ${setCoveredMessage(currentLang, cluster.articleCount, translations[currentLang])}
+                                    <span data-cluster-covered="${cluster.articleCount}">
+                                        ${setCoveredMessage(currentLang, cluster.articleCount, translations[currentLang])}
+                                    </span>
                                 </div>
                                 <div class="cluster-stat">
                                     <span>📅</span> <span>${formatDates(cluster.createdAt)}</span>
                                 </div>
                                 <div class="cluster-stat">
-                                    <span>${cluster.category}</span>
+                                    <span data-lang-key="${cluster.category.toLowerCase()}">${translations[currentLang][cluster.category.toLowerCase()] || cluster.category}</span>
                                 </div>
                             </div>
                         </div>
@@ -130,8 +112,8 @@ function renderClusters(clusters) {
                             </div>
                         `).join('')}
                         ${Object.entries(cluster.sources).length > 3 ? `
-                            <div class="source-chip more-sources">
-                                +${Object.entries(cluster.sources).length - 3} more
+                            <div class="source-chip more-sources" data-more-sources="${Object.entries(cluster.sources).length - 3}">
+                                +${Object.entries(cluster.sources).length - 3} ${translations[currentLang].moreSources}
                             </div>
                         ` : ''}
                     </div>
@@ -143,14 +125,14 @@ function renderClusters(clusters) {
                                     ${escapeHtml(article.title)}
                                 </a>
                                 <div class="preview-meta">
-                                    <span style="color: #60a5fa; font-weight: 500;">${escapeHtml(article.source)}</span> • ${formatDates(article.sortDate)}
+                                    <span class="preview-source">${escapeHtml(article.source)}</span> • ${formatDates(article.sortDate)}
                                 </div>
                             </div>
                         `).join('')}
                     </div>
                     
                     <button class="show-more-btn" onclick="toggleClusterArticles('${cluster._id}')" id="btn-${cluster._id}">
-                        <span class="show-more-text">${translations[currentLang].viewAllArticles}</span>
+                        <span class="show-more-text" data-lang-key="viewAllArticles">${translations[currentLang].viewAllArticles}</span>
                         <span class="show-more-icon">▼</span>
                     </button>
                 </div>
@@ -159,6 +141,42 @@ function renderClusters(clusters) {
     `;
 
     container.innerHTML = clustersHTML;
+}
+
+// Helper function to get category icon
+function getCategoryIcon(category) {
+    const icons = {
+        national: '🏛️',
+        international: '🌍',
+        sports: '⚽',
+        technology: '💻',
+        default: '📰'
+    };
+    return icons[category.toLowerCase()] || icons.default;
+}
+
+// Helper function for covered message
+function setCoveredMessage(currentLanguage, articleCount, translations) {
+    const data = {
+        "en": `<span>📰</span> ${translations["coveredBy"]} <span>${articleCount} ${translations["sources"]}</span>`,
+        "bn": `<span>📰</span> <span>${articleCount} ${translations["coveredBy"]}</span>`
+    }
+    return data[currentLanguage];
+}
+
+// Update cluster language dynamically
+function updateClusterLanguage() {
+    // Update all "covered by" messages
+    document.querySelectorAll('[data-cluster-covered]').forEach(element => {
+        const articleCount = parseInt(element.getAttribute('data-cluster-covered'));
+        element.innerHTML = setCoveredMessage(currentLang, articleCount, translations[currentLang]);
+    });
+
+    // Update "more sources" text
+    document.querySelectorAll('[data-more-sources]').forEach(element => {
+        const moreCount = parseInt(element.getAttribute('data-more-sources'));
+        element.textContent = `+${moreCount} ${translations[currentLang].moreSources}`;
+    });
 }
 
 // Toggle cluster articles visibility

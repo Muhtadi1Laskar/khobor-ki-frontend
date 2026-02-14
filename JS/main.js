@@ -38,7 +38,9 @@ const translations = {
         viewAllArticles: 'View all articles',
         hideArticles: 'Hide articles',
         sources: 'sources',
-        coveredBy: 'Covered by'
+        coveredBy: 'Covered by',
+        moreSources: 'more',
+        sources: 'sources'
     },
     bn: {
         all: 'সব',
@@ -74,7 +76,9 @@ const translations = {
         viewAllArticles: 'সব নিবন্ধ দেখুন',
         hideArticles: 'নিবন্ধ লুকান',
         sources: 'উৎস',
-        coveredBy: 'টি সংবাদ সূত্র এটি কভার করেছে'
+        coveredBy: 'টি সূত্র',
+        moreSources: 'আরও',
+        sources: 'সূত্র'
     }
 };
 
@@ -310,6 +314,24 @@ function toggleLanguage() {
     updateLanguage();
     updateSourceLabels();
     updateActiveFilters();
+
+    if (currentCategory === "clusters") {
+        updateClusterLanguage();
+    }
+}
+
+function updateClusterLanguage() {
+    // Update all "covered by" messages
+    document.querySelectorAll('[data-cluster-covered]').forEach(element => {
+        const articleCount = parseInt(element.getAttribute('data-cluster-covered'));
+        element.innerHTML = setCoveredMessage(currentLang, articleCount, translations[currentLang]);
+    });
+
+    // Update "more sources" text
+    document.querySelectorAll('[data-more-sources]').forEach(element => {
+        const moreCount = parseInt(element.getAttribute('data-more-sources'));
+        element.textContent = `+${moreCount} ${translations[currentLang].moreSources}`;
+    });
 }
 
 // Update all text based on current language
