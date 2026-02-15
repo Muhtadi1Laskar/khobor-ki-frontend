@@ -124,9 +124,15 @@ function renderClusters(clusters) {
                     <div class="cluster-preview" id="preview-${cluster._id}">
                         ${cluster.articles.map(article => `
                             <div class="preview-article">
-                                <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="preview-title">
-                                    ${escapeHtml(article.title)}
-                                </a>
+                                <div class="preview-header">
+                                    <img src="https://www.google.com/s2/favicons?domain=${new URL(article.url).hostname}&sz=32" 
+                                        alt="" 
+                                        class="source-favicon"
+                                        onerror="this.style.display='none'">
+                                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="preview-title">
+                                        ${escapeHtml(article.title)}
+                                    </a>
+                                </div>
                                 <div class="preview-meta">
                                     <span class="preview-source">${escapeHtml(article.source)}</span> • ${formatDates(article.sortDate)}
                                 </div>

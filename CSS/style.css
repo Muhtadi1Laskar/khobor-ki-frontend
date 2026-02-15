@@ -1040,3 +1040,23 @@ body.dark-theme .news-meta {
     height: 16px;
     border-radius: 3px;
 }
+
+
+.preview-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.preview-header .source-favicon {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    margin-top: 2px; /* Align with first line of text */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.preview-title {
+    flex: 1;
+}
