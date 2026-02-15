@@ -48,7 +48,12 @@ const translations = {
         articles: 'articles',
         sources: 'sources',
         topCoverage: 'Top Coverage',
-        viewAllArticles: 'View all articles'
+        viewAllArticles: 'View all articles',
+
+        coverageAnalysis: 'Coverage Analysis',
+        learnMore: 'Learn more',
+        howManySources: 'How many sources?',
+        differentAngles: 'Different angles?',
     },
     bn: {
         all: 'সব',
@@ -94,7 +99,12 @@ const translations = {
         articles: 'নিবন্ধ',
         sources: 'সূত্র',
         topCoverage: 'শীর্ষ কভারেজ',
-        viewAllArticles: 'সব নিবন্ধ দেখুন'
+        viewAllArticles: 'সব নিবন্ধ দেখুন',
+
+        coverageAnalysis: 'কভারেজ বিশ্লেষণ',
+        learnMore: 'আরও জানুন',
+        howManySources: 'কতগুলি সূত্র?',
+        differentAngles: 'ভিন্ন দৃষ্টিকোণ?',
     }
 };
 
