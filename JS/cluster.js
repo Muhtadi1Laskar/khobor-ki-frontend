@@ -377,7 +377,7 @@ async function loadClusters() {
     pagination.style.display = 'none';
 
     try {
-        const response = await fetch('http://localhost:8080/api/cluster');
+        const response = await fetch('https://khobor-ki-backend.onrender.com/api/cluster');
 
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
