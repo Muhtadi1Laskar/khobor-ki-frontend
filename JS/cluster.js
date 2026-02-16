@@ -486,8 +486,6 @@ function renderClusters(clusters) {
         return;
     }
 
-    console.log(clusters);
-
     const clustersHTML = `
         <div class="cluster-list">
             ${clusters.map(cluster => `
@@ -497,7 +495,7 @@ function renderClusters(clusters) {
                             ${getCategoryIcon(cluster.category)}
                         </div>
                         <div class="cluster-header-content">
-                            <a href="${cluster.articles[0].url}" target="_blank" rel="noopener noreferrer" class="cluster-title-link">
+                            <a href="${cluster.articles.url}" target="_blank" rel="noopener noreferrer" class="cluster-title-link">
                                 ${escapeHtml(cluster.representativeTitle)}
                             </a>
                             <div class="cluster-stats">
