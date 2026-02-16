@@ -54,6 +54,10 @@ const translations = {
         learnMore: 'Learn more',
         howManySources: 'How many sources?',
         differentAngles: 'Different angles?',
+
+        compareHeadlines: 'Compare Headlines Side-by-Side',
+        showListView: 'Show List View',
+        comparisonInfo: 'Highlighted words show how different outlets frame this story',
     },
     bn: {
         all: 'সব',
@@ -105,6 +109,10 @@ const translations = {
         learnMore: 'আরও জানুন',
         howManySources: 'কতগুলি সূত্র?',
         differentAngles: 'ভিন্ন দৃষ্টিকোণ?',
+
+        compareHeadlines: 'শিরোনাম পাশাপাশি তুলনা করুন',
+        showListView: 'তালিকা ভিউ দেখান',
+        comparisonInfo: 'হাইলাইট করা শব্দগুলি দেখায় বিভিন্ন আউটলেট কীভাবে এই গল্পটি উপস্থাপন করে'
     }
 };
 
