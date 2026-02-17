@@ -577,9 +577,32 @@ function setupNavigation() {
             e.preventDefault();
             navTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
+
             currentCategory = tab.dataset.category;
             currentPage = 1;
-            loadNews();
+
+            // Close filter panel and disable for non-news tabs
+            const filterPanel = document.getElementById('filterPanel');
+            const filterButton = document.querySelector('.filter-button');
+
+            if (currentCategory === 'clusters' || currentCategory === 'today') {
+                filterPanel.classList.remove('open');
+                filterButton.classList.remove('active');
+                filterButton.disabled = true;
+                filterButton.style.opacity = '0.5';
+                filterButton.style.cursor = 'not-allowed';
+
+                if (currentCategory === 'clusters') {
+                    loadClusters();
+                } else {
+                    loadTodayInTwoMinutes();
+                }
+            } else {
+                filterButton.disabled = false;
+                filterButton.style.opacity = '1';
+                filterButton.style.cursor = 'pointer';
+                loadNews();
+            }
         });
     });
 }
