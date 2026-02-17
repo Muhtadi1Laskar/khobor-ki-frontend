@@ -138,7 +138,8 @@ const NEWS_SOURCES = {
             'Jagonews24',
             'bd24live',
             'Amar Bangla BD',
-            'Risingbd.com'
+            'Risingbd.com', 
+            'The New Nation (Bangla)'
         ],
         en: [
             'Prothom Alo',
@@ -155,7 +156,8 @@ const NEWS_SOURCES = {
             'Jagonews24',
             'bd24live',
             'Amar Bangla BD',
-            'Risingbd.com'
+            'Risingbd.com',
+            'The New Nation (Bangla)'
         ],
         bn: [
             'প্রথম আলো',
@@ -172,7 +174,8 @@ const NEWS_SOURCES = {
             'জাগোনিউজ24',
             'বিডি24লাইভ',
             'আমার বাংলা বিডি',
-            'রাইজিংবিডি ডটকম'
+            'রাইজিংবিডি ডটকম',
+            'দ্য নিউ নেশন (বাংলা)'
         ]
     },
     english: {
@@ -189,6 +192,9 @@ const NEWS_SOURCES = {
             'Wired',
             'The Hacker News',
             'The Verge',
+            'The New Age',
+            'The New Nation',
+            'The Daily Times Of Bangladesh'
         ],
         en: [
             'Prothom Alo (English)',
@@ -202,7 +208,10 @@ const NEWS_SOURCES = {
             'Tech Crunch',
             'Wired',
             'The Hacker News',
-            'The Verge'
+            'The Verge',
+            'The New Age',
+            'The New Nation',
+            'The Daily Times Of Bangladesh'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -216,7 +225,10 @@ const NEWS_SOURCES = {
             'টেকক্রাঞ্চ',
             'ওয়্যার্ড',
             'দ্য হ্যাকার নিউজ',
-            'দ্য ভার্জ'
+            'দ্য ভার্জ',
+            'নিউ এজ',
+            'দ্য নিউ নেশন',
+            'দ্য ডেইলি টাইমস অফ বাংলাদেশ'
         ]
     }
 };
