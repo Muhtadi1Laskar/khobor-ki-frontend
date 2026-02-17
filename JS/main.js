@@ -197,7 +197,8 @@ const NEWS_SOURCES = {
             'The Verge',
             'The New Age',
             'The New Nation',
-            'The Daily Times Of Bangladesh'
+            'The Daily Times Of Bangladesh',
+            'Bangladesh Post'
         ],
         en: [
             'Prothom Alo (English)',
@@ -214,7 +215,8 @@ const NEWS_SOURCES = {
             'The Verge',
             'The New Age',
             'The New Nation',
-            'The Daily Times Of Bangladesh'
+            'The Daily Times Of Bangladesh',
+            'Bangladesh Post'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -231,7 +233,8 @@ const NEWS_SOURCES = {
             'দ্য ভার্জ',
             'নিউ এজ',
             'দ্য নিউ নেশন',
-            'দ্য ডেইলি টাইমস অফ বাংলাদেশ'
+            'দ্য ডেইলি টাইমস অফ বাংলাদেশ',
+            'দ্য বাংলাদেশ পোস্ট'
         ]
     }
 };
@@ -644,6 +647,7 @@ function renderNews(data) {
     }
 
     const items = Array.isArray(data) ? data : (data.items || []);
+
 
     // Create the card-based grid layout
     const newsHTML = `
