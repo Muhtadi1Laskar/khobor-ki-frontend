@@ -139,7 +139,8 @@ const NEWS_SOURCES = {
             'bd24live',
             'Amar Bangla BD',
             'Risingbd.com', 
-            'The New Nation (Bangla)'
+            'The New Nation (Bangla)',
+            'Dhaka Mail'
         ],
         en: [
             'Prothom Alo',
@@ -157,7 +158,8 @@ const NEWS_SOURCES = {
             'bd24live',
             'Amar Bangla BD',
             'Risingbd.com',
-            'The New Nation (Bangla)'
+            'The New Nation (Bangla)',
+            'Dhaka Mail'
         ],
         bn: [
             'প্রথম আলো',
@@ -175,7 +177,8 @@ const NEWS_SOURCES = {
             'বিডি24লাইভ',
             'আমার বাংলা বিডি',
             'রাইজিংবিডি ডটকম',
-            'দ্য নিউ নেশন (বাংলা)'
+            'দ্য নিউ নেশন (বাংলা)',
+            'ঢাকা মেইল'
         ]
     },
     english: {
