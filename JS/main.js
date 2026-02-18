@@ -141,7 +141,9 @@ const NEWS_SOURCES = {
             'Amar Bangla BD',
             'Risingbd.com', 
             'The New Nation (Bangla)',
-            'Dhaka Mail'
+            'Dhaka Mail',
+            'channelionline',
+            'Asian Tv Online'
         ],
         en: [
             'Prothom Alo',
@@ -160,7 +162,9 @@ const NEWS_SOURCES = {
             'Amar Bangla BD',
             'Risingbd.com',
             'The New Nation (Bangla)',
-            'Dhaka Mail'
+            'Dhaka Mail',
+            'Channel I Online',
+            'Asian Tv Online'
         ],
         bn: [
             'প্রথম আলো',
@@ -179,7 +183,9 @@ const NEWS_SOURCES = {
             'আমার বাংলা বিডি',
             'রাইজিংবিডি ডটকম',
             'দ্য নিউ নেশন (বাংলা)',
-            'ঢাকা মেইল'
+            'ঢাকা মেইল',
+            'channelionline',
+            'এশিয়ান টিভি অনলাইন'
         ]
     },
     english: {
