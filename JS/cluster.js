@@ -22,7 +22,8 @@ async function loadClusters() {
     pagination.style.display = 'none';
 
     try {
-        const response = await fetch(`https://khobor-ki-backend.onrender.com/api/cluster?language=${clusterLanguageFilter}`);
+        const CLUSTER_URL = `${API_BASE_URL}/cluster?language=${clusterLanguageFilter}`;
+        const response = await fetch(CLUSTER_URL);
 
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 

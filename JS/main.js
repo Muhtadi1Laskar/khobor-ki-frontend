@@ -1,5 +1,6 @@
 // Configuration
-const API_BASE_URL = 'https://khobor-ki-backend.onrender.com/api/feed';
+const API_BASE_URL = 'https://khobor-ki-backend.onrender.com/api';
+const FEED_URL = `${API_BASE_URL}/feed`
 // const API_BASE_URL = 'http://localhost:8080/api/feed';
 const ITEMS_PER_PAGE = 30;
 
@@ -609,7 +610,7 @@ function setupNavigation() {
 
 // Build API URL
 function buildApiUrl(category, page, limit, sources) {
-    let url = API_BASE_URL;
+    let url = FEED_URL;
     if (category !== 'all') url += `/${category}`;
 
     const params = new URLSearchParams();
