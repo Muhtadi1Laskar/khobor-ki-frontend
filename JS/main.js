@@ -143,7 +143,8 @@ const NEWS_SOURCES = {
             'The New Nation (Bangla)',
             'Dhaka Mail',
             'channelionline',
-            'Asian Tv Online'
+            'Asian Tv Online',
+            'Boishakhi Online'
         ],
         en: [
             'Prothom Alo',
@@ -164,7 +165,8 @@ const NEWS_SOURCES = {
             'The New Nation (Bangla)',
             'Dhaka Mail',
             'Channel I Online',
-            'Asian Tv Online'
+            'Asian Tv Online',
+            'Boishakhi Online'
         ],
         bn: [
             'প্রথম আলো',
@@ -185,7 +187,8 @@ const NEWS_SOURCES = {
             'দ্য নিউ নেশন (বাংলা)',
             'ঢাকা মেইল',
             'channelionline',
-            'এশিয়ান টিভি অনলাইন'
+            'এশিয়ান টিভি অনলাইন',
+            'বৈশাখী অনলাইন'
         ]
     },
     english: {
