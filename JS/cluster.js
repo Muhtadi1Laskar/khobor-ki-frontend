@@ -143,20 +143,6 @@ function renderClusterListOnly(clusters) {
                         <a href="${cluster.articles[0].url}" target="_blank" rel="noopener noreferrer" class="cluster-title-link">
                             ${escapeHtml(cluster.representativeTitle)}
                         </a>
-                         ${cluster.biasTransparency ? `
-                            <div class="media-spectrum-bar">
-                                <div class="spectrum-segment left" style="width: ${cluster.biasTransparency.sourceDiversityScore * 100}%">
-                                    <span class="spectrum-label">${Math.round(cluster.biasTransparency.sourceDiversityScore * 100)}%</span>
-                                </div>
-                                <div class="spectrum-segment right" style="width: ${cluster.biasTransparency.narrativeSpreadScore * 100}%">
-                                    <span class="spectrum-label">${Math.round(cluster.biasTransparency.narrativeSpreadScore * 100)}%</span>
-                                </div>
-                            </div>
-                            <div class="spectrum-labels">
-                                <span class="label-left">Source Diversity</span>
-                                <span class="label-right">Narrative Spread</span>
-                            </div>
-                        ` : ''}
                         <div class="cluster-stats">
                             <div class="cluster-stat">
                                 <span data-cluster-covered="${cluster.articleCount}">
