@@ -7,18 +7,19 @@
 }
 
 .cluster-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    /* Changed from 16px to 8px */
-    margin-bottom: 32px;
-    /* Changed from 24px to 32px */
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .cluster-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: #3b82f6;
 }
 
 /* Cluster Header */
@@ -102,6 +103,13 @@
     gap: 4px;
 }
 
+.news-meta,
+.cluster-stat {
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+}
+
 /* Sources Row */
 .cluster-sources-row {
     padding: 16px 24px;
@@ -110,6 +118,7 @@
     flex-wrap: wrap;
     gap: 8px;
 }
+
 
 .source-chip {
     padding: 6px 12px;
@@ -410,12 +419,13 @@ body.dark-theme .toggle-label {
 /* ==================== DARK MODE - CLUSTERS ==================== */
 
 body.dark-theme .cluster-card {
-    background-color: #1e293b;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    background: #1e293b;
+    border-color: #334155;
 }
 
 body.dark-theme .cluster-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    border-color: #60a5fa;
 }
 
 body.dark-theme .cluster-timeline-header {
@@ -864,6 +874,62 @@ body.dark-theme .diff-highlight {
 .list-view {
     animation: fadeIn 0.3s ease;
 }
+
+
+.media-spectrum-bar {
+    display: flex;
+    gap: 4px;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 12px 0 4px 0;
+    background: #e5e7eb;
+}
+
+body.dark-theme .media-spectrum-bar {
+    background: #334155;
+}
+
+.spectrum-segment {
+    height: 100%;
+    transition: width 0.3s ease;
+    position: relative;
+}
+
+.spectrum-segment.left {
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+.spectrum-segment.right {
+    background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+}
+
+.spectrum-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6b7280;
+    margin-bottom: 8px;
+}
+
+body.dark-theme .spectrum-labels {
+    color: #94a3b8;
+}
+
+.recency-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {

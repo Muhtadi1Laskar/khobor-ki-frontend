@@ -139,7 +139,7 @@ const NEWS_SOURCES = {
             'Jagonews24',
             'bd24live',
             'Amar Bangla BD',
-            'Risingbd.com', 
+            'Risingbd.com',
             'The New Nation (Bangla)',
             'Dhaka Mail',
             'channelionline',
@@ -683,24 +683,40 @@ function renderNews(data) {
 
 
     // Create the card-based grid layout
+    // In renderNews() function, update the news card structure:
     const newsHTML = `
         <div class="news-list">
             ${items.map((item) => `
                 <div class="news-item">
+                    <div class="news-card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=${new URL(item.url).hostname}&sz=32" 
+                            alt="" 
+                            class="news-source-favicon"
+                            onerror="this.style.display='none'">
+                        <div class="news-card-meta">
+                            <span class="news-source-name">${escapeHtml(item.source)}</span>
+                            ${getSourceBadge(item.source)}
+                        </div>
+                        ${getRecencyBadge(item)}
+                    </div>
+                    
                     <div class="news-content">
-                        <div class="news-title">
+                        <h3 class="news-title">
                             <a href="${item.url}" target="_blank" rel="noopener noreferrer">
                                 ${escapeHtml(item.title)}
                             </a>
-                        </div>
-                        <div class="news-meta">
-                            <img src="https://www.google.com/s2/favicons?domain=${new URL(item.url).hostname}&sz=32" 
-                                 alt="" 
-                                 class="source-favicon"
-                                 onerror="this.style.display='none'">
-                            <span class="news-source">${escapeHtml(item.source)}</span>
-                            <span class="meta-separator">•</span>
-                            <span>${formatDate(item)}</span>
+                        </h3>
+                        
+                        ${item.description ? `
+                            <p class="news-excerpt">${escapeHtml(item.description.substring(0, 150))}...</p>
+                        ` : ''}
+                        
+                        <div class="news-footer">
+                            <span class="news-date">
+                                <span class="date-icon">📅</span>
+                                ${formatDate(item)}
+                            </span>
+                            ${getCategoryBadge(item.category || currentCategory)}
                         </div>
                     </div>
                 </div>
@@ -710,6 +726,52 @@ function renderNews(data) {
 
     container.innerHTML = newsHTML;
 }
+
+
+// Source badge (Bangla/English indicator)
+function getSourceBadge(source) {
+    const isBangla = NEWS_SOURCES.bangla.api.includes(source);
+    return `
+        <span class="source-lang-badge ${isBangla ? 'bangla' : 'english'}">
+            ${isBangla ? 'বাংলা' : 'EN'}
+        </span>
+    `;
+}
+
+// Recency badge (Breaking/New)
+function getRecencyBadge(item) {
+    const timestamp = item.dataSource === "published" ? item.publishedDate : item.sortDate;
+    const now = Date.now() / 1000;
+    const diff = now - timestamp;
+    const hours = Math.floor(diff / 3600);
+    
+    if (hours < 1) {
+        return `<span class="recency-badge breaking">🔴 ${translations[currentLang].breaking || 'Breaking'}</span>`;
+    } else if (hours < 6) {
+        return `<span class="recency-badge new">${translations[currentLang].new || 'New'}</span>`;
+    }
+    return '';
+}
+
+// Category badge
+function getCategoryBadge(category) {
+    const categoryIcons = {
+        all: '📰',
+        national: '🏛️',
+        international: '🌍',
+        sports: '⚽',
+        tech: '💻'
+    };
+    
+    return `
+        <span class="category-badge">
+            <span class="category-icon">${categoryIcons[category] || '📰'}</span>
+            <span class="category-text" data-lang-key="${category}">${translations[currentLang][category] || category}</span>
+        </span>
+    `;
+}
+
+
 
 // Update pagination
 function updatePagination(data) {
