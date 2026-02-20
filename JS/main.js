@@ -1,7 +1,7 @@
 // Configuration
 const API_BASE_URL = 'https://khobor-ki-backend.onrender.com/api';
+// const API_BASE_URL = 'http://localhost:8080/api';
 const FEED_URL = `${API_BASE_URL}/feed`
-// const API_BASE_URL = 'http://localhost:8080/api/feed';
 const ITEMS_PER_PAGE = 30;
 
 // Language translations
@@ -59,6 +59,9 @@ const translations = {
         compareHeadlines: 'Compare Headlines Side-by-Side',
         showListView: 'Show List View',
         comparisonInfo: 'Highlighted words show how different outlets frame this story',
+
+        banglaLabel: 'Bangla',
+        englishLabel: 'English',
     },
     bn: {
         all: 'সব',
@@ -113,7 +116,10 @@ const translations = {
 
         compareHeadlines: 'শিরোনাম পাশাপাশি তুলনা করুন',
         showListView: 'তালিকা ভিউ দেখান',
-        comparisonInfo: 'হাইলাইট করা শব্দগুলি দেখায় বিভিন্ন আউটলেট কীভাবে এই গল্পটি উপস্থাপন করে'
+        comparisonInfo: 'হাইলাইট করা শব্দগুলি দেখায় বিভিন্ন আউটলেট কীভাবে এই গল্পটি উপস্থাপন করে',
+
+        banglaLabel: 'বাংলা',
+        englishLabel: 'ইংরেজি',
     }
 };
 
@@ -695,9 +701,9 @@ function renderNews(data) {
                             onerror="this.style.display='none'">
                         <div class="news-card-meta">
                             <span class="news-source-name">${escapeHtml(item.source)}</span>
-                            ${getSourceBadge(item.source)}
+                            
                         </div>
-                        ${getRecencyBadge(item)}
+                        ${getSourceBadge(item.source)}
                     </div>
                     
                     <div class="news-content">
@@ -732,8 +738,8 @@ function renderNews(data) {
 function getSourceBadge(source) {
     const isBangla = NEWS_SOURCES.bangla.api.includes(source);
     return `
-        <span class="source-lang-badge ${isBangla ? 'bangla' : 'english'}">
-            ${isBangla ? 'বাংলা' : 'EN'}
+        <span class="source-lang-badge ${isBangla ? 'bangla' : 'english'}" data-lang-key="${isBangla ? 'banglaLabel' : 'englishLabel'}">
+            ${isBangla ? translations[currentLang].banglaLabel || 'বাংলা' : translations[currentLang].englishLabel || 'EN'}
         </span>
     `;
 }

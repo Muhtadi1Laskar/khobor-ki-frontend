@@ -74,7 +74,7 @@ async function reloadClusterList() {
     clusterList.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
 
     try {
-        const response = await fetch(`https://khobor-ki-backend.onrender.com/api/cluster?language=${clusterLanguageFilter}`);
+        const response = await fetch(`${API_BASE_URL}/cluster?language=${clusterLanguageFilter}`);
 
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
