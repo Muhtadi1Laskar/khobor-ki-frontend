@@ -815,7 +815,7 @@ function escapeHtml(text) {
 
 function formatDate(article) {
     const date = article.dataSource === "published" ? article.publishedDate : article.sortDate;
-    return `Added on ${new Date(date * 1000).toLocaleDateString('en-US', {
+    return `${new Date(date * 1000).toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric',
         year: 'numeric'
@@ -823,7 +823,7 @@ function formatDate(article) {
 }
 
 function formatDates(date) {
-    return `Added on ${new Date(date * 1000).toLocaleDateString('en-US', {
+    return `${new Date(date * 1000).toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric',
         year: 'numeric'
