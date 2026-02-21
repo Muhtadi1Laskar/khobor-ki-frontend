@@ -214,7 +214,8 @@ const NEWS_SOURCES = {
             'The New Age',
             'The New Nation',
             'The Daily Times Of Bangladesh',
-            'Bangladesh Post'
+            'Bangladesh Post',
+            'The Register'
         ],
         en: [
             'Prothom Alo (English)',
@@ -232,7 +233,8 @@ const NEWS_SOURCES = {
             'The New Age',
             'The New Nation',
             'The Daily Times Of Bangladesh',
-            'Bangladesh Post'
+            'Bangladesh Post',
+            'The Register'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -250,7 +252,8 @@ const NEWS_SOURCES = {
             'নিউ এজ',
             'দ্য নিউ নেশন',
             'দ্য ডেইলি টাইমস অফ বাংলাদেশ',
-            'দ্য বাংলাদেশ পোস্ট'
+            'দ্য বাংলাদেশ পোস্ট',
+            'দ্য রেজিস্টার'
         ]
     }
 };
