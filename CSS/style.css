@@ -167,7 +167,7 @@ body.dark-theme .navbar {
     font-size: 15px;
     font-weight: 500;
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 4px;
     transition: all 0.2s ease;
     cursor: pointer;
     white-space: nowrap;
@@ -193,7 +193,7 @@ body.dark-theme .navbar {
     padding: 8px 12px;
     background-color: var(--bg-input);
     border: 1px solid transparent;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
     font-family: inherit;
     font-size: 14px;
@@ -276,14 +276,14 @@ body.dark-theme .navbar {
     margin-bottom: 16px;
     background-color: var(--bg-input);
     padding: 4px;
-    border-radius: 10px;
+    border-radius: 5px;
     width: fit-content;
 }
 
 .source-lang-btn {
     padding: 8px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: transparent;
     color: var(--text-muted);
     font-family: inherit;
@@ -316,7 +316,7 @@ body.dark-theme .navbar {
     padding: 10px 12px;
     background-color: var(--bg-input);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -351,7 +351,7 @@ body.dark-theme .navbar {
 .filter-actions button {
     padding: 8px 16px;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
     font-family: inherit;
     font-size: 14px;
@@ -392,7 +392,7 @@ body.dark-theme .navbar {
     padding: 4px 10px;
     background-color: var(--color-primary-light);
     color: var(--color-primary);
-    border-radius: 6px;
+    border-radius: 3px;
     font-size: 13px;
     font-weight: 500;
 }
@@ -413,7 +413,7 @@ body.dark-theme .navbar {
 .news-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 20px;
+    gap: 18px;
     padding: 0;
     background-color: transparent;
     box-shadow: none;
@@ -421,7 +421,7 @@ body.dark-theme .navbar {
 
 .news-item {
     background-color: var(--bg-card);
-    border-radius: 12px;
+    border-radius: 6px;
     border: 1px solid var(--border-color);
     transition: all 0.2s ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -455,7 +455,7 @@ body.dark-theme .news-item:hover {
     font-size: 11px;
     font-weight: 700;
     padding: 2px 6px;
-    border-radius: 4px;
+    border-radius: 2px;
     text-transform: uppercase;
 }
 
@@ -474,7 +474,7 @@ body.dark-theme .news-item:hover {
     font-size: 11px;
     font-weight: 700;
     padding: 3px 8px;
-    border-radius: 12px;
+    border-radius: 6px;
     margin-left: auto;
     text-transform: uppercase;
     letter-spacing: 0.3px;
@@ -494,7 +494,7 @@ body.dark-theme .news-item:hover {
     right: 0;
     height: 3px;
     background: var(--color-primary);
-    border-radius: 3px 3px 0 0;
+    border-radius: 1.5px 1.5px 0 0;
 }
 
 .recency-badge.new {
@@ -546,6 +546,7 @@ body.dark-theme .news-item:hover {
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -569,7 +570,7 @@ body.dark-theme .news-item:hover {
     gap: 4px;
     padding: 4px 10px;
     background: var(--bg-input);
-    border-radius: 12px;
+    border-radius: 6px;
     font-size: 11px;
     font-weight: 600;
     color: var(--text-muted);
@@ -610,7 +611,7 @@ body.dark-theme .news-item:hover {
     text-align: center;
     padding: 60px 20px;
     background-color: var(--bg-card);
-    border-radius: 12px;
+    border-radius: 6px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     border: 1px solid var(--border-color);
 }
@@ -649,7 +650,7 @@ body.dark-theme .news-item:hover {
     padding: 10px 20px;
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
     font-family: inherit;
     font-size: 14px;
@@ -819,11 +820,11 @@ body.dark-theme .news-item:hover {
     }
 
     .news-list {
-        gap: 20px;
+        gap: 18px;
     }
 
     .news-item {
-        border-radius: 8px;
+        border-radius: 4px;
     }
 
     .news-card-header {
@@ -849,7 +850,7 @@ body.dark-theme .news-item:hover {
 .source-favicon {
     width: 16px;
     height: 16px;
-    border-radius: 3px;
+    border-radius: 1.5px;
 }
 
 .preview-header {
@@ -862,7 +863,7 @@ body.dark-theme .news-item:hover {
 .preview-header .source-favicon {
     width: 16px;
     height: 16px;
-    border-radius: 3px;
+    border-radius: 1.5px;
     margin-top: 2px;
     flex-shrink: 0;
 }
@@ -876,7 +877,7 @@ body.dark-theme .news-item:hover {
     position: absolute;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     max-width: 300px;
@@ -896,7 +897,7 @@ body.dark-theme .news-item:hover {
 .news-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 24px; /* Increased from 20px */
+    gap: 18px; /* Increased from 20px */
     padding: 0;
     background-color: transparent;
     box-shadow: none;
@@ -904,7 +905,7 @@ body.dark-theme .news-item:hover {
 
 .news-item {
     background-color: var(--bg-card);
-    border-radius: 12px;
+    border-radius: 6px;
     border: 1px solid var(--border-color);
     transition: all 0.2s ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -936,7 +937,7 @@ body.dark-theme .news-item:hover {
 .news-source-favicon {
     width: 24px; /* Increased from 24px */
     height: 24px; /* Increased from 24px */
-    border-radius: 6px;
+    border-radius: 3px;
     flex-shrink: 0;
     background-color: var(--bg-input);
 }
@@ -960,7 +961,7 @@ body.dark-theme .news-item:hover {
     font-size: 12px; /* Increased from 11px */
     font-weight: 700;
     padding: 4px 10px; /* Increased from 3px 8px */
-    border-radius: 12px;
+    border-radius: 6px;
     margin-left: auto;
     text-transform: uppercase;
     letter-spacing: 0.3px;
