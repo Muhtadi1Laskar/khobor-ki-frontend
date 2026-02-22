@@ -63,6 +63,8 @@ const translations = {
 
         banglaLabel: 'Bangla',
         englishLabel: 'English',
+
+        tagline: 'Many Voices. Choice is yours'
     },
     bn: {
         all: 'সব',
@@ -649,11 +651,18 @@ async function loadNews() {
     const container = document.getElementById('newsContainer');
     const pagination = document.getElementById('pagination');
     const loadingScreen = document.getElementById('loadingScreen');
+    const loadingMessage = document.getElementById('loadingText');
+    const savedLanguage = localStorage.getItem("language");
+
+    console.log(savedLanguage);
 
     container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
 
     if(loadingScreen) {
         loadingScreen.display = "none";
+        if(savedLanguage == "en") {
+            loadingMessage.innerText = `${translations["en"]["tagline"]}`;
+        }
     }
 
     pagination.style.display = 'none';
