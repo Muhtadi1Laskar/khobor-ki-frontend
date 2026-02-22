@@ -18,7 +18,7 @@ const translations = {
         englishSources: 'English Sources',
         applyFilters: 'Apply Filters',
         clearAll: 'Clear All',
-        loadingNews: 'Loading news',
+        loadingNews: 'Loading news...',
         previous: 'Previous',
         next: 'Next',
         page: 'Page',
@@ -75,7 +75,7 @@ const translations = {
         englishSources: 'ইংরেজি উৎস',
         applyFilters: 'ফিল্টার প্রয়োগ করুন',
         clearAll: 'সব মুছুন',
-        loadingNews: 'খবর লোড হচ্ছে',
+        loadingNews: 'খবর লোড হচ্ছে...',
         previous: 'আগের',
         next: 'পরবর্তী',
         page: 'পৃষ্ঠা',
@@ -646,8 +646,14 @@ function buildApiUrl(category, page, limit, sources) {
 async function loadNews() {
     const container = document.getElementById('newsContainer');
     const pagination = document.getElementById('pagination');
+    const loadingScreen = document.getElementById('loadingScreen');
 
-    container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
+    // container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
+
+    if(loadingScreen) {
+        loadingScreen.display = "none";
+    }
+
     pagination.style.display = 'none';
 
     try {
@@ -670,6 +676,12 @@ async function loadNews() {
                     <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">Error: ${error.message}</p>
                 </div>
             `;
+    } finally {
+        if(loadingScreen) {
+            setTimeout(() => {
+                loadingScreen.classList.add("hidden");
+            }, 300);
+        }
     }
     console.log('Loading news with sources:', selectedSources);
 }

@@ -1029,3 +1029,77 @@ body.dark-theme .news-item:hover {
 .category-icon {
     font-size: 15px; /* Increased from 14px */
 }
+
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-body);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Logo Animation - Works for both IMG and SVG */
+.logo-animated {
+    width: 80px;
+    height: 80px;
+    object-fit: contain; /* For IMG */
+    animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 0.85;
+    }
+}
+
+/* Loading Text */
+.loading-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+    animation: fadeInOut 1.5s ease-in-out infinite;
+    margin: 0;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .logo-animated,
+    .loading-text {
+        animation: none !important;
+    }
+    
+    .logo-animated {
+        opacity: 1;
+    }
+}
