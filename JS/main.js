@@ -12,6 +12,7 @@ const translations = {
         international: 'International',
         sports: 'Sports',
         tech: 'Tech',
+        technology: 'Technology',
         filters: 'Filters',
         filterBySource: 'Filter by Source',
         banglaSources: 'Bangla Sources',
@@ -69,6 +70,7 @@ const translations = {
         international: 'আন্তর্জাতিক',
         sports: 'খেলাধুলা',
         tech: 'প্রযুক্তি',
+        technology: 'প্রযুক্তি',
         filters: 'ফিল্টার',
         filterBySource: 'সূত্র অনুসারে ফিল্টার করুন',
         banglaSources: 'বাংলা উৎস',
@@ -781,8 +783,10 @@ function getCategoryBadge(category) {
         national: '🏛️',
         international: '🌍',
         sports: '⚽',
-        tech: '💻'
+        technology: '💻'
     };
+
+    console.log(category);
     
     return `
         <span class="category-badge">
