@@ -648,7 +648,7 @@ async function loadNews() {
     const pagination = document.getElementById('pagination');
     const loadingScreen = document.getElementById('loadingScreen');
 
-    // container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
+    container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
 
     if(loadingScreen) {
         loadingScreen.display = "none";
