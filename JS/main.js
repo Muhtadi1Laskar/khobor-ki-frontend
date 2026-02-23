@@ -64,7 +64,7 @@ const translations = {
         banglaLabel: 'Bangla',
         englishLabel: 'English',
 
-        tagline: 'Many Voices. Choice is yours'
+        tagline: 'Many Voices. Your Choice'
     },
     bn: {
         all: 'সব',
