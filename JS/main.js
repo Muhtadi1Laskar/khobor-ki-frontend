@@ -692,7 +692,6 @@ async function loadNews() {
             }, 300);
         }
     }
-    console.log('Loading news with sources:', selectedSources);
 }
 
 // Render news items
@@ -792,8 +791,6 @@ function getCategoryBadge(category) {
         sports: '⚽',
         technology: '💻'
     };
-
-    console.log(category);
     
     return `
         <span class="category-badge">
