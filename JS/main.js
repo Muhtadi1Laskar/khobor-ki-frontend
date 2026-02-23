@@ -654,8 +654,6 @@ async function loadNews() {
     const loadingMessage = document.getElementById('loadingText');
     const savedLanguage = localStorage.getItem("language");
 
-    console.log(savedLanguage);
-
     container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
 
     if(loadingScreen) {
