@@ -525,17 +525,31 @@ body.dark-theme .cluster-card:hover {
 .comparison-title {
     font-size: 15px;
     line-height: 1.6;
-    color: var(--text-main);
+    color: #1a1a1a;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+body.dark-theme .comparison-title {
+    color: #f1f5f9;
 }
 
 .diff-highlight {
-    background: linear-gradient(120deg, var(--accent-warning-bg) 0%, var(--accent-warning-bg) 100%);
-    padding: 2px 4px;
-    border-radius: 1.5px;
+    background: linear-gradient(120deg, #fef3c7 0%, #fde047 100%);
+    padding: 2px 5px;
+    border-radius: 4px;
     font-weight: 600;
-    color: var(--accent-warning);
-    border: 1px solid var(--accent-warning);
+    color: #78350f;
+    display: inline;
+    margin: 0 2px;
+    line-height: 1.8; /* Extra line height to prevent overlap */
 }
+
+body.dark-theme .diff-highlight {
+    background: linear-gradient(120deg, #78350f 0%, #92400e 100%);
+    color: #fef3c7;
+}
+
 
 /* List View */
 .list-view {
@@ -689,6 +703,13 @@ body.dark-theme .cluster-card:hover {
 
     .comparison-title {
         font-size: 14px;
+        line-height: 1.7;
+    }
+    
+    .diff-highlight {
+        padding: 2px 4px;
+        margin: 0 1px;
+        border-radius: 3px;
     }
 
     .cluster-card {
@@ -762,6 +783,13 @@ body.dark-theme .cluster-card:hover {
     }
 
     .comparison-title {
-        font-size: 13px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+    
+    .diff-highlight {
+        padding: 2px 4px;
+        margin: 0 1px;
+        border-radius: 3px;
     }
 }

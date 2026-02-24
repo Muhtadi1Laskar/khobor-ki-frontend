@@ -317,29 +317,75 @@ function getTransparencyInterpretation(biasTransparency, lang) {
 }
 
 // Highlight differences between titles
+// function highlightDifferences(comparisonTitles) {
+//     if (!comparisonTitles || comparisonTitles.length < 2) return comparisonTitles;
+
+//     // Extract all words from all titles
+//     const allWords = comparisonTitles.map(item =>
+//         item.title.split(/\s+/).map(word => word.toLowerCase())
+//     );
+
+//     // Find common words across all titles
+//     const commonWords = allWords[0].filter(word =>
+//         allWords.every(titleWords => titleWords.includes(word))
+//     );
+
+//     // Return titles with highlighted unique words
+//     return comparisonTitles.map(item => {
+//         const words = item.title.split(/\s+/);
+//         const highlightedTitle = words.map(word => {
+//             if (!commonWords.includes(word.toLowerCase())) {
+//                 return `<mark class="diff-highlight">${word}</mark>`;
+//             }
+//             return word;
+//         }).join(' ');
+
+//         return {
+//             ...item,
+//             highlightedTitle
+//         };
+//     });
+// }
+
 function highlightDifferences(comparisonTitles) {
     if (!comparisonTitles || comparisonTitles.length < 2) return comparisonTitles;
-
-    // Extract all words from all titles
-    const allWords = comparisonTitles.map(item =>
+    
+    const allWords = comparisonTitles.map(item => 
         item.title.split(/\s+/).map(word => word.toLowerCase())
     );
-
-    // Find common words across all titles
-    const commonWords = allWords[0].filter(word =>
+    
+    const commonWords = allWords[0].filter(word => 
         allWords.every(titleWords => titleWords.includes(word))
     );
-
-    // Return titles with highlighted unique words
+    
     return comparisonTitles.map(item => {
         const words = item.title.split(/\s+/);
-        const highlightedTitle = words.map(word => {
-            if (!commonWords.includes(word.toLowerCase())) {
-                return `<mark class="diff-highlight">${word}</mark>`;
+        const segments = [];
+        let currentSegment = { isHighlighted: false, words: [] };
+        
+        words.forEach(word => {
+            const isUnique = !commonWords.includes(word.toLowerCase());
+            
+            if (currentSegment.words.length > 0 && currentSegment.isHighlighted !== isUnique) {
+                segments.push({ ...currentSegment });
+                currentSegment = { isHighlighted: isUnique, words: [] };
             }
-            return word;
+            
+            currentSegment.isHighlighted = isUnique;
+            currentSegment.words.push(word);
+        });
+        
+        if (currentSegment.words.length > 0) {
+            segments.push(currentSegment);
+        }
+        
+        const highlightedTitle = segments.map(segment => {
+            const text = segment.words.join(' ');
+            return segment.isHighlighted 
+                ? `<mark class="diff-highlight">${text}</mark>`
+                : text;
         }).join(' ');
-
+        
         return {
             ...item,
             highlightedTitle
