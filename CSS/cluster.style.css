@@ -16,6 +16,7 @@
     border: 1px solid var(--border-color);
     transition: all 0.2s ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    scroll-margin-top: 160px;
 }
 
 .cluster-card:hover {
@@ -688,6 +689,10 @@ body.dark-theme .cluster-card:hover {
 
     .comparison-title {
         font-size: 14px;
+    }
+
+    .cluster-card {
+        scroll-margin-top: 140px;
     }
 }
 

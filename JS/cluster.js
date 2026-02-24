@@ -526,17 +526,46 @@ function updateClusterLanguage() {
 }
 
 // Toggle cluster articles visibility
+// function toggleClusterArticles(clusterId) {
+//     const preview = document.getElementById(`preview-${clusterId}`);
+//     const button = document.getElementById(`btn-${clusterId}`);
+//     const buttonText = button.querySelector('.show-more-text');
+
+//     preview.classList.toggle('show');
+//     button.classList.toggle('expanded');
+
+//     if (preview.classList.contains('show')) {
+//         buttonText.textContent = translations[currentLang].hideArticles;
+//     } else {
+//         buttonText.textContent = translations[currentLang].viewAllArticles;
+//     }
+// }
+
+// Update your toggleClusterArticles function
 function toggleClusterArticles(clusterId) {
     const preview = document.getElementById(`preview-${clusterId}`);
     const button = document.getElementById(`btn-${clusterId}`);
     const buttonText = button.querySelector('.show-more-text');
+    const clusterCard = button.closest('.cluster-card');
 
     preview.classList.toggle('show');
     button.classList.toggle('expanded');
 
     if (preview.classList.contains('show')) {
+        // Expanding
         buttonText.textContent = translations[currentLang].hideArticles;
     } else {
+        // Collapsing - scroll back to cluster
         buttonText.textContent = translations[currentLang].viewAllArticles;
+        
+        if (clusterCard) {
+            // Small delay to let collapse animation start
+            setTimeout(() => {
+                clusterCard.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 100);
+        }
     }
 }
