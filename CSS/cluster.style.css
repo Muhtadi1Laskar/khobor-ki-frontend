@@ -126,39 +126,60 @@ body.dark-theme .cluster-card:hover {
 
 /* ==================== SOURCES ROW ==================== */
 .cluster-sources-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+
     padding: 16px 24px;
     background-color: var(--bg-body);
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    border-radius: 1.5px;
 }
 
 .source-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     padding: 6px 12px;
-    background-color: var(--bg-card);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     font-size: 12px;
-    color: var(--text-main);
     font-weight: 500;
+    color: var(--text-main);
+    white-space: nowrap;
+    
+    background-color: var(--bg-card);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     border: 1px solid var(--border-color);
 }
 
 .source-chip .count {
-    color: var(--color-primary);
-    margin-left: 4px;
+    color: var(--text-muted);
+    font-weight: 600;
 }
 
 .source-chip.more-sources {
-    background-color: var(--bg-input);
-    color: var(--text-muted);
-    font-weight: 600;
-    border: 1px dashed var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--color-primary);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
 }
 
 .source-chip.more-sources:hover {
-    background-color: var(--border-color);
-    color: var(--text-main);
+    background: var(--color-primary);
+    color: var(--text-inverse);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+}
+
+.more-sources-btn.expanded {
+    background: var(--color-primary);
+    color: var(--text-inverse);
 }
 
 /* ==================== PREVIEW ARTICLES ==================== */
@@ -415,11 +436,25 @@ body.dark-theme .cluster-card:hover {
     margin-left: 12px;
 }
 
+body.dark-theme .more-sources-btn:hover {
+    box-shadow: 0 2px 8px rgba(129, 140, 248, 0.3);
+}
+
 /* ==================== VIEW TOGGLE & COMPARISON ==================== */
 .view-toggle-container {
     padding: 12px 0;
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 12px;
+}
+
+.more-icon {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.hidden-sources {
+    display: contents; /* Maintains flexbox flow */
 }
 
 .view-toggle-btn {
@@ -466,6 +501,21 @@ body.dark-theme .cluster-card:hover {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hidden-sources[style*="display: contents"] .source-chip {
+    animation: fadeIn 0.2s ease-out;
 }
 
 .comparison-header {
@@ -715,6 +765,15 @@ body.dark-theme .diff-highlight {
     .cluster-card {
         scroll-margin-top: 140px;
     }
+
+    .source-chip {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+    
+    .more-sources-btn {
+        font-size: 11px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -735,6 +794,7 @@ body.dark-theme .diff-highlight {
 
     .cluster-sources-row {
         padding: 12px 16px;
+        gap: 6px;
     }
 
     .cluster-preview {
@@ -742,8 +802,8 @@ body.dark-theme .diff-highlight {
     }
 
     .source-chip {
-        font-size: 11px;
-        padding: 5px 10px;
+        font-size: 10px;
+        padding: 4px 8px;
     }
 
     .preview-title {

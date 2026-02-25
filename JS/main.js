@@ -42,6 +42,7 @@ const translations = {
         sources: 'sources',
         coveredBy: 'Covered by',
         moreSources: 'more',
+        showLess: 'Show Less',
         sources: 'sources',
 
         today: 'Today in 2 Minutes',
@@ -103,6 +104,7 @@ const translations = {
         sources: 'উৎস',
         coveredBy: 'টি সূত্র',
         moreSources: 'আরও',
+        showLess: 'কম দেখান',
         sources: 'সূত্র',
 
         today: 'আজকের ২ মিনিট',
