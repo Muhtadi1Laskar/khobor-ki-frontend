@@ -8,7 +8,7 @@ async function loadClusters() {
 
     // Check if controls already exist
     const controlsExist = document.querySelector('.cluster-controls');
-    
+
     // Only show loading in the cluster list area, not the whole container
     if (controlsExist) {
         const clusterList = document.querySelector('.cluster-list');
@@ -18,7 +18,7 @@ async function loadClusters() {
     } else {
         container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
     }
-    
+
     pagination.style.display = 'none';
 
     try {
@@ -45,7 +45,7 @@ async function loadClusters() {
 // Toggle cluster language filter
 function toggleClusterLanguage() {
     clusterLanguageFilter = clusterLanguageFilter === 'BN' ? 'EN' : 'BN';
-    
+
     // Update the toggle button classes immediately
     const toggleBtn = document.getElementById('clusterLangToggle');
     if (toggleBtn) {
@@ -57,7 +57,7 @@ function toggleClusterLanguage() {
             toggleBtn.classList.add('en-active');
         }
     }
-    
+
     // Only reload the cluster list, not the entire page
     reloadClusterList();
 }
@@ -79,7 +79,7 @@ async function reloadClusterList() {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data = await response.json();
-        
+
         // Only update the cluster list HTML, not controls
         renderClusterListOnly(data);
 
@@ -99,7 +99,7 @@ async function reloadClusterList() {
 function updateClusterLanguageToggle() {
     const toggleBtn = document.getElementById('clusterLangToggle');
     const toggleLabel = document.getElementById('clusterLangLabel');
-    
+
     if (toggleBtn && toggleLabel) {
         if (clusterLanguageFilter === 'BN') {
             toggleBtn.classList.remove('en-active');
@@ -116,7 +116,7 @@ function updateClusterLanguageToggle() {
 // New function to render only the cluster list (without controls)
 function renderClusterListOnly(clusters) {
     const clusterList = document.querySelector('.cluster-list');
-    
+
     if (!clusterList) {
         renderClusters(clusters); // Fallback to full render
         return;
@@ -319,43 +319,43 @@ function getTransparencyInterpretation(biasTransparency, lang) {
 
 function highlightDifferences(comparisonTitles) {
     if (!comparisonTitles || comparisonTitles.length < 2) return comparisonTitles;
-    
-    const allWords = comparisonTitles.map(item => 
+
+    const allWords = comparisonTitles.map(item =>
         item.title.split(/\s+/).map(word => word.toLowerCase())
     );
-    
-    const commonWords = allWords[0].filter(word => 
+
+    const commonWords = allWords[0].filter(word =>
         allWords.every(titleWords => titleWords.includes(word))
     );
-    
+
     return comparisonTitles.map(item => {
         const words = item.title.split(/\s+/);
         const segments = [];
         let currentSegment = { isHighlighted: false, words: [] };
-        
+
         words.forEach(word => {
             const isUnique = !commonWords.includes(word.toLowerCase());
-            
+
             if (currentSegment.words.length > 0 && currentSegment.isHighlighted !== isUnique) {
                 segments.push({ ...currentSegment });
                 currentSegment = { isHighlighted: isUnique, words: [] };
             }
-            
+
             currentSegment.isHighlighted = isUnique;
             currentSegment.words.push(word);
         });
-        
+
         if (currentSegment.words.length > 0) {
             segments.push(currentSegment);
         }
-        
+
         const highlightedTitle = segments.map(segment => {
             const text = segment.words.join(' ');
-            return segment.isHighlighted 
+            return segment.isHighlighted
                 ? `<mark class="diff-highlight">${text}</mark>`
                 : text;
         }).join(' ');
-        
+
         return {
             ...item,
             highlightedTitle
@@ -533,7 +533,7 @@ function updateClusterLanguage() {
     // Update toggle button text when UI language changes
     const bnOption = document.querySelector('.bn-option');
     const enOption = document.querySelector('.en-option');
-    
+
     if (bnOption && enOption) {
         bnOption.textContent = currentLang === 'en' ? 'Bangla Media' : 'বাংলা মিডিয়া';
         enOption.textContent = currentLang === 'en' ? 'English Media' : 'ইংরেজি মিডিয়া';
@@ -557,13 +557,13 @@ function toggleClusterArticles(clusterId) {
     } else {
         // Collapsing - scroll back to cluster
         buttonText.textContent = translations[currentLang].viewAllArticles;
-        
+
         if (clusterCard) {
             // Small delay to let collapse animation start
             setTimeout(() => {
-                clusterCard.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
+                clusterCard.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }, 100);
         }

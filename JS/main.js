@@ -656,9 +656,9 @@ async function loadNews() {
 
     container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
 
-    if(loadingScreen) {
+    if (loadingScreen) {
         loadingScreen.display = "none";
-        if(savedLanguage == "en") {
+        if (savedLanguage == "en") {
             loadingMessage.innerText = `${translations["en"]["tagline"]}`;
         }
     }
@@ -686,7 +686,7 @@ async function loadNews() {
                 </div>
             `;
     } finally {
-        if(loadingScreen) {
+        if (loadingScreen) {
             setTimeout(() => {
                 loadingScreen.classList.add("hidden");
             }, 300);
@@ -773,7 +773,7 @@ function getRecencyBadge(item) {
     const now = Date.now() / 1000;
     const diff = now - timestamp;
     const hours = Math.floor(diff / 3600);
-    
+
     if (hours < 1) {
         return `<span class="recency-badge breaking">🔴 ${translations[currentLang].breaking || 'Breaking'}</span>`;
     } else if (hours < 6) {
@@ -791,7 +791,7 @@ function getCategoryBadge(category) {
         sports: '⚽',
         technology: '💻'
     };
-    
+
     return `
         <span class="category-badge">
             <span class="category-icon">${categoryIcons[category] || '📰'}</span>
