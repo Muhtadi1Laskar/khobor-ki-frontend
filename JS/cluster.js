@@ -316,36 +316,6 @@ function getTransparencyInterpretation(biasTransparency, lang) {
     return interpretations[lang][key];
 }
 
-// Highlight differences between titles
-// function highlightDifferences(comparisonTitles) {
-//     if (!comparisonTitles || comparisonTitles.length < 2) return comparisonTitles;
-
-//     // Extract all words from all titles
-//     const allWords = comparisonTitles.map(item =>
-//         item.title.split(/\s+/).map(word => word.toLowerCase())
-//     );
-
-//     // Find common words across all titles
-//     const commonWords = allWords[0].filter(word =>
-//         allWords.every(titleWords => titleWords.includes(word))
-//     );
-
-//     // Return titles with highlighted unique words
-//     return comparisonTitles.map(item => {
-//         const words = item.title.split(/\s+/);
-//         const highlightedTitle = words.map(word => {
-//             if (!commonWords.includes(word.toLowerCase())) {
-//                 return `<mark class="diff-highlight">${word}</mark>`;
-//             }
-//             return word;
-//         }).join(' ');
-
-//         return {
-//             ...item,
-//             highlightedTitle
-//         };
-//     });
-// }
 
 function highlightDifferences(comparisonTitles) {
     if (!comparisonTitles || comparisonTitles.length < 2) return comparisonTitles;
@@ -572,22 +542,6 @@ function updateClusterLanguage() {
 }
 
 // Toggle cluster articles visibility
-// function toggleClusterArticles(clusterId) {
-//     const preview = document.getElementById(`preview-${clusterId}`);
-//     const button = document.getElementById(`btn-${clusterId}`);
-//     const buttonText = button.querySelector('.show-more-text');
-
-//     preview.classList.toggle('show');
-//     button.classList.toggle('expanded');
-
-//     if (preview.classList.contains('show')) {
-//         buttonText.textContent = translations[currentLang].hideArticles;
-//     } else {
-//         buttonText.textContent = translations[currentLang].viewAllArticles;
-//     }
-// }
-
-// Update your toggleClusterArticles function
 function toggleClusterArticles(clusterId) {
     const preview = document.getElementById(`preview-${clusterId}`);
     const button = document.getElementById(`btn-${clusterId}`);
