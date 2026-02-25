@@ -292,15 +292,13 @@ function applyTheme(theme) {
     const body = document.body;
     const icon = document.getElementById('themeIcon');
 
-    requestAnimationFrame(() => {
-        if (theme === 'dark') {
-            body.classList.add('dark-theme');
-            icon.textContent = '☀️'; // Sun icon for light mode
-        } else {
-            body.classList.remove('dark-theme');
-            icon.textContent = '🌙'; // Moon icon for dark mode
-        }
-    })
+    if (theme === 'dark') {
+        body.classList.add('dark-theme');
+        icon.textContent = '☀️'; // Sun icon for light mode
+    } else {
+        body.classList.remove('dark-theme');
+        icon.textContent = '🌙'; // Moon icon for dark mode
+    }
 }
 
 // Initialize the app
