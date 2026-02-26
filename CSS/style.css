@@ -73,6 +73,10 @@ body.dark-theme {
     padding: 0;
     box-sizing: border-box;
     text-size-adjust: 100%;
+
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 html {
@@ -171,6 +175,10 @@ body.dark-theme .navbar {
     transition: all 0.2s ease;
     cursor: pointer;
     white-space: nowrap;
+
+    transition: color 0.15s ease, 
+                background-color 0.15s ease,
+                transform 0.15s ease;
 }
 
 .nav-tab:hover {
@@ -206,6 +214,11 @@ body.dark-theme .navbar {
     min-width: 44px;
     gap: 6px;
     white-space: nowrap;
+
+    transition: background-color 0.15s ease, 
+                border-color 0.15s ease,
+                color 0.15s ease,
+                transform 0.15s ease;
 }
 
 .filter-button:hover,
@@ -1102,4 +1115,14 @@ body.dark-theme .news-item:hover {
     .logo-animated {
         opacity: 1;
     }
+}
+
+/* Optimize during theme transition */
+body.theme-transitioning * {
+    transition: none !important;
+    animation: none !important;
+}
+
+body.theme-transitioning {
+    transition: background-color 0.1s ease, color 0.1s ease !important;
 }

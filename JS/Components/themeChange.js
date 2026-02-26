@@ -1,5 +1,6 @@
 // Add this near your other state variables
 let currentTheme = 'light';
+let themeToggleTimeout = null;
 
 // Initialize theme on page load (add to DOMContentLoaded)
 const savedTheme = localStorage.getItem("theme");
@@ -10,9 +11,23 @@ if (savedTheme !== null && savedTheme.length > 0) {
 
 // Toggle theme function
 function toggleTheme() {
-    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-    applyTheme(currentTheme);
-    localStorage.setItem('theme', currentTheme);
+    // Clear any pending toggle
+    if (themeToggleTimeout) {
+        clearTimeout(themeToggleTimeout);
+    }
+    
+    // Debounce: wait 100ms before applying theme change
+    themeToggleTimeout = setTimeout(() => {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        applyTheme(currentTheme);
+        localStorage.setItem('theme', currentTheme);
+        
+        // Optional: Add temporary class for transition optimization
+        document.body.classList.add('theme-transitioning');
+        setTimeout(() => {
+            document.body.classList.remove('theme-transitioning');
+        }, 300);
+    }, 100);
 }
 
 // Apply theme function

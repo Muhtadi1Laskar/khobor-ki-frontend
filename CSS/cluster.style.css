@@ -14,9 +14,13 @@
     padding: 10px;
     margin-bottom: 16px;
     border: 1px solid var(--border-color);
-    transition: all 0.2s ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     scroll-margin-top: 160px;
+    transition: background-color 0.2s ease, 
+                border-color 0.2s ease, 
+                box-shadow 0.2s ease,
+                transform 0.2s ease;
+    will-change: background-color, border-color;
 }
 
 .cluster-card:hover {
@@ -51,6 +55,10 @@ body.dark-theme .cluster-card:hover {
     flex-shrink: 0;
     border: 2px solid var(--border-color);
     transition: all 0.2s ease;
+
+    transition: background-color 0.2s ease, 
+                border-color 0.2s ease,
+                color 0.2s ease;
 }
 
 /* Category Specific Icons */
@@ -155,6 +163,11 @@ body.dark-theme .cluster-card:hover {
     background-color: var(--bg-card);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     border: 1px solid var(--border-color);
+
+    transition: background-color 0.2s ease, 
+                border-color 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
 }
 
 .source-chip .count {
@@ -418,11 +431,14 @@ body.dark-theme .cluster-card:hover {
     height: calc(100% - 8px);
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
     border-radius: 12px;
-    transition: transform 0.3s ease;
     left: 4px;
     top: 4px;
     z-index: 1;
     box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+    /* transition: transform 0.3s ease; */
+
+    transition: transform 0.3s ease;
+    will-change: transform;
 }
 
 .cluster-lang-toggle.en-active .toggle-slider {
@@ -469,9 +485,14 @@ body.dark-theme .more-sources-btn:hover {
     font-size: 14px;
     font-weight: 600;
     color: var(--color-primary);
-    transition: all 0.2s ease;
     width: 100%;
     justify-content: center;
+    /* transition: all 0.2s ease; */
+
+    transition: background 0.2s ease, 
+                border-color 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
 }
 
 .view-toggle-btn:hover {
@@ -555,7 +576,10 @@ body.dark-theme .more-sources-btn:hover {
     border: 2px solid var(--border-color);
     border-radius: 5px;
     padding: 16px;
-    transition: all 0.2s ease;
+    /* transition: all 0.2s ease; */
+
+    transition: border-color 0.2s ease, 
+                box-shadow 0.2s ease;
 }
 
 .comparison-card:hover {
@@ -851,5 +875,61 @@ body.dark-theme .diff-highlight {
         padding: 2px 4px;
         margin: 0 1px;
         border-radius: 3px;
+    }
+}
+
+
+
+
+/* ===== MOBILE OPTIMIZATION: Disable expensive gradients ===== */
+@media (max-width: 768px) {
+    .transparency-card {
+        background: var(--color-primary-light) !important;
+    }
+    
+    .view-toggle-btn {
+        background: var(--color-primary-light) !important;
+        border: 1px solid var(--color-primary) !important;
+    }
+    
+    .view-toggle-btn.active {
+        background: var(--color-primary) !important;
+    }
+    
+    .toggle-slider {
+        background: var(--color-primary) !important;
+    }
+    
+    .diff-highlight {
+        background: var(--accent-warning-bg) !important;
+    }
+    
+    body.dark-theme .diff-highlight {
+        background: var(--accent-warning-bg) !important;
+    }
+
+    .cluster-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+        transform: translateY(-1px) !important;
+    }
+    
+    body.dark-theme .cluster-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+    }
+    
+    .comparison-card:hover {
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08) !important;
+    }
+    
+    .source-chip.more-sources:hover {
+        box-shadow: 0 2px 8px rgba(79, 70, 229, 0.15) !important;
+    }
+    
+    .navbar:hover {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+    }
+    
+    body.dark-theme .navbar:hover {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25) !important;
     }
 }
