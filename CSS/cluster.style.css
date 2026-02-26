@@ -14,7 +14,7 @@
     padding: 10px;
     margin-bottom: 16px;
     border: 1px solid var(--border-color);
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     scroll-margin-top: 160px;
 }
@@ -50,7 +50,7 @@ body.dark-theme .cluster-card:hover {
     font-size: 24px;
     flex-shrink: 0;
     border: 2px solid var(--border-color);
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
 }
 
 /* Category Specific Icons */
@@ -90,7 +90,7 @@ body.dark-theme .cluster-card:hover {
     text-decoration: none;
     display: block;
     margin-bottom: 8px;
-    /* transition: color 0.2s ease; */
+    transition: color 0.2s ease;
 }
 
 /* Bangla Title Adjustment */
@@ -164,7 +164,7 @@ body.dark-theme .cluster-card:hover {
 
 .source-chip.more-sources {
     cursor: pointer;
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
     border: 1px solid var(--color-primary);
     background: var(--color-primary-light);
     color: var(--color-primary);
@@ -208,7 +208,7 @@ body.dark-theme .cluster-card:hover {
     text-decoration: none;
     display: block;
     margin-bottom: 4px;
-    /* transition: color 0.2s ease; */
+    transition: color 0.2s ease;
 }
 
 .preview-title:hover {
@@ -277,7 +277,7 @@ body.dark-theme .cluster-card:hover {
     cursor: pointer;
     padding: 4px;
     font-size: 16px;
-    transition: transform 0.1s ease;
+    transition: transform 0.2s ease;
     color: var(--color-primary);
 }
 
@@ -303,7 +303,7 @@ body.dark-theme .cluster-card:hover {
 .transparency-details {
     max-height: 0;
     overflow: hidden;
-    /* transition: max-height 0.3s ease; */
+    transition: max-height 0.3s ease;
 }
 
 .transparency-details.show {
@@ -391,7 +391,7 @@ body.dark-theme .cluster-card:hover {
     border-radius: 14px;
     padding: 4px;
     cursor: pointer;
-    /* transition: all 0.3s ease; */
+    transition: all 0.3s ease;
     min-width: 320px;
 }
 
@@ -402,7 +402,7 @@ body.dark-theme .cluster-card:hover {
     font-size: 14px;
     font-weight: 600;
     z-index: 2;
-    /* transition: all 0.3s ease; */
+    transition: all 0.3s ease;
     color: var(--text-muted);
     white-space: nowrap;
 }
@@ -418,7 +418,7 @@ body.dark-theme .cluster-card:hover {
     height: calc(100% - 8px);
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
     border-radius: 12px;
-    /* transition: transform 0.3s ease; */
+    transition: transform 0.3s ease;
     left: 4px;
     top: 4px;
     z-index: 1;
@@ -555,7 +555,7 @@ body.dark-theme .more-sources-btn:hover {
     border: 2px solid var(--border-color);
     border-radius: 5px;
     padding: 16px;
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
 }
 
 .comparison-card:hover {
@@ -619,7 +619,7 @@ body.dark-theme .diff-highlight {
 
 .spectrum-segment {
     height: 100%;
-    /* transition: width 0.3s ease; */
+    transition: width 0.3s ease;
     position: relative;
 }
 
@@ -852,4 +852,19 @@ body.dark-theme .diff-highlight {
         margin: 0 1px;
         border-radius: 3px;
     }
+}
+
+
+/* ===== INSTANT THEME TOGGLE (No animation lag) ===== */
+/* Disable transitions ONLY when theme class changes */
+body.dark-theme,
+body:not(.dark-theme) {
+    transition: none !important;
+}
+
+/* Keep transitions for hover/interaction effects */
+.cluster-card:hover,
+.nav-tab:hover,
+.source-chip:hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 }

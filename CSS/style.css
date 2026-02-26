@@ -91,7 +91,7 @@ body {
     background-color: var(--bg-body);
     background-size: 50px 50px;
     letter-spacing: -0.011em;
-    /* transition: background-color 0.3s ease, color 0.3s ease; */
+    transition: background-color 0.3s ease, color 0.3s ease;
     background-image:
         linear-gradient(0deg, transparent 24%, rgba(79, 70, 229, .03) 25%, rgba(79, 70, 229, .03) 26%, transparent 27%, transparent 74%, rgba(79, 70, 229, .03) 75%, rgba(79, 70, 229, .03) 76%, transparent 77%, transparent),
         linear-gradient(90deg, transparent 24%, rgba(79, 70, 229, .03) 25%, rgba(79, 70, 229, .03) 26%, transparent 27%, transparent 74%, rgba(79, 70, 229, .03) 75%, rgba(79, 70, 229, .03) 76%, transparent 77%, transparent);
@@ -128,7 +128,7 @@ body.dark-theme {
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(10px);
-    /* transition: background-color 0.3s ease, border-color 0.3s ease; */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 body.dark-theme .navbar {
@@ -199,7 +199,7 @@ body.dark-theme .navbar {
     font-size: 14px;
     font-weight: 500;
     color: var(--text-main);
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -235,7 +235,7 @@ body.dark-theme .navbar {
     background-color: var(--bg-card);
     border-bottom: 1px solid var(--border-color);
     display: none;
-    /* transition: background-color 0.3s ease, border-color 0.3s ease; */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .filter-panel.open {
@@ -290,7 +290,7 @@ body.dark-theme .navbar {
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
 }
 
 .source-lang-btn:hover {
@@ -318,7 +318,7 @@ body.dark-theme .navbar {
     border: 1px solid var(--border-color);
     border-radius: 4px;
     cursor: pointer;
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
 }
 
 .source-checkbox:hover {
@@ -356,7 +356,7 @@ body.dark-theme .navbar {
     font-family: inherit;
     font-size: 14px;
     font-weight: 500;
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
 }
 
 .apply-filters {
@@ -423,7 +423,7 @@ body.dark-theme .navbar {
     background-color: var(--bg-card);
     border-radius: 6px;
     border: 1px solid var(--border-color);
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
@@ -656,7 +656,7 @@ body.dark-theme .news-item:hover {
     font-size: 14px;
     font-weight: 500;
     color: var(--text-main);
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
 }
 
 .pagination button:hover:not(:disabled) {
@@ -907,7 +907,7 @@ body.dark-theme .news-item:hover {
     background-color: var(--bg-card);
     border-radius: 6px;
     border: 1px solid var(--border-color);
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
@@ -992,7 +992,7 @@ body.dark-theme .news-item:hover {
 .news-title a {
     color: var(--text-main);
     text-decoration: none;
-    /* transition: color 0.2s ease; */
+    transition: color 0.2s ease;
 }
 
 .news-title a:hover {
