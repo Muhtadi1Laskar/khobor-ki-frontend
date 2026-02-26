@@ -135,8 +135,8 @@ body.dark-theme .cluster-card:hover {
     background-color: var(--bg-body);
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    border-radius: 1.5px;
+    gap: 18px;
+    border-radius: 2.5px;
 }
 
 .source-chip {
@@ -230,24 +230,28 @@ body.dark-theme .cluster-card:hover {
     color: var(--color-primary);
     font-weight: 500;
     cursor: pointer;
-    /* transition: background-color 0.2s ease; */
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-}
-
-.show-more-btn:hover {
-    background-color: var(--bg-body);
+    border-radius: 2.5px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .show-more-icon {
-    /* transition: transform 0.2s ease; */
+    transition: transform 0.2s ease;
+}
+
+.show-more-btn:active {
+    opacity: 0.7;
+    background-color: transparent; /* Keep transparent */
 }
 
 .show-more-btn.expanded .show-more-icon {
     transform: rotate(180deg);
 }
+
+
 
 /* ==================== TRANSPARENCY CARD ==================== */
 .transparency-card {
@@ -851,5 +855,11 @@ body.dark-theme .diff-highlight {
         padding: 2px 4px;
         margin: 0 1px;
         border-radius: 3px;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .show-more-btn:hover {
+        background-color: var(--bg-body);
     }
 }
