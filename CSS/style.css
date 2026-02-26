@@ -199,7 +199,7 @@ body.dark-theme .navbar {
     font-size: 14px;
     font-weight: 500;
     color: var(--text-main);
-    transition: all 0.2s ease;
+    /* transition: all 0.2s ease; */
     display: flex;
     align-items: center;
     justify-content: center;
