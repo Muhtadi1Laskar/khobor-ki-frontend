@@ -91,7 +91,7 @@ body {
     background-color: var(--bg-body);
     background-size: 50px 50px;
     letter-spacing: -0.011em;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    /* transition: background-color 0.3s ease, color 0.3s ease; */
     background-image:
         linear-gradient(0deg, transparent 24%, rgba(79, 70, 229, .03) 25%, rgba(79, 70, 229, .03) 26%, transparent 27%, transparent 74%, rgba(79, 70, 229, .03) 75%, rgba(79, 70, 229, .03) 76%, transparent 77%, transparent),
         linear-gradient(90deg, transparent 24%, rgba(79, 70, 229, .03) 25%, rgba(79, 70, 229, .03) 26%, transparent 27%, transparent 74%, rgba(79, 70, 229, .03) 75%, rgba(79, 70, 229, .03) 76%, transparent 77%, transparent);
@@ -1102,11 +1102,4 @@ body.dark-theme .news-item:hover {
     .logo-animated {
         opacity: 1;
     }
-}
-
-/* ===== INSTANT THEME TOGGLE (No animation lag) ===== */
-/* Disable transitions ONLY when theme class changes */
-body.dark-theme,
-body:not(.dark-theme) {
-    transition: none !important;
 }

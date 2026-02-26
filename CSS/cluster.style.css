@@ -854,12 +854,3 @@ body.dark-theme .diff-highlight {
     }
 }
 
-
-
-
-/* Keep transitions for hover/interaction effects */
-.cluster-card:hover,
-.nav-tab:hover,
-.source-chip:hover {
-    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-}
