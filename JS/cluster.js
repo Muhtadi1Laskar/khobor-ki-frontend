@@ -113,13 +113,6 @@ function updateClusterLanguageToggle() {
     }
 }
 
-function countTotalSources(sources) {
-    if (!sources || typeof sources !== "object" || Array.isArray(sources)) {
-        console.warn("Invalid source format: ", sources);
-        return 0
-    }
-    return Object.keys(sources).length;
-}
 
 // New function to render only the cluster list (without controls)
 function renderClusterListOnly(clusters) {
