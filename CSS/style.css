@@ -168,7 +168,7 @@ body.dark-theme .navbar {
     font-weight: 500;
     padding: 8px 16px;
     border-radius: 4px;
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
     cursor: pointer;
     white-space: nowrap;
 }
@@ -532,7 +532,7 @@ body.dark-theme .news-item:hover {
 .news-title a {
     color: var(--text-main);
     text-decoration: none;
-    /* transition: color 0.2s ease; */
+    transition: color 0.2s ease;
 }
 
 .news-title a:hover {

@@ -230,7 +230,7 @@ body.dark-theme .cluster-card:hover {
     color: var(--color-primary);
     font-weight: 500;
     cursor: pointer;
-    /* transition: background-color 0.2s ease; */
+    transition: background-color 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -277,7 +277,7 @@ body.dark-theme .cluster-card:hover {
     cursor: pointer;
     padding: 4px;
     font-size: 16px;
-    /* transition: transform 0.2s ease; */
+    transition: transform 0.1s ease;
     color: var(--color-primary);
 }
 
@@ -469,7 +469,7 @@ body.dark-theme .more-sources-btn:hover {
     font-size: 14px;
     font-weight: 600;
     color: var(--color-primary);
-    /* transition: all 0.2s ease; */
+    transition: all 0.2s ease;
     width: 100%;
     justify-content: center;
 }
