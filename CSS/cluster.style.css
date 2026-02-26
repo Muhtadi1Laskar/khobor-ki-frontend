@@ -855,12 +855,7 @@ body.dark-theme .diff-highlight {
 }
 
 
-/* ===== INSTANT THEME TOGGLE (No animation lag) ===== */
-/* Disable transitions ONLY when theme class changes */
-body.dark-theme,
-body:not(.dark-theme) {
-    transition: none !important;
-}
+
 
 /* Keep transitions for hover/interaction effects */
 .cluster-card:hover,
