@@ -172,7 +172,7 @@ const NEWS_SOURCES = {
             'Dhaka Mail',
             'Channel I Online',
             'Asian Tv Online',
-            'Boishakhi Online'
+            'Boishakhi Online',
         ],
         bn: [
             'প্রথম আলো',
@@ -215,7 +215,8 @@ const NEWS_SOURCES = {
             'The New Nation',
             'The Daily Times Of Bangladesh',
             'Bangladesh Post',
-            'The Register'
+            'The Register',
+            'Zeteo'
         ],
         en: [
             'Prothom Alo (English)',
@@ -234,7 +235,8 @@ const NEWS_SOURCES = {
             'The New Nation',
             'The Daily Times Of Bangladesh',
             'Bangladesh Post',
-            'The Register'
+            'The Register',
+            'Zeteo'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -253,7 +255,8 @@ const NEWS_SOURCES = {
             'দ্য নিউ নেশন',
             'দ্য ডেইলি টাইমস অফ বাংলাদেশ',
             'দ্য বাংলাদেশ পোস্ট',
-            'দ্য রেজিস্টার'
+            'দ্য রেজিস্টার',
+            'জেটিও'
         ]
     }
 };
