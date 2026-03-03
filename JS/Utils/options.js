@@ -218,7 +218,8 @@ const NEWS_SOURCES = {
             'The Register',
             'Zeteo',
             'Al Jazeera',
-            'BBC News'
+            'BBC News',
+            'TRT World'
         ],
         en: [
             'Prothom Alo (English)',
@@ -240,7 +241,8 @@ const NEWS_SOURCES = {
             'The Register',
             'Zeteo',
             'Al Jazeera',
-            'BBC News'
+            'BBC News',
+            'TRT World'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -262,7 +264,8 @@ const NEWS_SOURCES = {
             'দ্য রেজিস্টার',
             'জেটিও',
             'আল জাজিরা',
-            'বিবিসি নিউজ'
+            'বিবিসি নিউজ',
+            'টিআরটি ওয়ার্ল্ড'
         ]
     }
 };
