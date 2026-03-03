@@ -217,7 +217,8 @@ const NEWS_SOURCES = {
             'Bangladesh Post',
             'The Register',
             'Zeteo',
-            'Al Jazeera'
+            'Al Jazeera',
+            'BBC News'
         ],
         en: [
             'Prothom Alo (English)',
@@ -238,7 +239,8 @@ const NEWS_SOURCES = {
             'Bangladesh Post',
             'The Register',
             'Zeteo',
-            'Al Jazeera'
+            'Al Jazeera',
+            'BBC News'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -259,7 +261,8 @@ const NEWS_SOURCES = {
             'দ্য বাংলাদেশ পোস্ট',
             'দ্য রেজিস্টার',
             'জেটিও',
-            'আল জাজিরা'
+            'আল জাজিরা',
+            'বিবিসি নিউজ'
         ]
     }
 };
