@@ -219,7 +219,8 @@ const NEWS_SOURCES = {
             'Zeteo',
             'Al Jazeera',
             'BBC News',
-            'TRT World'
+            'TRT World',
+            'Middle East Eye'
         ],
         en: [
             'Prothom Alo (English)',
@@ -242,7 +243,8 @@ const NEWS_SOURCES = {
             'Zeteo',
             'Al Jazeera',
             'BBC News',
-            'TRT World'
+            'TRT World',
+            'Middle East Eye'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -265,7 +267,8 @@ const NEWS_SOURCES = {
             'জেটিও',
             'আল জাজিরা',
             'বিবিসি নিউজ',
-            'টিআরটি ওয়ার্ল্ড'
+            'টিআরটি ওয়ার্ল্ড',
+            'মিডল ইস্ট আই'
         ]
     }
 };
