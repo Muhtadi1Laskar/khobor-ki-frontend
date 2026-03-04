@@ -220,7 +220,8 @@ const NEWS_SOURCES = {
             'Al Jazeera',
             'BBC News',
             'TRT World',
-            'Middle East Eye'
+            'Middle East Eye',
+            'Business Insider'
         ],
         en: [
             'Prothom Alo (English)',
@@ -244,7 +245,8 @@ const NEWS_SOURCES = {
             'Al Jazeera',
             'BBC News',
             'TRT World',
-            'Middle East Eye'
+            'Middle East Eye',
+            'Business Insider'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -268,7 +270,8 @@ const NEWS_SOURCES = {
             'আল জাজিরা',
             'বিবিসি নিউজ',
             'টিআরটি ওয়ার্ল্ড',
-            'মিডল ইস্ট আই'
+            'মিডল ইস্ট আই',
+            'বিজনেস ইনসাইডার'
         ]
     }
 };
