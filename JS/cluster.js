@@ -143,7 +143,7 @@ function renderClusterListOnly(clusters) {
                             ${getCategoryIcon(cluster.category)}
                         </div>
                         <div class="cluster-header-content">
-                            <a href="${cluster.articles[0].url}" target="_blank" rel="noopener noreferrer" class="cluster-title-link">
+                            <a href="${cluster.representativeLink}" target="_blank" rel="noopener noreferrer" class="cluster-title-link">
                                 ${escapeHtml(cluster.representativeTitle)}
                             </a>
                             <div class="cluster-stats">
