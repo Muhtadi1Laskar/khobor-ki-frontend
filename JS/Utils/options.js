@@ -222,7 +222,8 @@ const NEWS_SOURCES = {
             'TRT World',
             'Middle East Eye',
             'Business Insider',
-            'Gizmodo'
+            'Gizmodo',
+            'Independent'
         ],
         en: [
             'Prothom Alo (English)',
@@ -248,7 +249,8 @@ const NEWS_SOURCES = {
             'TRT World',
             'Middle East Eye',
             'Business Insider',
-            'Gizmodo'
+            'Gizmodo',
+            'Independent'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -274,7 +276,8 @@ const NEWS_SOURCES = {
             'টিআরটি ওয়ার্ল্ড',
             'মিডল ইস্ট আই',
             'বিজনেস ইনসাইডার',
-            'গিজমোডো'
+            'গিজমোডো',
+            'Independent'
         ]
     }
 };
