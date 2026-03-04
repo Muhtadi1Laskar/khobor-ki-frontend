@@ -221,7 +221,8 @@ const NEWS_SOURCES = {
             'BBC News',
             'TRT World',
             'Middle East Eye',
-            'Business Insider'
+            'Business Insider',
+            'Gizmodo'
         ],
         en: [
             'Prothom Alo (English)',
@@ -246,7 +247,8 @@ const NEWS_SOURCES = {
             'BBC News',
             'TRT World',
             'Middle East Eye',
-            'Business Insider'
+            'Business Insider',
+            'Gizmodo'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -271,7 +273,8 @@ const NEWS_SOURCES = {
             'বিবিসি নিউজ',
             'টিআরটি ওয়ার্ল্ড',
             'মিডল ইস্ট আই',
-            'বিজনেস ইনসাইডার'
+            'বিজনেস ইনসাইডার',
+            'গিজমোডো'
         ]
     }
 };
