@@ -1,6 +1,6 @@
 const BACKEND_URL = process.env.BACKEND_URL || 'https://khobor-ki-backend.onrender.com';
 
-exports.handler = async (event, context) => {
+export async function handler(event, context) {
     // CORS headers
     const headers = {
         'Access-Control-Allow-Origin': '*',
@@ -66,4 +66,4 @@ exports.handler = async (event, context) => {
             })
         };
     }
-};
+}
