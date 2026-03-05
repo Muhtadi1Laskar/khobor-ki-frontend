@@ -1,0 +1,19 @@
+[build]
+  functions = "netlify/functions"
+  publish = "."
+
+# Redirect all /api calls to functions
+[[redirects]]
+  from = "/api/feed"
+  to = "/.netlify/functions/feed"
+  status = 200
+
+[[redirects]]
+  from = "/api/feed/*"
+  to = "/.netlify/functions/feed"
+  status = 200
+
+[[redirects]]
+  from = "/api/cluster"
+  to = "/.netlify/functions/cluster"
+  status = 200

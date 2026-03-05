@@ -1,6 +1,7 @@
 // Configuration
-const API_BASE_URL = 'https://khobor-ki-backend.onrender.com/api';
+// const API_BASE_URL = 'https://khobor-ki-backend.onrender.com/api';
 // const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = '/api'
 const FEED_URL = `${API_BASE_URL}/feed`
 const ITEMS_PER_PAGE = 30;
 
