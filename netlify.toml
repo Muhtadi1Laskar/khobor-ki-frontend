@@ -2,18 +2,23 @@
   functions = "netlify/functions"
   publish = "."
 
-# Redirect all /api calls to functions
-[[redirects]]
-  from = "/api/feed"
-  to = "/.netlify/functions/feed"
-  status = 200
-
+# Catch all /api/feed/* paths including /technology
 [[redirects]]
   from = "/api/feed/*"
   to = "/.netlify/functions/feed"
   status = 200
+  force = true
 
+# Catch base /api/feed
+[[redirects]]
+  from = "/api/feed"
+  to = "/.netlify/functions/feed"
+  status = 200
+  force = true
+
+# Catch /api/cluster
 [[redirects]]
   from = "/api/cluster"
   to = "/.netlify/functions/cluster"
   status = 200
+  force = true
