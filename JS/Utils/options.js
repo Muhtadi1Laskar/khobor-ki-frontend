@@ -223,7 +223,8 @@ const NEWS_SOURCES = {
             'Middle East Eye',
             'Business Insider',
             'Gizmodo',
-            'Independent'
+            'Independent',
+            'RT News'
         ],
         en: [
             'Prothom Alo (English)',
@@ -250,7 +251,8 @@ const NEWS_SOURCES = {
             'Middle East Eye',
             'Business Insider',
             'Gizmodo',
-            'Independent'
+            'Independent',
+            'RT News'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -277,7 +279,8 @@ const NEWS_SOURCES = {
             'মিডল ইস্ট আই',
             'বিজনেস ইনসাইডার',
             'গিজমোডো',
-            'Independent'
+            'Independent',
+            'আরটি নিউজ'
         ]
     }
 };
