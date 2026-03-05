@@ -151,7 +151,8 @@ const NEWS_SOURCES = {
             'Dhaka Mail',
             'channelionline',
             'Asian Tv Online',
-            'Boishakhi Online'
+            'Boishakhi Online',
+            'khaborwala'
         ],
         en: [
             'Prothom Alo',
@@ -175,6 +176,7 @@ const NEWS_SOURCES = {
             'Channel I Online',
             'Asian Tv Online',
             'Boishakhi Online',
+            'khaborwala'
         ],
         bn: [
             'প্রথম আলো',
@@ -197,7 +199,8 @@ const NEWS_SOURCES = {
             'ঢাকা মেইল',
             'channelionline',
             'এশিয়ান টিভি অনলাইন',
-            'বৈশাখী অনলাইন'
+            'বৈশাখী অনলাইন',
+            'খবরওয়ালা'
         ]
     },
     english: {
