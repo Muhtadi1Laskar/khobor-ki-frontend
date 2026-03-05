@@ -30,21 +30,25 @@ export async function handler(event, context) {
     try {
         // Get query parameters
         const queryString = event.rawQuery || '';
-        
+
         // Build backend URL
         const backendUrl = `${BACKEND_URL}/api/cluster${queryString ? '?' + queryString : ''}`;
-        
+
         console.log('Proxying cluster request to:', backendUrl);
-        
+
         // Fetch from backend
-        const response = await fetch(backendUrl);
-        
+        const response = await fetch(backendUrl, {
+            headers: {
+                'X-API-Key': INTERNAL_API_KEY  // <-- Add this
+            }
+        });
+
         if (!response.ok) {
             throw new Error(`Backend returned ${response.status}`);
         }
-        
+
         const data = await response.json();
-        
+
         return {
             statusCode: 200,
             headers: {
@@ -53,16 +57,16 @@ export async function handler(event, context) {
             },
             body: JSON.stringify(data)
         };
-        
+
     } catch (error) {
         console.error('Cluster function error:', error);
-        
+
         return {
             statusCode: 500,
             headers,
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 error: 'Failed to fetch clusters',
-                message: error.message 
+                message: error.message
             })
         };
     }
