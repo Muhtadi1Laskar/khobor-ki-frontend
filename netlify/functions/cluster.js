@@ -1,4 +1,5 @@
 const BACKEND_URL = process.env.BACKEND_URL || 'https://khobor-ki-backend.onrender.com';
+const INTERNAL_API_KEY = process.env.INTERNAL_API_KEY;
 
 export async function handler(event, context) {
     // CORS headers
