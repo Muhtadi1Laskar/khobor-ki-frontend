@@ -23,7 +23,7 @@ export async function handler(event, context) {
     try {
         // Extract category from path
         let category = '';
-        const pathMatch = event.path.match(/\/(national|international|sports|tech)$/);
+        const pathMatch = event.path.match(/\/(national|international|sports|technology)$/);
         if (pathMatch) {
             category = '/' + pathMatch[1];
         }
