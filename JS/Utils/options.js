@@ -49,7 +49,7 @@ const translations = {
         articles: 'articles',
         sources: 'sources',
         topCoverage: 'Top Coverage',
-        viewAllArticles: 'View all headlines',
+        viewAllArticles: 'View all Headlines',
 
         coverageAnalysis: 'Coverage Analysis',
         learnMore: 'Learn more',
