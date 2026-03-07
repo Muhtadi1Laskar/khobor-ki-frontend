@@ -234,7 +234,8 @@ const NEWS_SOURCES = {
             'Business Insider',
             'Gizmodo',
             'Independent',
-            'RT News'
+            'RT News',
+            'Hindustan Times'
         ],
         en: [
             'Prothom Alo (English)',
@@ -263,7 +264,8 @@ const NEWS_SOURCES = {
             'Business Insider',
             'Gizmodo',
             'Independent',
-            'RT News'
+            'RT News',
+            'Hindustan Times'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -292,7 +294,8 @@ const NEWS_SOURCES = {
             'বিজনেস ইনসাইডার',
             'গিজমোডো',
             'Independent',
-            'আরটি নিউজ'
+            'আরটি নিউজ',
+            'হিন্দুস্তান টাইমস'
         ]
     }
 };
