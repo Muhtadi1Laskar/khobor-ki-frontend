@@ -63,7 +63,13 @@ const translations = {
         banglaLabel: 'Bangla',
         englishLabel: 'English',
 
-        tagline: 'Many Voices. Your Choice'
+        tagline: 'Many Voices. Your Choice',
+
+        shareStory: 'Share Story',
+        copyLink: 'Copy Link',
+        copyAsText: 'Copy as Text',
+        copied: 'Copied!',
+        copyFailed: 'Failed to copy',
     },
     bn: {
         all: 'সব',
@@ -124,6 +130,12 @@ const translations = {
 
         banglaLabel: 'বাংলা',
         englishLabel: 'ইংরেজি',
+
+        shareStory: 'শেয়ার করুন',
+        copyLink: 'লিংক কপি করুন',
+        copyAsText: 'টেক্সট কপি করুন',
+        copied: 'কপি হয়েছে!',
+        copyFailed: 'কপি করা যায়নি',
     }
 };
 

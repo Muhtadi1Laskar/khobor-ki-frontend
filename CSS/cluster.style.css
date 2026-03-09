@@ -863,3 +863,92 @@ body.dark-theme .diff-highlight {
         background-color: var(--bg-body);
     }
 }
+
+
+/* Share Button */
+.cluster-share-btn {
+    padding: 6px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--text-main);
+    margin-left: auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .cluster-share-btn:hover {
+        background: var(--color-primary-light);
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+    }
+}
+
+.share-icon {
+    font-size: 16px;
+}
+
+/* Share Menu */
+.share-menu {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    min-width: 200px;
+    animation: shareMenuSlide 0.2s ease;
+}
+
+@keyframes shareMenuSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.share-menu-header {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.share-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .share-option:hover {
+        background: var(--bg-secondary);
+    }
+}
+
+.share-option span:first-child {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}

@@ -216,3 +216,73 @@ function getCategoryBadge(category) {
         </span>
     `;
 }
+
+
+// ============================================
+// HASH NAVIGATION - Scroll to shared cluster
+// ============================================
+
+function handleHashNavigation() {
+    const hash = window.location.hash;
+    
+    if (hash && hash.startsWith('#cluster-')) {
+        const clusterId = hash.replace('#cluster-', '');
+        
+        // Need to ensure we're on the clusters tab first
+        const clusterTab = document.querySelector('[data-category="clusters"]');
+        if (clusterTab && !clusterTab.classList.contains('active')) {
+            // Switch to clusters tab
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            clusterTab.classList.add('active');
+            currentCategory = 'clusters';
+            
+            // Load clusters
+            loadClusters();
+        }
+        
+        // Wait for clusters to load, then scroll to the target cluster
+        const scrollToCluster = () => {
+            const targetButton = document.getElementById(`btn-${clusterId}`);
+            const clusterCard = targetButton?.closest('.cluster-card');
+            
+            if (clusterCard) {
+                // Scroll to cluster
+                clusterCard.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+                
+                // Highlight cluster temporarily
+                clusterCard.style.outline = '3px solid var(--color-primary)';
+                clusterCard.style.outlineOffset = '4px';
+                
+                // Auto-expand the cluster
+                const previewSection = document.getElementById(`preview-${clusterId}`);
+                if (previewSection && !previewSection.classList.contains('show')) {
+                    toggleClusterArticles(clusterId);
+                }
+                
+                // Remove highlight after 3 seconds
+                setTimeout(() => {
+                    clusterCard.style.outline = '';
+                    clusterCard.style.outlineOffset = '';
+                }, 3000);
+                
+                // Clear hash after scrolling (optional - keeps URL clean)
+                // history.replaceState(null, null, ' ');
+            } else {
+                // Cluster not found yet, try again in 500ms
+                setTimeout(scrollToCluster, 500);
+            }
+        };
+        
+        // Start checking for the cluster
+        setTimeout(scrollToCluster, 100);
+    }
+}
+
+// Check hash on page load
+window.addEventListener('DOMContentLoaded', handleHashNavigation);
+
+// Check hash when it changes (back/forward navigation)
+window.addEventListener('hashchange', handleHashNavigation);

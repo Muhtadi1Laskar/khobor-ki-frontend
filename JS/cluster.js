@@ -137,7 +137,7 @@ function renderClusterListOnly(clusters) {
         const totalSourceCount = countTotalSources(cluster.sources);
         return `
             ${cluster.articles.length > 1 ? `
-                <div class="cluster-card">
+                <div class="cluster-card" id="cluster-card-${cluster._id}">
                     <div class="cluster-timeline-header">
                         <div class="cluster-icon ${cluster.category.toLowerCase()}">
                             ${getCategoryIcon(cluster.category)}
@@ -158,6 +158,11 @@ function renderClusterListOnly(clusters) {
                                 <div class="cluster-stat">
                                     <span data-lang-key="${cluster.category.toLowerCase()}">${translations[currentLang][cluster.category.toLowerCase()] || cluster.category}</span>
                                 </div>
+                                <button class="cluster-share-btn" 
+                                    onclick="shareCluster('${cluster._id}', event)" 
+                                    title="${translations[currentLang].shareStory || 'Share this story'}">
+                                <span class="share-icon">📤</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -615,5 +620,150 @@ function toggleClusterArticles(clusterId) {
                 });
             }, 100);
         }
+    }
+}
+
+// ============================================
+// SHARE CLUSTER FUNCTIONALITY
+// ============================================
+
+function shareCluster(clusterId, event) {
+    event.stopPropagation();
+    
+    // Find the cluster data from the current page
+    const clusterCard = event.target.closest('.cluster-card');
+    const title = clusterCard.querySelector('.cluster-title-link').textContent.trim();
+    const sourceCount = clusterCard.querySelector('[data-cluster-covered]').getAttribute('data-cluster-covered');
+    
+    // ✅ CREATE KHOBOR KI URL WITH CLUSTER ID HASH
+    const khoborKiUrl = `${window.location.origin}${window.location.pathname}#cluster-${clusterId}`;
+    
+    // Create share text
+    const shareText = currentLang === 'en'
+        ? `${title}\n\nCovered by ${sourceCount} sources on Khobor Ki`
+        : `${title}\n\n${sourceCount} সূত্র থেকে কভার করা হয়েছে - খবর কি`;
+    
+    // Try native share first (mobile)
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: shareText,
+            url: khoborKiUrl  // ✅ Share Khobor Ki URL
+        }).catch(err => {
+            if (err.name !== 'AbortError') {
+                showShareMenu(title, khoborKiUrl, shareText, event);
+            }
+        });
+    } else {
+        // Desktop: show custom menu
+        showShareMenu(title, khoborKiUrl, shareText, event);
+    }
+}
+
+function showShareMenu(title, khoborKiUrl, shareText, event) {
+    // Remove any existing menu
+    const existingMenu = document.querySelector('.share-menu');
+    if (existingMenu) existingMenu.remove();
+    
+    // Create menu
+    const menu = document.createElement('div');
+    menu.className = 'share-menu';
+    menu.innerHTML = `
+        <div class="share-menu-header">
+            <span>${translations[currentLang].shareStory || 'Share Story'}</span>
+        </div>
+        
+        <button class="share-option" onclick="copyToClipboard('${khoborKiUrl}', this)">
+            <span>🔗</span>
+            <span>${translations[currentLang].copyLink || 'Copy Link'}</span>
+        </button>
+        
+        <button class="share-option" onclick="copyToClipboard(\`${shareText.replace(/`/g, '\\`').replace(/\n/g, '\\n')}\n\n${khoborKiUrl}\`, this)">
+            <span>📋</span>
+            <span>${translations[currentLang].copyAsText || 'Copy as Text'}</span>
+        </button>
+        
+        <a class="share-option" 
+           href="https://wa.me/?text=${encodeURIComponent(shareText + '\n\n' + khoborKiUrl)}"
+           target="_blank"
+           rel="noopener noreferrer">
+            <span>💬</span>
+            <span>WhatsApp</span>
+        </a>
+        
+        <a class="share-option" 
+           href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(khoborKiUrl)}"
+           target="_blank"
+           rel="noopener noreferrer">
+            <span>📘</span>
+            <span>Facebook</span>
+        </a>
+        
+        <a class="share-option" 
+           href="https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(khoborKiUrl)}"
+           target="_blank"
+           rel="noopener noreferrer">
+            <span>🐦</span>
+            <span>Twitter</span>
+        </a>
+        
+        <a class="share-option" 
+           href="mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(shareText + '\n\n' + khoborKiUrl)}"
+           rel="noopener noreferrer">
+            <span>📧</span>
+            <span>Email</span>
+        </a>
+    `;
+    
+    // Position menu
+    const button = event.currentTarget;
+    const rect = button.getBoundingClientRect();
+    menu.style.position = 'fixed';
+    menu.style.top = `${rect.bottom + 8}px`;
+    menu.style.left = `${rect.left}px`;
+    menu.style.zIndex = '1000';
+    
+    document.body.appendChild(menu);
+    
+    // Adjust if off-screen
+    const menuRect = menu.getBoundingClientRect();
+    if (menuRect.right > window.innerWidth) {
+        menu.style.left = `${rect.right - menuRect.width}px`;
+    }
+    if (menuRect.bottom > window.innerHeight) {
+        menu.style.top = `${rect.top - menuRect.height - 8}px`;
+    }
+    
+    // Close on outside click
+    setTimeout(() => {
+        document.addEventListener('click', function closeMenu(e) {
+            if (!menu.contains(e.target) && !button.contains(e.target)) {
+                menu.remove();
+                document.removeEventListener('click', closeMenu);
+            }
+        });
+    }, 0);
+}
+
+async function copyToClipboard(text, button) {
+    try {
+        await navigator.clipboard.writeText(text);
+        
+        // Visual feedback
+        const originalHTML = button.innerHTML;
+        button.innerHTML = '<span>✓</span><span>' + (translations[currentLang].copied || 'Copied!') + '</span>';
+        button.style.background = 'var(--accent-success-bg)';
+        button.style.color = 'var(--accent-success)';
+        
+        setTimeout(() => {
+            button.innerHTML = originalHTML;
+            button.style.background = '';
+            button.style.color = '';
+            document.querySelector('.share-menu')?.remove();
+        }, 1500);
+        
+    } catch (err) {
+        console.error('Failed to copy:', err);
+        alert(translations[currentLang].copyFailed || 'Failed to copy');
     }
 }
