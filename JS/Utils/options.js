@@ -225,6 +225,7 @@ const NEWS_SOURCES = {
             'The Daily Times Of Bangladesh',
             'Bangladesh Post',
             'The Good Morning',
+            'Barta Kontho',
             'The Register',
             'Zeteo',
             'Al Jazeera',
@@ -235,7 +236,7 @@ const NEWS_SOURCES = {
             'Gizmodo',
             'Independent',
             'RT News',
-            'Hindustan Times'
+            'Hindustan Times',
         ],
         en: [
             'Prothom Alo (English)',
@@ -255,6 +256,7 @@ const NEWS_SOURCES = {
             'The Daily Times Of Bangladesh',
             'Bangladesh Post',
             'The Good Morning',
+            'Barta Kontho',
             'The Register',
             'Zeteo',
             'Al Jazeera',
@@ -285,6 +287,7 @@ const NEWS_SOURCES = {
             'দ্য ডেইলি টাইমস অফ বাংলাদেশ',
             'দ্য বাংলাদেশ পোস্ট',
             'দ্য গুড মর্নিং ',
+            'বার্তা কণ্ঠ',
             'দ্য রেজিস্টার',
             'জেটিও',
             'আল জাজিরা',
