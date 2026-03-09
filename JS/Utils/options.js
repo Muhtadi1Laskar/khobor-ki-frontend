@@ -92,10 +92,10 @@ const translations = {
         hideArticles: 'নিবন্ধ লুকান',
         sources: 'উৎস',
         addedOn: 'যোগ করা হয়েছে',
-        trending: 'জনপ্রিয়',
+        trending: 'ট্রেন্ডিং খবর',
         clusters: 'ক্লাস্টার',
 
-        trending: 'জনপ্রিয়',
+        trending: 'ট্রেন্ডিং খবর',
         articles: 'নিবন্ধ',
         viewAllArticles: 'সব নিবন্ধ দেখুন',
         hideArticles: 'নিবন্ধ লুকান',
