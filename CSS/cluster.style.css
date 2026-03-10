@@ -952,3 +952,159 @@ body.dark-theme .diff-highlight {
     width: 24px;
     text-align: center;
 }
+
+
+/* ============================================
+   LOADING SKELETON
+   ============================================ */
+
+.skeleton-card {
+    pointer-events: none;
+    user-select: none;
+    opacity: 0;
+    animation: skeletonFadeIn 0.3s ease forwards;
+}
+
+@keyframes skeletonFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #e5e7eb 0%,
+        #d1d5db 50%,
+        #e5e7eb 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Skeleton elements */
+.skeleton-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.skeleton-title {
+    height: 20px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.skeleton-title-short {
+    height: 20px;
+    width: 70%;
+    margin-bottom: 12px;
+}
+
+.skeleton-stat {
+    height: 16px;
+    width: 100px;
+}
+
+.skeleton-text {
+    height: 14px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.skeleton-text-short {
+    height: 14px;
+    width: 65%;
+}
+
+.skeleton-chip {
+    height: 32px;
+    width: 140px;
+    border-radius: 16px;
+}
+
+.skeleton-article {
+    height: 60px;
+    width: 100%;
+    margin-bottom: 12px;
+    border-radius: 8px;
+}
+
+/* Skeleton sections */
+.skeleton-transparency {
+    padding: 16px 20px;
+    margin: 16px 20px;
+    background: #f3f4f6;
+    border-radius: 8px;
+}
+
+.skeleton-articles {
+    padding: 0 20px;
+    margin-top: 16px;
+}
+
+/* Dark theme adjustments */
+body.dark-theme .skeleton {
+    background: linear-gradient(
+        90deg,
+        #1e293b 0%,
+        #334155 50%,
+        #1e293b 100%
+    );
+    background-size: 200% 100%;
+}
+
+body.dark-theme .skeleton-transparency {
+    background: #0f172a;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .skeleton {
+        animation: none;
+        background: #d1d5db;
+        opacity: 0.6;
+    }
+    
+    body.dark-theme .skeleton {
+        background: #334155;
+    }
+    
+    .skeleton-card {
+        animation: none;
+        opacity: 1;
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .skeleton-title {
+        height: 18px;
+    }
+    
+    .skeleton-title-short {
+        height: 18px;
+        width: 80%;
+    }
+    
+    .skeleton-stat {
+        width: 80px;
+    }
+    
+    .skeleton-chip {
+        width: 110px;
+    }
+}

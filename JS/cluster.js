@@ -2,6 +2,49 @@
 let clusterLanguageFilter = 'BN'; // Default to Bangla clusters
 
 // Modified loadClusters function
+// async function loadClusters() {
+//     const container = document.getElementById('newsContainer');
+//     const pagination = document.getElementById('pagination');
+
+//     // Check if controls already exist
+//     const controlsExist = document.querySelector('.cluster-controls');
+
+//     // Only show loading in the cluster list area, not the whole container
+//     if (controlsExist) {
+//         const clusterList = document.querySelector('.cluster-list');
+//         if (clusterList) {
+//             clusterList.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
+//         }
+//     } else {
+//         container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
+//     }
+
+//     pagination.style.display = 'none';
+
+//     try {
+//         const CLUSTER_URL = `${API_BASE_URL}/cluster?language=${clusterLanguageFilter}`;
+//         const response = await fetch(CLUSTER_URL);
+
+//         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+//         const data = await response.json();
+//         renderClusters(data);
+
+//     } catch (error) {
+//         console.error('Error loading clusters:', error);
+//         container.innerHTML = `
+//             <div class="error">
+//                 <h3>${translations[currentLang].unableToLoad}</h3>
+//                 <p>${translations[currentLang].makeSureBackend}</p>
+//                 <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">Error: ${error.message}</p>
+//             </div>
+//         `;
+//     }
+// }
+
+
+
+// Modified loadClusters function
 async function loadClusters() {
     const container = document.getElementById('newsContainer');
     const pagination = document.getElementById('pagination');
@@ -9,14 +52,32 @@ async function loadClusters() {
     // Check if controls already exist
     const controlsExist = document.querySelector('.cluster-controls');
 
-    // Only show loading in the cluster list area, not the whole container
+    // Show skeleton instead of plain loading text
     if (controlsExist) {
         const clusterList = document.querySelector('.cluster-list');
         if (clusterList) {
-            clusterList.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
+            clusterList.innerHTML = renderClusterSkeleton(5); // ✅ Show 5 skeleton cards
         }
     } else {
-        container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
+        container.innerHTML = `
+            <div class="cluster-controls">
+                <div class="cluster-lang-toggle-container">
+                    <button class="cluster-lang-toggle ${clusterLanguageFilter === 'BN' ? 'bn-active' : 'en-active'}" 
+                            id="clusterLangToggle" 
+                            onclick="toggleClusterLanguage()">
+                        <span class="toggle-option bn-option">
+                            ${currentLang === 'en' ? 'Bangla Media' : 'বাংলা মিডিয়া'}
+                        </span>
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-option en-option">
+                            ${currentLang === 'en' ? 'English Media' : 'ইংরেজি মিডিয়া'}
+                        </span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="cluster-list">${renderClusterSkeleton(5)}</div>
+        `;
     }
 
     pagination.style.display = 'none';
@@ -42,6 +103,8 @@ async function loadClusters() {
     }
 }
 
+
+
 // Toggle cluster language filter
 function toggleClusterLanguage() {
     clusterLanguageFilter = clusterLanguageFilter === 'BN' ? 'EN' : 'BN';
@@ -63,6 +126,40 @@ function toggleClusterLanguage() {
 }
 
 // New function to reload only the cluster list
+// async function reloadClusterList() {
+//     const clusterList = document.querySelector('.cluster-list');
+//     if (!clusterList) {
+//         loadClusters(); // Fallback to full load if list doesn't exist
+//         return;
+//     }
+
+//     // Show loading in just the cluster list
+//     clusterList.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
+
+//     try {
+//         const response = await fetch(`${API_BASE_URL}/cluster?language=${clusterLanguageFilter}`);
+
+//         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+//         const data = await response.json();
+
+//         // Only update the cluster list HTML, not controls
+//         renderClusterListOnly(data);
+
+//     } catch (error) {
+//         console.error('Error loading clusters:', error);
+//         clusterList.innerHTML = `
+//             <div class="error">
+//                 <h3>${translations[currentLang].unableToLoad}</h3>
+//                 <p>${translations[currentLang].makeSureBackend}</p>
+//                 <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">Error: ${error.message}</p>
+//             </div>
+//         `;
+//     }
+// }
+
+
+// New function to reload only the cluster list
 async function reloadClusterList() {
     const clusterList = document.querySelector('.cluster-list');
     if (!clusterList) {
@@ -70,8 +167,8 @@ async function reloadClusterList() {
         return;
     }
 
-    // Show loading in just the cluster list
-    clusterList.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
+    // Show skeleton in just the cluster list
+    clusterList.innerHTML = renderClusterSkeleton(5); // ✅ Show skeleton
 
     try {
         const response = await fetch(`${API_BASE_URL}/cluster?language=${clusterLanguageFilter}`);
@@ -94,6 +191,48 @@ async function reloadClusterList() {
         `;
     }
 }
+
+
+// ============================================
+// SKELETON LOADING
+// ============================================
+
+function renderClusterSkeleton(count = 5) {
+    return Array(count).fill(0).map((_, index) => `
+        <div class="cluster-card skeleton-card" style="animation-delay: ${index * 0.1}s">
+            <div class="cluster-timeline-header">
+                <div class="skeleton skeleton-icon"></div>
+                <div class="cluster-header-content">
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-title-short"></div>
+                    <div class="cluster-stats">
+                        <div class="skeleton skeleton-stat"></div>
+                        <div class="skeleton skeleton-stat"></div>
+                        <div class="skeleton skeleton-stat"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skeleton-transparency">
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text-short"></div>
+            </div>
+            
+            <div class="cluster-sources-row">
+                <div class="skeleton skeleton-chip"></div>
+                <div class="skeleton skeleton-chip"></div>
+                <div class="skeleton skeleton-chip"></div>
+            </div>
+            
+            <div class="skeleton-articles">
+                <div class="skeleton skeleton-article"></div>
+                <div class="skeleton skeleton-article"></div>
+                <div class="skeleton skeleton-article"></div>
+            </div>
+        </div>
+    `).join('');
+}
+
 
 // Update the toggle button UI
 function updateClusterLanguageToggle() {
