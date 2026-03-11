@@ -276,17 +276,34 @@ body.dark-theme .cluster-card:hover {
 }
 
 .info-toggle {
-    background: transparent;
+    background: none;
     border: none;
     cursor: pointer;
-    padding: 4px;
-    font-size: 16px;
-    /* transition: transform 0.2s ease; */
-    color: var(--color-primary);
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
 }
 
-.info-toggle:hover {
-    transform: scale(1.1);
+@media (hover: hover) and (pointer: fine) {
+    .info-toggle:hover {
+        background: var(--bg-secondary);
+    }
+}
+
+.info-toggle:active {
+    opacity: 0.7;
+}
+
+.chevron-icon {
+    transition: transform 0.2s ease;
+    color: var(--accent-info);
+}
+
+/* Rotate chevron when expanded */
+.info-toggle.expanded .chevron-icon {
+    transform: rotate(180deg);
 }
 
 .transparency-interpretation {

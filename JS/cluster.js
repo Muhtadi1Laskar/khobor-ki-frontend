@@ -310,8 +310,14 @@ function renderClusterListOnly(clusters) {
                         <div class="transparency-card" data-sds="${cluster.biasTransparency.sourceDiversityScore}" data-nss="${cluster.biasTransparency.narrativeSpreadScore}">
                             <div class="transparency-header">
                                 <span class="transparency-title" data-lang-key="coverageAnalysis">${translations[currentLang].coverageAnalysis || 'Coverage Analysis'}</span>
-                                <button class="info-toggle" onclick="toggleTransparencyInfo('${cluster._id}')" title="${translations[currentLang].learnMore || 'Learn more'}" data-lang-key-title="learnMore">
-                                    <span class="info-icon-btn">ℹ️</span>
+                                <button class="info-toggle" 
+                                        onclick="toggleTransparencyInfo('${cluster._id}')" 
+                                        id="toggle-btn-${cluster._id}"
+                                        title="${translations[currentLang].showDetails || 'Show details'}" 
+                                        data-lang-key-title="showDetails">
+                                    <svg class="chevron-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
                                 </button>
                             </div>
                             
@@ -648,9 +654,22 @@ function getVisualIndicator(score, type, lang) {
 }
 
 // Toggle transparency info details
+// Toggle transparency info details
 function toggleTransparencyInfo(clusterId) {
     const details = document.getElementById(`transparency-details-${clusterId}`);
-    details.classList.toggle('show');
+    const button = document.getElementById(`toggle-btn-${clusterId}`);
+    
+    const isExpanded = details.classList.toggle('show');
+    
+    if (button) {
+        button.classList.toggle('expanded');
+        
+        // ✅ Update tooltip text
+        const newTitle = isExpanded 
+            ? translations[currentLang].hideDetails 
+            : translations[currentLang].showDetails;
+        button.setAttribute('title', newTitle);
+    }
 }
 
 // Helper function to get category icon

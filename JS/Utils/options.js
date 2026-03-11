@@ -70,6 +70,9 @@ const translations = {
         copyAsText: 'Copy as Text',
         copied: 'Copied!',
         copyFailed: 'Failed to copy',
+
+        showDetails: 'Show details',
+        hideDetails: 'Hide details',
     },
     bn: {
         all: 'সব',
@@ -136,6 +139,9 @@ const translations = {
         copyAsText: 'টেক্সট কপি করুন',
         copied: 'কপি হয়েছে!',
         copyFailed: 'কপি করা যায়নি',
+
+        showDetails: 'বিস্তারিত দেখুন',
+        hideDetails: 'লুকান',
     }
 };
 
