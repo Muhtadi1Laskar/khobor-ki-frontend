@@ -48,15 +48,18 @@ let clusterLanguageFilter = 'BN'; // Default to Bangla clusters
 async function loadClusters() {
     const container = document.getElementById('newsContainer');
     const pagination = document.getElementById('pagination');
-
-    // Check if controls already exist
     const controlsExist = document.querySelector('.cluster-controls');
 
-    // Show skeleton instead of plain loading text
+    let skeletonTimeout = null;
+    const SKELETON_DELAY = 300; // Show skeleton only after 300ms
+    
     if (controlsExist) {
         const clusterList = document.querySelector('.cluster-list');
         if (clusterList) {
-            clusterList.innerHTML = renderClusterSkeleton(5); // ✅ Show 5 skeleton cards
+            // ✅ Delayed skeleton: only show if loading takes > 300ms
+            skeletonTimeout = setTimeout(() => {
+                clusterList.innerHTML = renderClusterSkeleton(3); // 3 cards instead of 5
+            }, SKELETON_DELAY);
         }
     } else {
         container.innerHTML = `
@@ -75,9 +78,16 @@ async function loadClusters() {
                     </button>
                 </div>
             </div>
-            
-            <div class="cluster-list">${renderClusterSkeleton(5)}</div>
+            <div class="cluster-list"></div>
         `;
+        
+        // ✅ Delayed skeleton for initial load too
+        const clusterList = document.querySelector('.cluster-list');
+        skeletonTimeout = setTimeout(() => {
+            if (clusterList) {
+                clusterList.innerHTML = renderClusterSkeleton(3);
+            }
+        }, SKELETON_DELAY);
     }
 
     pagination.style.display = 'none';
@@ -89,9 +99,14 @@ async function loadClusters() {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data = await response.json();
+        
+        // ✅ Clear skeleton timeout - data arrived
+        clearTimeout(skeletonTimeout);
+        
         renderClusters(data);
 
     } catch (error) {
+        clearTimeout(skeletonTimeout);
         console.error('Error loading clusters:', error);
         container.innerHTML = `
             <div class="error">
@@ -163,12 +178,16 @@ function toggleClusterLanguage() {
 async function reloadClusterList() {
     const clusterList = document.querySelector('.cluster-list');
     if (!clusterList) {
-        loadClusters(); // Fallback to full load if list doesn't exist
+        loadClusters();
         return;
     }
 
-    // Show skeleton in just the cluster list
-    clusterList.innerHTML = renderClusterSkeleton(5); // ✅ Show skeleton
+    const SKELETON_DELAY = 300;
+    
+    // ✅ Delayed skeleton
+    const skeletonTimeout = setTimeout(() => {
+        clusterList.innerHTML = renderClusterSkeleton(3); // 3 cards
+    }, SKELETON_DELAY);
 
     try {
         const response = await fetch(`${API_BASE_URL}/cluster?language=${clusterLanguageFilter}`);
@@ -176,11 +195,14 @@ async function reloadClusterList() {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data = await response.json();
-
-        // Only update the cluster list HTML, not controls
+        
+        // ✅ Clear skeleton timeout
+        clearTimeout(skeletonTimeout);
+        
         renderClusterListOnly(data);
 
     } catch (error) {
+        clearTimeout(skeletonTimeout);
         console.error('Error loading clusters:', error);
         clusterList.innerHTML = `
             <div class="error">
