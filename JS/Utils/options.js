@@ -172,7 +172,8 @@ const NEWS_SOURCES = {
             'Asian Tv Online',
             'Boishakhi Online',
             'khaborwala',
-            'Bangla Tribune'
+            'Bangla Tribune',
+            'Just News BD (Bangla)'
         ],
         en: [
             'Prothom Alo',
@@ -198,7 +199,8 @@ const NEWS_SOURCES = {
             'Asian Tv Online',
             'Boishakhi Online',
             'khaborwala',
-            'Bangla Tribune'
+            'Bangla Tribune',
+            'Just News BD (Bangla)'
         ],
         bn: [
             'প্রথম আলো',
@@ -224,7 +226,8 @@ const NEWS_SOURCES = {
             'এশিয়ান টিভি অনলাইন',
             'বৈশাখী অনলাইন',
             'খবরওয়ালা',
-            'বাংলা ট্রিবিউন'
+            'বাংলা ট্রিবিউন',
+            'জাস্ট নিউজ বিডি (বাংলা)'
         ]
     },
     english: {
@@ -260,6 +263,7 @@ const NEWS_SOURCES = {
             'Independent',
             'RT News',
             'Hindustan Times',
+            'Just News BD (English)'
         ],
         en: [
             'Prothom Alo (English)',
@@ -292,7 +296,8 @@ const NEWS_SOURCES = {
             'Gizmodo',
             'Independent',
             'RT News',
-            'Hindustan Times'
+            'Hindustan Times',
+            'Just News BD (English)'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -325,7 +330,8 @@ const NEWS_SOURCES = {
             'গিজমোডো',
             'Independent',
             'আরটি নিউজ',
-            'হিন্দুস্তান টাইমস'
+            'হিন্দুস্তান টাইমস',
+            'জাস্ট নিউজ বিডি (ইংরেজি)'
         ]
     }
 };
