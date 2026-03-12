@@ -173,7 +173,8 @@ const NEWS_SOURCES = {
             'Boishakhi Online',
             'khaborwala',
             'Bangla Tribune',
-            'Just News BD (Bangla)'
+            'Just News BD (Bangla)',
+            'Daily Janakantha'
         ],
         en: [
             'Prothom Alo',
@@ -200,7 +201,8 @@ const NEWS_SOURCES = {
             'Boishakhi Online',
             'khaborwala',
             'Bangla Tribune',
-            'Just News BD (Bangla)'
+            'Just News BD (Bangla)',
+            'Daily Janakantha'
         ],
         bn: [
             'প্রথম আলো',
@@ -227,7 +229,8 @@ const NEWS_SOURCES = {
             'বৈশাখী অনলাইন',
             'খবরওয়ালা',
             'বাংলা ট্রিবিউন',
-            'জাস্ট নিউজ বিডি (বাংলা)'
+            'জাস্ট নিউজ বিডি (বাংলা)',
+            'দৈনিক জনকণ্ঠ'
         ]
     },
     english: {
