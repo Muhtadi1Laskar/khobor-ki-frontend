@@ -64,6 +64,54 @@ function buildApiUrl(category, page, limit, sources) {
 }
 
 // Load news from API
+// async function loadNews() {
+//     const container = document.getElementById('newsContainer');
+//     const pagination = document.getElementById('pagination');
+//     const loadingScreen = document.getElementById('loadingScreen');
+//     const loadingMessage = document.getElementById('loadingText');
+//     const savedLanguage = localStorage.getItem("language");
+
+//     container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
+
+//     if (loadingScreen) {
+//         loadingScreen.display = "none";
+//         if (savedLanguage == "en") {
+//             loadingMessage.innerText = `${translations["en"]["tagline"]}`;
+//         }
+//     }
+
+//     pagination.style.display = 'none';
+
+//     try {
+//         const url = buildApiUrl(currentCategory, currentPage, ITEMS_PER_PAGE, selectedSources);
+//         const response = await fetch(url);
+
+//         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+//         const data = await response.json();
+//         newsData = data;
+//         renderNews(data);
+//         updatePagination(data);
+
+//     } catch (error) {
+//         console.error('Error loading news:', error);
+//         container.innerHTML = `
+//                 <div class="error">
+//                     <h3>${translations[currentLang].unableToLoad}</h3>
+//                     <p>${translations[currentLang].makeSureBackend}</p>
+//                     <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">Error: ${error.message}</p>
+//                 </div>
+//             `;
+//     } finally {
+//         if (loadingScreen) {
+//             setTimeout(() => {
+//                 loadingScreen.classList.add("hidden");
+//             }, 300);
+//         }
+//     }
+// }
+
+
 async function loadNews() {
     const container = document.getElementById('newsContainer');
     const pagination = document.getElementById('pagination');
@@ -71,10 +119,15 @@ async function loadNews() {
     const loadingMessage = document.getElementById('loadingText');
     const savedLanguage = localStorage.getItem("language");
 
-    container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
+    const SKELETON_DELAY = 300; // Show skeleton after 300ms delay
+    
+    // ✅ Delayed skeleton approach
+    let skeletonTimeout = setTimeout(() => {
+        container.innerHTML = renderNewsSkeleton(12); // Show 12 skeleton cards
+    }, SKELETON_DELAY);
 
     if (loadingScreen) {
-        loadingScreen.display = "none";
+        loadingScreen.style.display = "none";
         if (savedLanguage == "en") {
             loadingMessage.innerText = `${translations["en"]["tagline"]}`;
         }
@@ -89,19 +142,24 @@ async function loadNews() {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data = await response.json();
+        
+        // ✅ Clear skeleton timeout - data arrived
+        clearTimeout(skeletonTimeout);
+        
         newsData = data;
         renderNews(data);
         updatePagination(data);
 
     } catch (error) {
+        clearTimeout(skeletonTimeout);
         console.error('Error loading news:', error);
         container.innerHTML = `
-                <div class="error">
-                    <h3>${translations[currentLang].unableToLoad}</h3>
-                    <p>${translations[currentLang].makeSureBackend}</p>
-                    <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">Error: ${error.message}</p>
-                </div>
-            `;
+            <div class="error">
+                <h3>${translations[currentLang].unableToLoad}</h3>
+                <p>${translations[currentLang].makeSureBackend}</p>
+                <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">Error: ${error.message}</p>
+            </div>
+        `;
     } finally {
         if (loadingScreen) {
             setTimeout(() => {
@@ -110,6 +168,51 @@ async function loadNews() {
         }
     }
 }
+
+// ============================================
+// NEWS SKELETON LOADER
+// ============================================
+
+function renderNewsSkeleton(count) {
+    count = count || 12; // Default to 12 cards
+    
+    let skeletonCards = '';
+    
+    for (let i = 0; i < count; i++) {
+        skeletonCards += `
+            <div class="news-item skeleton-news-item" style="animation-delay: ${i * 0.03}s">
+                <div class="news-card-header">
+                    <div class="skeleton skeleton-favicon"></div>
+                    <div class="news-card-meta">
+                        <div class="skeleton skeleton-source-name"></div>
+                    </div>
+                    <div class="skeleton skeleton-badge"></div>
+                </div>
+                
+                <div class="news-content">
+                    <div class="skeleton-title-wrapper">
+                        <div class="skeleton skeleton-title-line"></div>
+                        <div class="skeleton skeleton-title-line"></div>
+                        <div class="skeleton skeleton-title-line-short"></div>
+                    </div>
+                    
+                    <div class="skeleton-excerpt-wrapper">
+                        <div class="skeleton skeleton-excerpt-line"></div>
+                        <div class="skeleton skeleton-excerpt-line"></div>
+                    </div>
+                    
+                    <div class="news-footer">
+                        <div class="skeleton skeleton-date"></div>
+                        <div class="skeleton skeleton-category-badge"></div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    return `<div class="news-list">${skeletonCards}</div>`;
+}
+
 
 // Render news items
 function renderNews(data) {
