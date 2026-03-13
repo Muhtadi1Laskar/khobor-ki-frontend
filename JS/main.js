@@ -126,6 +126,10 @@ async function loadNews() {
         container.innerHTML = renderNewsSkeleton(12); // Show 12 skeleton cards
     }, SKELETON_DELAY);
 
+    if (savedLanguage == "en") {
+            loadingMessage.innerText = `${translations["en"]["tagline"]}`;
+        }
+
     // if (loadingScreen) {
     //     loadingScreen.style.display = "none";
     //     if (savedLanguage == "en") {
