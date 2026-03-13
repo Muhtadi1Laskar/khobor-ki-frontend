@@ -119,19 +119,19 @@ async function loadNews() {
     const loadingMessage = document.getElementById('loadingText');
     const savedLanguage = localStorage.getItem("language");
 
-    const SKELETON_DELAY = 300; // Show skeleton after 300ms delay
+    const SKELETON_DELAY = 100; // Show skeleton after 300ms delay
     
     // ✅ Delayed skeleton approach
     let skeletonTimeout = setTimeout(() => {
         container.innerHTML = renderNewsSkeleton(12); // Show 12 skeleton cards
     }, SKELETON_DELAY);
 
-    if (loadingScreen) {
-        loadingScreen.style.display = "none";
-        if (savedLanguage == "en") {
-            loadingMessage.innerText = `${translations["en"]["tagline"]}`;
-        }
-    }
+    // if (loadingScreen) {
+    //     loadingScreen.style.display = "none";
+    //     if (savedLanguage == "en") {
+    //         loadingMessage.innerText = `${translations["en"]["tagline"]}`;
+    //     }
+    // }
 
     pagination.style.display = 'none';
 
