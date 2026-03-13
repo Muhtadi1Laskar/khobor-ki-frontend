@@ -182,7 +182,7 @@ async function reloadClusterList() {
         return;
     }
 
-    const SKELETON_DELAY = 300;
+    const SKELETON_DELAY = 100;
     
     // ✅ Delayed skeleton
     const skeletonTimeout = setTimeout(() => {
