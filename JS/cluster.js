@@ -1,50 +1,7 @@
-// Add this state variable at the top
-let clusterLanguageFilter = 'BN'; // Default to Bangla clusters
 
-// Modified loadClusters function
-// async function loadClusters() {
-//     const container = document.getElementById('newsContainer');
-//     const pagination = document.getElementById('pagination');
+let clusterLanguageFilter = 'BN'; 
 
-//     // Check if controls already exist
-//     const controlsExist = document.querySelector('.cluster-controls');
-
-//     // Only show loading in the cluster list area, not the whole container
-//     if (controlsExist) {
-//         const clusterList = document.querySelector('.cluster-list');
-//         if (clusterList) {
-//             clusterList.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
-//         }
-//     } else {
-//         container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
-//     }
-
-//     pagination.style.display = 'none';
-
-//     try {
-//         const CLUSTER_URL = `${API_BASE_URL}/cluster?language=${clusterLanguageFilter}`;
-//         const response = await fetch(CLUSTER_URL);
-
-//         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-//         const data = await response.json();
-//         renderClusters(data);
-
-//     } catch (error) {
-//         console.error('Error loading clusters:', error);
-//         container.innerHTML = `
-//             <div class="error">
-//                 <h3>${translations[currentLang].unableToLoad}</h3>
-//                 <p>${translations[currentLang].makeSureBackend}</p>
-//                 <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">Error: ${error.message}</p>
-//             </div>
-//         `;
-//     }
-// }
-
-
-
-// Modified loadClusters function
+// Loads the clusters
 async function loadClusters() {
     const container = document.getElementById('newsContainer');
     const pagination = document.getElementById('pagination');
@@ -140,38 +97,7 @@ function toggleClusterLanguage() {
     reloadClusterList();
 }
 
-// New function to reload only the cluster list
-// async function reloadClusterList() {
-//     const clusterList = document.querySelector('.cluster-list');
-//     if (!clusterList) {
-//         loadClusters(); // Fallback to full load if list doesn't exist
-//         return;
-//     }
 
-//     // Show loading in just the cluster list
-//     clusterList.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
-
-//     try {
-//         const response = await fetch(`${API_BASE_URL}/cluster?language=${clusterLanguageFilter}`);
-
-//         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-//         const data = await response.json();
-
-//         // Only update the cluster list HTML, not controls
-//         renderClusterListOnly(data);
-
-//     } catch (error) {
-//         console.error('Error loading clusters:', error);
-//         clusterList.innerHTML = `
-//             <div class="error">
-//                 <h3>${translations[currentLang].unableToLoad}</h3>
-//                 <p>${translations[currentLang].makeSureBackend}</p>
-//                 <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">Error: ${error.message}</p>
-//             </div>
-//         `;
-//     }
-// }
 
 
 // New function to reload only the cluster list
