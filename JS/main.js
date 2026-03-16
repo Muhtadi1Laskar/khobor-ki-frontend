@@ -123,7 +123,7 @@ async function loadNews() {
     
     // ✅ Delayed skeleton approach
     let skeletonTimeout = setTimeout(() => {
-        container.innerHTML = renderNewsSkeleton(12); // Show 12 skeleton cards
+        container.innerHTML = renderNewsSkeleton(35); // Show 12 skeleton cards
     }, SKELETON_DELAY);
 
     if (savedLanguage == "en") {
