@@ -266,7 +266,8 @@ const NEWS_SOURCES = {
             'Independent',
             'RT News',
             'Hindustan Times',
-            'Just News BD (English)'
+            'Just News BD (English)',
+            'CNBC'
         ],
         en: [
             'Prothom Alo (English)',
@@ -300,7 +301,8 @@ const NEWS_SOURCES = {
             'Independent',
             'RT News',
             'Hindustan Times',
-            'Just News BD (English)'
+            'Just News BD (English)',
+            'CNBC'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -334,7 +336,8 @@ const NEWS_SOURCES = {
             'Independent',
             'আরটি নিউজ',
             'হিন্দুস্তান টাইমস',
-            'জাস্ট নিউজ বিডি (ইংরেজি)'
+            'জাস্ট নিউজ বিডি (ইংরেজি)',
+            'সিএনবিসি'
         ]
     }
 };
