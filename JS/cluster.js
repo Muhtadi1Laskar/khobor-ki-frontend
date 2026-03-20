@@ -337,7 +337,7 @@ function renderClusterListOnly(clusters) {
                             </div>
                             
                             <!-- Toggle button -->
-                            <button class="source-chip more-sources-btn" 
+                            <button class="more-sources-btn" 
                                     onclick="toggleMoreSources('${cluster._id}')" 
                                     id="more-btn-${cluster._id}"
                                     data-more-count="${Object.entries(cluster.sources).length - 3}">

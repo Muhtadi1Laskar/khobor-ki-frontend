@@ -1127,7 +1127,7 @@ body.dark-theme .skeleton-transparency {
 }
 
 
-/* Source chip with favicon */
+/* Source chips - Mobile friendly with truncation */
 .source-chip {
     display: inline-flex;
     align-items: center;
@@ -1138,7 +1138,8 @@ body.dark-theme .skeleton-transparency {
     border-radius: 16px;
     font-size: 13px;
     font-weight: 500;
-    white-space: nowrap;
+    max-width: 100%;
+    min-width: 0;
 }
 
 .source-chip-favicon {
@@ -1151,18 +1152,110 @@ body.dark-theme .skeleton-transparency {
 
 .source-chip-name {
     color: var(--text-main);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .source-chip .count {
     color: var(--text-muted);
     font-size: 12px;
     font-weight: 600;
+    flex-shrink: 0;
 }
 
-/* Make sure existing chip styles are preserved */
+/* ✅ "More Sources" button - separate styling */
+.more-sources-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--color-primary-light);
+    border: 1px solid var(--color-primary);
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    white-space: nowrap; /* ✅ Keep button text on one line */
+    flex-shrink: 0; /* ✅ Don't shrink the button */
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .more-sources-btn:hover {
+        background: var(--color-primary);
+        color: white;
+    }
+}
+
+.more-sources-btn.expanded {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-main);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .more-sources-btn.expanded:hover {
+        background: var(--bg-card);
+        border-color: var(--color-primary);
+    }
+}
+
+.more-icon {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.more-text {
+    white-space: nowrap;
+}
+
+/* Mobile adjustments for source chips */
+@media (max-width: 768px) {
+    .source-chip {
+        font-size: 12px;
+        padding: 5px 10px;
+        gap: 5px;
+        max-width: calc(50% - 3px); /* ✅ Two chips per row max */
+    }
+    
+    .source-chip-favicon {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .source-chip .count {
+        font-size: 11px;
+    }
+    
+    /* ✅ More button stays full width on mobile */
+    .more-sources-btn {
+        font-size: 12px;
+        padding: 5px 10px;
+        gap: 5px;
+        max-width: 100%; /* ✅ Full width on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .source-chip {
+        max-width: 100%; /* ✅ One chip per row on very small screens */
+    }
+}
+
+/* Cluster sources row */
 .cluster-sources-row {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin: 16px 20px;
+}
+
+@media (max-width: 768px) {
+    .cluster-sources-row {
+        gap: 7px;
+        margin: 12px 16px;
+    }
 }
