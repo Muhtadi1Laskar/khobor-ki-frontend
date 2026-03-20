@@ -1275,8 +1275,8 @@ body.dark-theme .skeleton-transparency {
     align-items: center;
     gap: 6px;
     padding: 6px 12px;
-    background: var(--bg-input);
-    /* background: var(--bg-card); */
+    /* background: var(--bg-input); */
+    background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 10px;
     font-size: 13px;
