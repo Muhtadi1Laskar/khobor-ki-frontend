@@ -1,14 +1,63 @@
-// Load source filter checkboxes
 function loadSourceFilters() {
     const grid = document.getElementById('sourceGrid');
     const sources = NEWS_SOURCES[currentSourceLang];
 
-    grid.innerHTML = sources.api.map((apiName, index) => `
-                <div class="source-checkbox">
-                    <input type="checkbox" id="source-${currentSourceLang}-${index}" value="${apiName}" data-source-lang="${currentSourceLang}" data-source-index="${index}">
-                    <label for="source-${currentSourceLang}-${index}">${sources[currentLang][index]}</label>
-                </div>
-            `).join('');
+    grid.innerHTML = sources.api.map((apiName, index) => {
+        const domain = getSourceDomain(apiName);
+        const displayName = sources[currentLang][index];
+
+        return `
+            <div class="source-checkbox">
+                <input type="checkbox" 
+                       id="source-${currentSourceLang}-${index}" 
+                       value="${apiName}" 
+                       data-source-lang="${currentSourceLang}" 
+                       data-source-index="${index}"
+                       data-source-name="${apiName}">
+                <label for="source-${currentSourceLang}-${index}">
+                    ${domain ? `
+                        <img src="https://www.google.com/s2/favicons?domain=${domain}&sz=32" 
+                             alt="${displayName}" 
+                             class="source-filter-favicon">
+                    ` : `
+                        <span class="source-filter-placeholder">📰</span>
+                    `}
+                    <span class="source-name" data-lang-update="source-${currentSourceLang}-${index}">
+                        ${displayName}
+                    </span>
+                </label>
+            </div>
+        `;
+    }).join('');
+}
+
+
+function updateSourceFilterLanguage() {
+    const sources = NEWS_SOURCES[currentSourceLang];
+
+    sources.api.forEach((apiName, index) => {
+        const displayName = sources[currentLang][index];
+        const labelElement = document.querySelector(`label[for="source-${currentSourceLang}-${index}"] .source-name`);
+
+        if (labelElement) {
+            labelElement.textContent = displayName;
+        }
+    })
+
+}
+
+// ✅ Helper function to get domain from SOURCES_LINK
+function getSourceDomain(apiName) {
+    try {
+        if (SOURCES_LINK[apiName]) {
+            const url = new URL(SOURCES_LINK[apiName]);
+            return url.hostname;
+        }
+        return '';
+    } catch (error) {
+        console.error('Invalid URL for source:', apiName);
+        return '';
+    }
 }
 
 

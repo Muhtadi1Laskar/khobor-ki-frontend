@@ -63,54 +63,6 @@ function buildApiUrl(category, page, limit, sources) {
     return `${url}?${params.toString()}`;
 }
 
-// Load news from API
-// async function loadNews() {
-//     const container = document.getElementById('newsContainer');
-//     const pagination = document.getElementById('pagination');
-//     const loadingScreen = document.getElementById('loadingScreen');
-//     const loadingMessage = document.getElementById('loadingText');
-//     const savedLanguage = localStorage.getItem("language");
-
-//     container.innerHTML = `<div class="loading">${translations[currentLang].loadingNews}</div>`;
-
-//     if (loadingScreen) {
-//         loadingScreen.display = "none";
-//         if (savedLanguage == "en") {
-//             loadingMessage.innerText = `${translations["en"]["tagline"]}`;
-//         }
-//     }
-
-//     pagination.style.display = 'none';
-
-//     try {
-//         const url = buildApiUrl(currentCategory, currentPage, ITEMS_PER_PAGE, selectedSources);
-//         const response = await fetch(url);
-
-//         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-//         const data = await response.json();
-//         newsData = data;
-//         renderNews(data);
-//         updatePagination(data);
-
-//     } catch (error) {
-//         console.error('Error loading news:', error);
-//         container.innerHTML = `
-//                 <div class="error">
-//                     <h3>${translations[currentLang].unableToLoad}</h3>
-//                     <p>${translations[currentLang].makeSureBackend}</p>
-//                     <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">Error: ${error.message}</p>
-//                 </div>
-//             `;
-//     } finally {
-//         if (loadingScreen) {
-//             setTimeout(() => {
-//                 loadingScreen.classList.add("hidden");
-//             }, 300);
-//         }
-//     }
-// }
-
 
 async function loadNews() {
     const container = document.getElementById('newsContainer');
@@ -130,12 +82,6 @@ async function loadNews() {
             loadingMessage.innerText = `${translations["en"]["tagline"]}`;
         }
 
-    // if (loadingScreen) {
-    //     loadingScreen.style.display = "none";
-    //     if (savedLanguage == "en") {
-    //         loadingMessage.innerText = `${translations["en"]["tagline"]}`;
-    //     }
-    // }
 
     pagination.style.display = 'none';
 

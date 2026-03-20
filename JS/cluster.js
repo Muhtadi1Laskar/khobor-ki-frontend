@@ -300,20 +300,40 @@ function renderClusterListOnly(clusters) {
                     ` : ''}
                     
                     <div class="cluster-sources-row" id="sources-${cluster._id}">
-                        ${Object.entries(cluster.sources).slice(0, 3).map(([source, count]) => `
-                            <div class="source-chip">
-                                ${escapeHtml(source)}<span class="count">(${count})</span>
-                            </div>
-                        `).join('')}
+                        ${Object.entries(cluster.sources).slice(0, 3).map(([source, count]) => {
+                            const domain = SOURCES_LINK[source];
+                            return `
+                                <div class="source-chip">
+                                    ${domain ? `
+                                        <img src="https://www.google.com/s2/favicons?domain=${domain}&sz=32" 
+                                            alt="" 
+                                            class="source-chip-favicon"
+                                            onerror="this.style.display='none'">
+                                    ` : ''}
+                                    <span class="source-chip-name">${escapeHtml(source)}</span>
+                                    <span class="count">(${count})</span>
+                                </div>
+                            `;
+                        }).join('')}
                         
                         ${Object.entries(cluster.sources).length > 3 ? `
                             <!-- Hidden sources -->
                             <div class="hidden-sources" id="hidden-sources-${cluster._id}" style="display: none;">
-                                ${Object.entries(cluster.sources).slice(3).map(([source, count]) => `
-                                    <div class="source-chip">
-                                        ${escapeHtml(source)}<span class="count">(${count})</span>
-                                    </div>
-                                `).join('')}
+                                ${Object.entries(cluster.sources).slice(3).map(([source, count]) => {
+                                    const domain = SOURCES_LINK[source];
+                                    return `
+                                        <div class="source-chip">
+                                            ${domain ? `
+                                                <img src="https://www.google.com/s2/favicons?domain=${domain}&sz=32" 
+                                                    alt="" 
+                                                    class="source-chip-favicon"
+                                                    onerror="this.style.display='none'">
+                                            ` : ''}
+                                            <span class="source-chip-name">${escapeHtml(source)}</span>
+                                            <span class="count">(${count})</span>
+                                        </div>
+                                    `;
+                                }).join('')}
                             </div>
                             
                             <!-- Toggle button -->
