@@ -27,56 +27,58 @@ function updateClusterLanguage() {
 }
 
 
-function updateLanguage() {
-    const icon = document.getElementById('langIcon');
-    icon.textContent = currentLang === 'en' ? '🇧🇩' : '🇬🇧';
-    localStorage.setItem('language', currentLang);
-
-    document.querySelectorAll('[data-lang-key]').forEach(element => {
-        const key = element.getAttribute('data-lang-key');
-        if (translations[currentLang][key]) {
-            element.textContent = translations[currentLang][key];
-        }
-    });
-
-    updatePageInfo();
-
-    updateSourceFilterLanguage();
-}
 // function updateLanguage() {
-//     // Update all elements with data-lang-key
+//     const icon = document.getElementById('langIcon');
+//     icon.textContent = currentLang === 'en' ? '🇧🇩' : '🇬🇧';
+//     localStorage.setItem('language', currentLang);
+
 //     document.querySelectorAll('[data-lang-key]').forEach(element => {
 //         const key = element.getAttribute('data-lang-key');
 //         if (translations[currentLang][key]) {
 //             element.textContent = translations[currentLang][key];
 //         }
 //     });
-    
-//     // Update language toggle icon
-//     const langIcon = document.getElementById('langIcon');
-//     if (langIcon) {
-//         langIcon.textContent = currentLang === 'en' ? '🇧🇩' : '🇬🇧';
-//     }
-    
-//     // Update source filter button labels
-//     const banglaBtn = document.querySelector('.source-lang-btn[onclick*="bangla"]');
-//     const englishBtn = document.querySelector('.source-lang-btn[onclick*="english"]');
-    
-//     if (banglaBtn) {
-//         banglaBtn.textContent = translations[currentLang].banglaSources;
-//     }
-//     if (englishBtn) {
-//         englishBtn.textContent = translations[currentLang].englishSources;
-//     }
-    
-//     // ✅ Update source filter labels (without reloading HTML)
+
+//     updatePageInfo();
+
 //     updateSourceFilterLanguage();
-    
-//     // Update cluster language if on clusters tab
-//     if (currentCategory === 'clusters') {
-//         updateClusterLanguage();
-//     }
 // }
+
+function updateLanguage() {
+    // Update all elements with data-lang-key
+    document.querySelectorAll('[data-lang-key]').forEach(element => {
+        const key = element.getAttribute('data-lang-key');
+        if (translations[currentLang][key]) {
+            element.textContent = translations[currentLang][key];
+        }
+    });
+    
+    // Update language toggle icon
+    const langIcon = document.getElementById('langIcon');
+    if (langIcon) {
+        langIcon.textContent = currentLang === 'en' ? '🇧🇩' : '🇬🇧';
+        localStorage.setItem('language', currentLang);
+    }
+    
+    // Update source filter button labels
+    const banglaBtn = document.querySelector('.source-lang-btn[onclick*="bangla"]');
+    const englishBtn = document.querySelector('.source-lang-btn[onclick*="english"]');
+    
+    if (banglaBtn) {
+        banglaBtn.textContent = translations[currentLang].banglaSources;
+    }
+    if (englishBtn) {
+        englishBtn.textContent = translations[currentLang].englishSources;
+    }
+    
+    // ✅ Update source filter labels (without reloading HTML)
+    updateSourceFilterLanguage();
+    
+    // Update cluster language if on clusters tab
+    if (currentCategory === 'clusters') {
+        updateClusterLanguage();
+    }
+}
 
 // Update page info text
 function updatePageInfo() {
