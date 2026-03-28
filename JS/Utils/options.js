@@ -275,7 +275,8 @@ const NEWS_SOURCES = {
             'RT News',
             'Hindustan Times',
             'Just News BD (English)',
-            'CNBC'
+            'CNBC',
+            'Washington Post'
         ],
         en: [
             'Prothom Alo (English)',
@@ -309,7 +310,8 @@ const NEWS_SOURCES = {
             'RT News',
             'Hindustan Times',
             'Just News BD (English)',
-            'CNBC'
+            'CNBC',
+            'Washington Post'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -343,7 +345,8 @@ const NEWS_SOURCES = {
             'আরটি নিউজ',
             'হিন্দুস্তান টাইমস',
             'জাস্ট নিউজ বিডি (ইংরেজি)',
-            'সিএনবিসি'
+            'সিএনবিসি',
+            'ওয়াশিংটন পোস্ট'
         ]
     }
 };
@@ -410,5 +413,6 @@ const SOURCES_LINK = {
     'RT News': 'https://www.rt.com/',
     'Hindustan Times': 'https://www.hindustantimes.com/',
     'Just News BD (English)': 'https://www.justnewsbd.com/en',
-    'CNBC': 'https://www.cnbc.com/world/'
+    'CNBC': 'https://www.cnbc.com/world/',
+    'Washington Post': 'https://www.washingtonpost.com/'
 }
