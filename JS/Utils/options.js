@@ -277,7 +277,8 @@ const NEWS_SOURCES = {
             'Just News BD (English)',
             'CNBC',
             'Washington Post',
-            'Mint'
+            'Mint',
+            'South China Morning Post'
         ],
         en: [
             'Prothom Alo (English)',
@@ -313,7 +314,8 @@ const NEWS_SOURCES = {
             'Just News BD (English)',
             'CNBC',
             'Washington Post',
-            'Mint'
+            'Mint',
+            'South China Morning Post'
         ],
         bn: [
             'প্রথম আলো (ইংরেজি)',
@@ -349,7 +351,8 @@ const NEWS_SOURCES = {
             'জাস্ট নিউজ বিডি (ইংরেজি)',
             'সিএনবিসি',
             'ওয়াশিংটন পোস্ট',
-            'মিন্ট'
+            'মিন্ট',
+            'সাউথ চায়না মর্নিং পোস্ট'
         ]
     }
 };
@@ -418,5 +421,6 @@ const SOURCES_LINK = {
     'Just News BD (English)': 'https://www.justnewsbd.com/en',
     'CNBC': 'https://www.cnbc.com/world/',
     'Washington Post': 'https://www.washingtonpost.com/',
-    'Mint': 'https://www.livemint.com/rss/news'
+    'Mint': 'https://www.livemint.com/rss/news',
+    'South China Morning Post': 'https://www.scmp.com/'
 }
