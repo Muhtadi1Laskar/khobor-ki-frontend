@@ -33,7 +33,7 @@
             </div>
         </div>
         <!-- Navigation Bar -->
-        <!-- <nav class="navbar">
+        <nav class="navbar">
             <div class="navbar-content">
                 <a href="#" class="logo">Khobor Ki?</a>
                 <div class="nav-tabs">
@@ -55,75 +55,7 @@
                     <span id="langIcon">🇧🇩</span>
                 </button>
             </div>
-        </nav> -->
-
-        <!-- Mobile Bottom Navigation (only visible on mobile) -->
-        <nav class="mobile-bottom-nav">
-            <a href="#" class="bottom-nav-item active" data-category="all" onclick="handleBottomNavClick(event, 'all')">
-                <span class="nav-icon">📰</span>
-                <span class="nav-label" data-lang-key="all">All</span>
-            </a>
-            <a href="#" class="bottom-nav-item" data-category="clusters"
-                onclick="handleBottomNavClick(event, 'clusters')">
-                <span class="nav-icon">🔥</span>
-                <span class="nav-label" data-lang-key="trending">Trending</span>
-            </a>
-            <a href="#" class="bottom-nav-item" data-category="national"
-                onclick="handleBottomNavClick(event, 'national')">
-                <span class="nav-icon">🏛️</span>
-                <span class="nav-label" data-lang-key="national">National</span>
-            </a>
-            <!-- <a href="#" class="bottom-nav-item" data-category="sports" onclick="handleBottomNavClick(event, 'sports')">
-                <span class="nav-icon">⚽</span>
-                <span class="nav-label" data-lang-key="sports">Sports</span>
-            </a> -->
-            <a href="#" class="bottom-nav-item" data-category="international"
-                onclick="handleBottomNavClick(event, 'international')">
-                <span class="nav-icon">🌍</span>
-                <span class="nav-label" data-lang-key="international">International</span>
-            </a>
-            <button class="bottom-nav-item" onclick="toggleMobileMenu()">
-                <span class="nav-icon">⋮</span>
-                <span class="nav-label">More</span>
-            </button>
         </nav>
-
-        <!-- Mobile More Menu -->
-        <div class="mobile-more-menu" id="mobileMoreMenu">
-            <div class="more-menu-header">
-                <h3>More Options</h3>
-                <button onclick="toggleMobileMenu()" class="close-menu-btn">✕</button>
-            </div>
-            <div class="more-menu-items">
-                <!-- <a href="#" data-category="international" onclick="handleMoreMenuClick(event, 'international')">
-                    <span>🌍</span>
-                    <span data-lang-key="international">International</span>
-                </a> -->
-                <a href="#" data-category="sports"
-                    onclick="handleMoreMenuClick(event, 'sports')">
-                    <span>⚽</span>
-                    <span data-lang-key="sports">Sports</span>
-                </a>
-                <a href="#" data-category="technology" onclick="handleMoreMenuClick(event, 'technology')">
-                    <span>💻</span>
-                    <span data-lang-key="tech">Tech</span>
-                </a>
-                <hr style="border: none; border-top: 1px solid var(--border-color); margin: 8px 0;">
-                <button onclick="toggleFilters(); toggleMobileMenu();">
-                    <span>⚙️</span>
-                    <span data-lang-key="filters">Filters</span>
-                </button>
-                <button onclick="toggleTheme()">
-                    <span id="mobileThemeIcon">🌙</span>
-                    <span>Theme</span>
-                </button>
-                <button onclick="toggleLanguage()">
-                    <span id="mobileLangIcon">🇧🇩</span>
-                    <span>Language</span>
-                </button>
-            </div>
-        </div>
-        <div class="mobile-menu-backdrop" id="mobileMenuBackdrop" onclick="toggleMobileMenu()"></div>
 
         <!-- Filter Panel -->
         <div class="filter-panel" id="filterPanel">
