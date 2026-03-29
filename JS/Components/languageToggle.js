@@ -52,6 +52,25 @@ function updateLanguage() {
             element.textContent = translations[currentLang][key];
         }
     });
+
+    // Change this after testing
+    document.querySelectorAll('.bottom-nav-item [data-lang-key]').forEach(element => {
+        const key = element.getAttribute('data-lang-key');
+        if (translations[currentLang][key]) {
+            element.textContent = translations[currentLang][key];
+        }
+    });
+    
+
+    // Change this after testing
+    // ✅ Update more menu items
+    document.querySelectorAll('.more-menu-items [data-lang-key]').forEach(element => {
+        const key = element.getAttribute('data-lang-key');
+        if (translations[currentLang][key]) {
+            element.textContent = translations[currentLang][key];
+        }
+    });
+
     
     // Update language toggle icon
     const langIcon = document.getElementById('langIcon');

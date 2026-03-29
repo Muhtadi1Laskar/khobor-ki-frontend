@@ -18,7 +18,8 @@ function toggleTheme() {
 // Apply theme function
 function applyTheme(theme) {
     const body = document.body;
-    const icon = document.getElementById('themeIcon');
+    // const icon = document.getElementById('themeIcon');
+    const icon = document.getElementById('mobileThemeIcon');
 
     if (theme === 'dark') {
         body.classList.add('dark-theme');
