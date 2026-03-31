@@ -176,7 +176,6 @@ const NEWS_SOURCES = {
             'khaborwala',
             'Bangla Tribune',
             'Just News BD (Bangla)',
-            'Daily Janakantha',
             'Daily Amader Shomoi'
         ],
         en: [
@@ -207,7 +206,6 @@ const NEWS_SOURCES = {
             'khaborwala',
             'Bangla Tribune',
             'Just News BD (Bangla)',
-            'Daily Janakantha',
             'Daily Amader Shomoi'
         ],
         bn: [
@@ -238,7 +236,6 @@ const NEWS_SOURCES = {
             'খবরওয়ালা',
             'বাংলা ট্রিবিউন',
             'জাস্ট নিউজ বিডি (বাংলা)',
-            'দৈনিক জনকণ্ঠ',
             'দৈনিক আমাদের সময়'
         ]
     },
@@ -384,7 +381,6 @@ const SOURCES_LINK = {
     'khaborwala': 'https://bn.khaborwala.com/',
     'Bangla Tribune': 'https://www.banglatribune.com/',
     'Just News BD (Bangla)': 'https://www.justnewsbd.com/',
-    'Daily Janakantha': 'https://www.dailyjanakantha.com/',
     'Daily Amader Shomoi': 'https://www.dainikamadershomoy.com/',
     'Manab Zamin': 'https://www.mzamin.com/',
 
