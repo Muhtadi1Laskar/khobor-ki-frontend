@@ -543,9 +543,19 @@ function renderClusters(clusters) {
         return;
     }
 
-
-    // Render controls + cluster list on initial load
     container.innerHTML = `
+        <!-- Value Banner -->
+        <div class="value-banner">
+            <div class="value-icon">💡</div>
+            <div class="value-text">
+                <h3>${currentLang === 'en' ? 'Why Trending?' : 'কেন ট্রেন্ডিং?'}</h3>
+                <p>${currentLang === 'en' 
+                    ? 'See how different news sources report the same story. Compare perspectives before forming your opinion.' 
+                    : 'একই খবর বিভিন্ন সূত্র কীভাবে প্রকাশ করে দেখুন। মতামত তৈরির আগে বিভিন্ন দৃষ্টিকোণ তুলনা করুন।'}</p>
+            </div>
+            <button class="value-close" onclick="this.parentElement.remove()">✕</button>
+        </div>
+        
         <div class="cluster-controls">
             <div class="cluster-lang-toggle-container">
                 <button class="cluster-lang-toggle ${clusterLanguageFilter === 'BN' ? 'bn-active' : 'en-active'}" 
@@ -564,6 +574,28 @@ function renderClusters(clusters) {
         
         <div class="cluster-list"></div>
     `;
+
+
+    // Render controls + cluster list on initial load
+    // container.innerHTML = `
+    //     <div class="cluster-controls">
+    //         <div class="cluster-lang-toggle-container">
+    //             <button class="cluster-lang-toggle ${clusterLanguageFilter === 'BN' ? 'bn-active' : 'en-active'}" 
+    //                     id="clusterLangToggle" 
+    //                     onclick="toggleClusterLanguage()">
+    //                 <span class="toggle-option bn-option">
+    //                     ${currentLang === 'en' ? 'Bangla Media' : 'বাংলা মিডিয়া'}
+    //                 </span>
+    //                 <span class="toggle-slider"></span>
+    //                 <span class="toggle-option en-option">
+    //                     ${currentLang === 'en' ? 'English Media' : 'ইংরেজি মিডিয়া'}
+    //                 </span>
+    //             </button>
+    //         </div>
+    //     </div>
+        
+    //     <div class="cluster-list"></div>
+    // `;
 
     // Now render the cluster list
     renderClusterListOnly(clusters);
