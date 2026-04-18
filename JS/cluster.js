@@ -654,7 +654,6 @@ function getVisualIndicator(score, type, lang) {
 }
 
 // Toggle transparency info details
-// Toggle transparency info details
 function toggleTransparencyInfo(clusterId) {
     const details = document.getElementById(`transparency-details-${clusterId}`);
     const button = document.getElementById(`toggle-btn-${clusterId}`);
@@ -694,9 +693,7 @@ function setCoveredMessage(currentLanguage, articleCount, translations) {
 }
 
 // Update cluster language dynamically
-// Update cluster language dynamically
 function updateClusterLanguage() {
-    // Update all "covered by" messages
     // Update all "covered by" messages
     document.querySelectorAll('[data-cluster-covered]').forEach(element => {
         const articleCount = parseInt(element.getAttribute('data-cluster-covered'));
