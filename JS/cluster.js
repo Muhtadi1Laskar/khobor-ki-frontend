@@ -1,5 +1,5 @@
 
-let clusterLanguageFilter = 'BN'; 
+let clusterLanguageFilter = 'BN';
 
 // Loads the clusters
 async function loadClusters() {
@@ -9,7 +9,7 @@ async function loadClusters() {
 
     let skeletonTimeout = null;
     const SKELETON_DELAY = 300; // Show skeleton only after 300ms
-    
+
     if (controlsExist) {
         const clusterList = document.querySelector('.cluster-list');
         if (clusterList) {
@@ -37,7 +37,7 @@ async function loadClusters() {
             </div>
             <div class="cluster-list"></div>
         `;
-        
+
         // ✅ Delayed skeleton for initial load too
         const clusterList = document.querySelector('.cluster-list');
         skeletonTimeout = setTimeout(() => {
@@ -56,10 +56,10 @@ async function loadClusters() {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data = await response.json();
-        
+
         // ✅ Clear skeleton timeout - data arrived
         clearTimeout(skeletonTimeout);
-        
+
         renderClusters(data);
 
     } catch (error) {
@@ -109,7 +109,7 @@ async function reloadClusterList() {
     }
 
     const SKELETON_DELAY = 100;
-    
+
     // ✅ Delayed skeleton
     const skeletonTimeout = setTimeout(() => {
         clusterList.innerHTML = renderClusterSkeleton(3); // 3 cards
@@ -121,10 +121,10 @@ async function reloadClusterList() {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data = await response.json();
-        
+
         // ✅ Clear skeleton timeout
         clearTimeout(skeletonTimeout);
-        
+
         renderClusterListOnly(data);
 
     } catch (error) {
@@ -301,8 +301,8 @@ function renderClusterListOnly(clusters) {
                     
                     <div class="cluster-sources-row" id="sources-${cluster._id}">
                         ${Object.entries(cluster.sources).slice(0, 3).map(([source, count]) => {
-                            const domain = SOURCES_LINK[source];
-                            return `
+            const domain = SOURCES_LINK[source];
+            return `
                                 <div class="source-chip">
                                     ${domain ? `
                                         <img src="https://www.google.com/s2/favicons?domain=${domain}&sz=32" 
@@ -314,14 +314,14 @@ function renderClusterListOnly(clusters) {
                                     <span class="count">(${count})</span>
                                 </div>
                             `;
-                        }).join('')}
+        }).join('')}
                         
                         ${Object.entries(cluster.sources).length > 3 ? `
                             <!-- Hidden sources -->
                             <div class="hidden-sources" id="hidden-sources-${cluster._id}" style="display: none;">
                                 ${Object.entries(cluster.sources).slice(3).map(([source, count]) => {
-                                    const domain = SOURCES_LINK[source];
-                                    return `
+            const domain = SOURCES_LINK[source];
+            return `
                                         <div class="source-chip">
                                             ${domain ? `
                                                 <img src="https://www.google.com/s2/favicons?domain=${domain}&sz=32" 
@@ -333,7 +333,7 @@ function renderClusterListOnly(clusters) {
                                             <span class="count">(${count})</span>
                                         </div>
                                     `;
-                                }).join('')}
+        }).join('')}
                             </div>
                             
                             <!-- Toggle button -->
@@ -414,11 +414,11 @@ function toggleMoreSources(clusterId) {
     const moreBtn = document.getElementById(`more-btn-${clusterId}`);
     const moreText = moreBtn.querySelector('.more-text');
     const moreIcon = moreBtn.querySelector('.more-icon');
-    
+
     if (!hiddenSources || !moreBtn) return;
-    
+
     const isExpanded = hiddenSources.style.display !== 'none';
-    
+
     if (isExpanded) {
         // Collapse - hide sources
         hiddenSources.style.display = 'none';
@@ -545,17 +545,7 @@ function renderClusters(clusters) {
 
     container.innerHTML = `
         <!-- Value Banner -->
-        <div class="value-banner">
-            <div class="value-icon">💡</div>
-            <div class="value-text">
-                <h3>${currentLang === 'en' ? 'Why Trending?' : 'কেন ট্রেন্ডিং?'}</h3>
-                <p>${currentLang === 'en' 
-                    ? 'See how different news sources report the same story. Compare perspectives before forming your opinion.' 
-                    : 'একই খবর বিভিন্ন সূত্র কীভাবে প্রকাশ করে দেখুন। মতামত তৈরির আগে বিভিন্ন দৃষ্টিকোণ তুলনা করুন।'}</p>
-            </div>
-            <button class="value-close" onclick="this.parentElement.remove()">✕</button>
-        </div>
-        
+        ${renderValueBanner()}
         <div class="cluster-controls">
             <div class="cluster-lang-toggle-container">
                 <button class="cluster-lang-toggle ${clusterLanguageFilter === 'BN' ? 'bn-active' : 'en-active'}" 
@@ -575,30 +565,35 @@ function renderClusters(clusters) {
         <div class="cluster-list"></div>
     `;
 
-
-    // Render controls + cluster list on initial load
-    // container.innerHTML = `
-    //     <div class="cluster-controls">
-    //         <div class="cluster-lang-toggle-container">
-    //             <button class="cluster-lang-toggle ${clusterLanguageFilter === 'BN' ? 'bn-active' : 'en-active'}" 
-    //                     id="clusterLangToggle" 
-    //                     onclick="toggleClusterLanguage()">
-    //                 <span class="toggle-option bn-option">
-    //                     ${currentLang === 'en' ? 'Bangla Media' : 'বাংলা মিডিয়া'}
-    //                 </span>
-    //                 <span class="toggle-slider"></span>
-    //                 <span class="toggle-option en-option">
-    //                     ${currentLang === 'en' ? 'English Media' : 'ইংরেজি মিডিয়া'}
-    //                 </span>
-    //             </button>
-    //         </div>
-    //     </div>
-        
-    //     <div class="cluster-list"></div>
-    // `;
-
     // Now render the cluster list
     renderClusterListOnly(clusters);
+}
+
+function renderValueBanner() {
+    const isDismissed = localStorage.getItem("valueBannerDismissed");
+
+    if(isDismissed === "true") {
+        return '';
+    }
+
+    return `
+        <div class="value-banner">
+            <div class="value-icon">💡</div>
+            <div class="value-text">
+                <h3>${currentLang === 'en' ? 'Why Trending?' : 'কেন ট্রেন্ডিং?'}</h3>
+                <p>${currentLang === 'en'
+            ? 'See how different news sources report the same story. Compare perspectives before forming your opinion.'
+            : 'একই খবর বিভিন্ন সূত্র কীভাবে প্রকাশ করে দেখুন। মতামত তৈরির আগে বিভিন্ন দৃষ্টিকোণ তুলনা করুন।'}</p>
+            </div>
+            <button class="value-close" onclick="dismissValueBanner(this)">✕</button>
+        </div>
+    `;
+}
+
+function dismissValueBanner(button) {
+    button.closest(".value-banner").remove();
+
+    localStorage.setItem("valueBannerDismissed", "true");
 }
 
 function toggleComparisonView(clusterId) {
@@ -657,15 +652,15 @@ function getVisualIndicator(score, type, lang) {
 function toggleTransparencyInfo(clusterId) {
     const details = document.getElementById(`transparency-details-${clusterId}`);
     const button = document.getElementById(`toggle-btn-${clusterId}`);
-    
+
     const isExpanded = details.classList.toggle('show');
-    
+
     if (button) {
         button.classList.toggle('expanded');
-        
+
         // ✅ Update tooltip text
-        const newTitle = isExpanded 
-            ? translations[currentLang].hideDetails 
+        const newTitle = isExpanded
+            ? translations[currentLang].hideDetails
             : translations[currentLang].showDetails;
         button.setAttribute('title', newTitle);
     }
@@ -784,20 +779,20 @@ function toggleClusterArticles(clusterId) {
 
 function shareCluster(clusterId, event) {
     event.stopPropagation();
-    
+
     // Find the cluster data from the current page
     const clusterCard = event.target.closest('.cluster-card');
     const title = clusterCard.querySelector('.cluster-title-link').textContent.trim();
     const sourceCount = clusterCard.querySelector('[data-cluster-covered]').getAttribute('data-cluster-covered');
-    
+
     // ✅ CREATE KHOBOR KI URL WITH CLUSTER ID HASH
     const khoborKiUrl = `${window.location.origin}${window.location.pathname}#cluster-${clusterId}`;
-    
+
     // Create share text
     const shareText = currentLang === 'en'
         ? `${title}\n\nCovered by ${sourceCount} sources on Khobor Ki`
         : `${title}\n\n${sourceCount} সূত্র থেকে কভার করা হয়েছে - খবর কি`;
-    
+
     // Try native share first (mobile)
     if (navigator.share) {
         navigator.share({
@@ -819,7 +814,7 @@ function showShareMenu(title, khoborKiUrl, shareText, event) {
     // Remove any existing menu
     const existingMenu = document.querySelector('.share-menu');
     if (existingMenu) existingMenu.remove();
-    
+
     // Create menu
     const menu = document.createElement('div');
     menu.className = 'share-menu';
@@ -869,7 +864,7 @@ function showShareMenu(title, khoborKiUrl, shareText, event) {
             <span>Email</span>
         </a>
     `;
-    
+
     // Position menu
     const button = event.currentTarget;
     const rect = button.getBoundingClientRect();
@@ -877,9 +872,9 @@ function showShareMenu(title, khoborKiUrl, shareText, event) {
     menu.style.top = `${rect.bottom + 8}px`;
     menu.style.left = `${rect.left}px`;
     menu.style.zIndex = '1000';
-    
+
     document.body.appendChild(menu);
-    
+
     // Adjust if off-screen
     const menuRect = menu.getBoundingClientRect();
     if (menuRect.right > window.innerWidth) {
@@ -888,7 +883,7 @@ function showShareMenu(title, khoborKiUrl, shareText, event) {
     if (menuRect.bottom > window.innerHeight) {
         menu.style.top = `${rect.top - menuRect.height - 8}px`;
     }
-    
+
     // Close on outside click
     setTimeout(() => {
         document.addEventListener('click', function closeMenu(e) {
@@ -903,20 +898,20 @@ function showShareMenu(title, khoborKiUrl, shareText, event) {
 async function copyToClipboard(text, button) {
     try {
         await navigator.clipboard.writeText(text);
-        
+
         // Visual feedback
         const originalHTML = button.innerHTML;
         button.innerHTML = '<span>✓</span><span>' + (translations[currentLang].copied || 'Copied!') + '</span>';
         button.style.background = 'var(--accent-success-bg)';
         button.style.color = 'var(--accent-success)';
-        
+
         setTimeout(() => {
             button.innerHTML = originalHTML;
             button.style.background = '';
             button.style.color = '';
             document.querySelector('.share-menu')?.remove();
         }, 1500);
-        
+
     } catch (err) {
         console.error('Failed to copy:', err);
         alert(translations[currentLang].copyFailed || 'Failed to copy');
